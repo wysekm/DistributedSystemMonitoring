@@ -1,0 +1,50 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="845" measuredH="633" mockupW="793" mockupH="554">
+  <controls>
+    <control controlID="85" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="52" y="79" w="793" h="554" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="86" controlTypeID="com.balsamiq.mockups::Image" x="356" y="235" w="184" h="138" measuredW="77" measuredH="79" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>logo_aplikacji</text>
+      </controlProperties>
+    </control>
+    <control controlID="87" controlTypeID="com.balsamiq.mockups::Label" x="351" y="388" w="207" h="-1" measuredW="193" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Wyszukaj%20zasob%20uzywajac%20frazy</text>
+      </controlProperties>
+    </control>
+    <control controlID="88" controlTypeID="com.balsamiq.mockups::Button" x="237" y="174" w="-1" h="-1" measuredW="115" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Lista%20monitorow</text>
+      </controlProperties>
+    </control>
+    <control controlID="89" controlTypeID="com.balsamiq.mockups::Button" x="367" y="174" w="-1" h="-1" measuredW="162" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Wyszukiwanie%20zasobow</text>
+      </controlProperties>
+    </control>
+    <control controlID="90" controlTypeID="com.balsamiq.mockups::Button" x="544" y="174" w="-1" h="-1" measuredW="84" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Logowanie</text>
+      </controlProperties>
+    </control>
+    <control controlID="91" controlTypeID="com.balsamiq.mockups::Label" x="637" y="179" w="-1" h="-1" measuredW="193" measuredH="17" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>9</size>
+        <text>Obecnie%20nie%20jest%20zalogowany%20zaden%20uzytkownik</text>
+      </controlProperties>
+    </control>
+    <control controlID="92" controlTypeID="com.balsamiq.mockups::TextInput" x="367" y="416" w="176" h="-1" measuredW="86" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Wpisz%20fraze</text>
+      </controlProperties>
+    </control>
+    <control controlID="94" controlTypeID="com.balsamiq.mockups::Button" x="414" y="451" w="-1" h="-1" measuredW="64" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Szukaj</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

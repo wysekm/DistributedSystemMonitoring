@@ -1,0 +1,85 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="845" measuredH="877" mockupW="793" mockupH="798">
+  <controls>
+    <control controlID="153" controlTypeID="com.balsamiq.mockups::DataGrid" x="243" y="436" w="378" h="149" measuredW="328" measuredH="141" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Zasob%20%5Ev%2C%20Pomiar%2C%20Aktualna%20wartosc%2C%20Tworz%20wykres%0APC1%2C%20CPU%2C%2023%25%2C%20%5Bx%5D%0APC1%2C%20RAM%2C%2035%25%2C%20%5Bx%5D%0APC2%2C%20CPU%2C%2099%25%2C%20%5Bx%5D%0APC3%2C%20SWAP%2C%201%25%2C%20%5Bx%5D</text>
+      </controlProperties>
+    </control>
+    <control controlID="154" controlTypeID="com.balsamiq.mockups::DataGrid" x="243" y="642" w="378" h="149" measuredW="328" measuredH="141" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Zasob%20%5Ev%2C%20Pomiar%2C%20Aktualna%20wartosc%2C%20Tworz%20wykres%0APC1%2C%20CPU%2C%2023%25%2C%20%5Bx%5D%0APC1%2C%20RAM%2C%2035%25%2C%20%5Bx%5D%0APC2%2C%20CPU%2C%2099%25%2C%20%5Bx%5D%0APC3%2C%20SWAP%2C%201%25%2C%20%5Bx%5D</text>
+      </controlProperties>
+    </control>
+    <control controlID="156" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="52" y="79" w="793" h="798" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="157" controlTypeID="com.balsamiq.mockups::Image" x="356" y="235" w="184" h="138" measuredW="77" measuredH="79" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>logo_aplikacji</text>
+      </controlProperties>
+    </control>
+    <control controlID="158" controlTypeID="com.balsamiq.mockups::Button" x="237" y="174" w="-1" h="-1" measuredW="115" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Lista%20monitorow</text>
+      </controlProperties>
+    </control>
+    <control controlID="159" controlTypeID="com.balsamiq.mockups::Button" x="367" y="174" w="-1" h="-1" measuredW="162" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Wyszukiwanie%20zasobow</text>
+      </controlProperties>
+    </control>
+    <control controlID="160" controlTypeID="com.balsamiq.mockups::Button" x="544" y="174" w="-1" h="-1" measuredW="84" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Logowanie</text>
+      </controlProperties>
+    </control>
+    <control controlID="161" controlTypeID="com.balsamiq.mockups::Label" x="637" y="179" w="-1" h="-1" measuredW="129" measuredH="17" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>9</size>
+        <text>Zalogowany%20uzytkownik%3A%20USER1</text>
+      </controlProperties>
+    </control>
+    <control controlID="162" controlTypeID="com.balsamiq.mockups::Label" x="303" y="388" w="-1" h="-1" measuredW="290" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Lista%20zasob%F3w%20i%20metryk%20dla%20wybranych%20monitorow</text>
+      </controlProperties>
+    </control>
+    <control controlID="163" controlTypeID="com.balsamiq.mockups::FieldSet" x="237" y="424" w="550" h="172" measuredW="200" measuredH="170" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Monitor%201</text>
+      </controlProperties>
+    </control>
+    <control controlID="164" controlTypeID="com.balsamiq.mockups::FieldSet" x="237" y="630" w="391" h="172" measuredW="200" measuredH="170" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Monitor%202</text>
+      </controlProperties>
+    </control>
+    <control controlID="167" controlTypeID="com.balsamiq.mockups::Button" x="389" y="806" w="-1" h="-1" measuredW="118" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Stworz%20wykresy</text>
+      </controlProperties>
+    </control>
+    <control controlID="168" controlTypeID="com.balsamiq.mockups::Button" x="628" y="455" w="-1" h="-1" measuredW="149" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dodaj%20pomiar%20zlozony</text>
+      </controlProperties>
+    </control>
+    <control controlID="169" controlTypeID="com.balsamiq.mockups::Button" x="628" y="486" w="-1" h="-1" measuredW="149" measuredH="27" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dodaj%20pomiar%20zlozony</text>
+      </controlProperties>
+    </control>
+    <control controlID="170" controlTypeID="com.balsamiq.mockups::Button" x="628" y="551" w="-1" h="-1" measuredW="149" measuredH="27" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dodaj%20pomiar%20zlozony</text>
+      </controlProperties>
+    </control>
+    <control controlID="171" controlTypeID="com.balsamiq.mockups::Button" x="628" y="518" w="-1" h="-1" measuredW="145" measuredH="27" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Usun%20pomiar%20zlozony</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
