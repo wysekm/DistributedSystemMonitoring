@@ -2,106 +2,56 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>DSM-parent</artifactId>
         <groupId>pl.edu.agh.DSM</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>DSM-catalogue</artifactId>
-    <name>Catalogue</name>
+    <artifactId>DSM-sensor</artifactId>
+    <name>Sensor</name>
+    <description>Sensor application.</description>
     <packaging>jar</packaging>
-    <description>Catalog application.</description>
 
     <properties>
-        <start-class>pl.edu.agh.dsm.catalog.CatalogueConfig</start-class>
-        <project.mainClass>pl.edu.agh.dsm.catalog.main.Catalog</project.mainClass>
+        <project.mainClass>pl.edu.agh.dsm.sensor.main.SensorContainer</project.mainClass>
         <project.build.finalName>${project.artifactId}</project.build.finalName>
-        <project.build.execScriptName>catalog</project.build.execScriptName>
+        <project.build.execScriptName>sensor</project.build.execScriptName>
         <project.build.extraJvmArgs>-Xms128m -Xmx256m</project.build.extraJvmArgs>
+        <sigar.version>1.6.5.132-6</sigar.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.plugin</groupId>
-            <artifactId>spring-plugin-core</artifactId>
-            <version>0.8.0.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>pl.edu.agh.DSM</groupId>
-            <artifactId>DSM-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>4.0.2.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.hateoas</groupId>
-            <artifactId>spring-hateoas</artifactId>
-            <version>0.9.0.RELEASE</version>
+            <groupId>dsm</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
 
         <!--
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jetty</artifactId>
-            <version>1.0.0.RC4</version>
-        </dependency>
+            main dependencies
         -->
-
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <version>1.0.0.RC4</version>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>2.2.2</version>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>1.0.0.RC4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.3.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.1.1</version>
+            <groupId>org.hyperic</groupId>
+            <artifactId>sigar</artifactId>
+            <version>${sigar.version}</version>
             <type>jar</type>
         </dependency>
 
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.6</version>
-            <type>jar</type>
+            <groupId>org.hyperic</groupId>
+            <artifactId>sigar-dist</artifactId>
+            <version>${sigar.version}</version>
+            <type>zip</type>
         </dependency>
 
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jul-to-slf4j</artifactId>
-            <version>1.7.6</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
         <!--
             test dependencies
         -->
@@ -109,22 +59,18 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
+            <type>jar</type>
             <scope>test</scope>
         </dependency>
 
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.9.5</version>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-core</artifactId>
+            <version>0.7-groovy-2.0</version>
+            <type>jar</type>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>3.2.3.RELEASE</version>
         </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
@@ -192,12 +138,53 @@
                 <version>1.7</version>
                 <executions>
                     <execution>
+                        <id>unpack</id>
+                        <phase>validate</phase>
+                        <configuration>
+                            <target>
+                                <echo>Copying SIGAR ${sigar.version} native libraries to local build directory</echo>
+                                <mkdir dir="${project.basedir}/tmp"/>
+                                <mkdir dir="${project.basedir}/lib/native"/>
+                                <copy toDir="${project.basedir}/tmp">
+                                    <fileset dir="${settings.localRepository}/org/hyperic/sigar-dist/${sigar.version}"
+                                             includes="*.zip"/>
+                                </copy>
+                                <unzip dest="${project.basedir}/tmp">
+                                    <fileset dir="${project.basedir}/tmp" includes="*.zip"/>
+                                    <patternset>
+                                        <exclude name="**/lib/sigar.jar"/>
+                                        <include name="**/lib/bcel*.jar"/>
+                                        <include name="**/lib/*.so"/>
+                                        <include name="**/lib/*.sl"/>
+                                        <include name="**/lib/*.dll"/>
+                                        <include name="**/lib/*.dylib"/>
+                                    </patternset>
+                                </unzip>
+                                <copy todir="${project.basedir}/lib/native" flatten="true">
+                                    <fileset dir="${project.basedir}/tmp">
+                                        <include name="**/lib/*"/>
+                                    </fileset>
+                                </copy>
+                                <delete dir="${project.basedir}/tmp"/>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
                         <id>pack</id>
                         <phase>package</phase>
                         <configuration>
                             <target>
+                                <copy todir="${project.build.directory}/artifacts/distrib/lib" flatten="true">
+                                    <fileset dir="${project.basedir}/lib/native">
+                                        <include name="*"/>
+                                    </fileset>
+                                </copy>
                                 <zip destfile="${project.build.directory}/${project.build.finalName}.zip">
-                                    <zipfileset dir="${project.build.directory}/artifacts/distrib" includes="**"/>
+                                    <zipfileset dir="${project.build.directory}/artifacts/distrib" includes="**" />
                                 </zip>
                             </target>
                         </configuration>
@@ -207,7 +194,18 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.16</version>
+                <configuration>
+                    <parallel>methods</parallel>
+                    <threadCount>50</threadCount>
+                    <argLine>-Djava.library.path=lib\native</argLine>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
-
 </project>

@@ -1,0 +1,46 @@
+<sensor id="app1">
+    <configuration>
+        <thread_count>8</thread_count>
+        <monitor_address>127.0.0.1:1138</monitor_address>
+
+        <!-- TODO: broadcast configuration -->
+        <!-- TODO: other configuration options -->
+    </configuration>
+    <monitored_objects>
+        <group interval="10">
+            <monitored class="CpuUsage" id="cpu_all" />
+            <monitored class="CpuUsage" id="cpu0">
+                <param name="cpu" value="0" />
+            </monitored>
+            <monitored class="CpuUsage" id="cpu1">
+                <param name="cpu" value="1" />
+            </monitored>
+            <monitored class="CpuUsage" id="cpu2">
+                <param name="cpu" value="2" />
+            </monitored>
+            <monitored class="CpuUsage" id="cpu3">
+                <param name="cpu" value="3" />
+            </monitored>
+            <monitored class="CpuUsage" id="cpu23">
+                <param name="cpu" value="23" /> <!-- this will fail -->
+            </monitored>
+        </group>
+
+        <group interval="30">
+            <monitored class="MemUsage" id="memfree">
+                <param name="percentage" value="true"/>
+            </monitored>
+            <monitored class="MemUsage" id="memused">
+                <param name="percentage" value="true"/>
+                <param name="used" value="true"/>
+            </monitored>
+        </group>
+        <!--
+        <group interval="300">
+            <monitored class="DiskSpaceUsed" id="hdd-used">
+                <param name="mount_point" value="/" />
+            </monitored>
+        </group>
+        -->
+    </monitored_objects>
+</sensor>
