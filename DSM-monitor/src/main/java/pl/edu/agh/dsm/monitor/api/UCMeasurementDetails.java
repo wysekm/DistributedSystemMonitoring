@@ -1,4 +1,6 @@
-package pl.edu.agh.dsm.monitor;
+package pl.edu.agh.dsm.monitor.api;
+
+import pl.edu.agh.dsm.monitor.Measurement;
 
 import java.util.UUID;
 
