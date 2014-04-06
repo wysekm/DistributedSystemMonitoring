@@ -23,19 +23,12 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>dsm</groupId>
-            <artifactId>common</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
         <!--
             main dependencies
         -->
         <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <version>2.2.2</version>
+            <groupId>pl.edu.agh.DSM</groupId>
+            <artifactId>DSM-common</artifactId>
         </dependency>
 
         <dependency>
@@ -52,22 +45,40 @@
             <type>zip</type>
         </dependency>
 
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+        </dependency>
+
+
         <!--
             test dependencies
         -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <type>jar</type>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-core</artifactId>
-            <version>0.7-groovy-2.0</version>
-            <type>jar</type>
             <scope>test</scope>
         </dependency>
     </dependencies>
