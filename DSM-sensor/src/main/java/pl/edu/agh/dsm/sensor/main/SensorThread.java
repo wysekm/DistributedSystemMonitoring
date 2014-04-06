@@ -13,7 +13,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.Date;
 
-import pl.edu.agh.dsm.common.dto.UdpSensorUpdate;
+import dsm.common.dto.UdpSensorUpdate;
 
 public class SensorThread implements Runnable {
 
@@ -76,7 +76,7 @@ public class SensorThread implements Runnable {
             if (ex.isFatal()) {
                 log.error("Resource monitor failure, most likely due to malformed configuration,"
                         + " see MonitoringException.message for cause: ", ex);
-                throw new RuntimeException("thread is kill. no.");
+                throw new RuntimeException("Killing thread.");
             } else {
                 log.error("MonitoringException caught while executing resource "
                         + "value update for sensor " + id + ": ", ex);
