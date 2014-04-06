@@ -10,19 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>DSM-catalogue</artifactId>
-    <name>Catalogue</name>
-    <packaging>jar</packaging>
-    <description>Catalog application.</description>
 
     <properties>
         <start-class>pl.edu.agh.dsm.catalog.CatalogueConfig</start-class>
-        <project.mainClass>pl.edu.agh.dsm.catalog.main.Catalog</project.mainClass>
-        <project.build.finalName>${project.artifactId}</project.build.finalName>
-        <project.build.execScriptName>catalog</project.build.execScriptName>
-        <project.build.extraJvmArgs>-Xms128m -Xmx256m</project.build.extraJvmArgs>
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.plugin</groupId>
             <artifactId>spring-plugin-core</artifactId>
@@ -30,67 +24,19 @@
         </dependency>
 
         <dependency>
-            <groupId>pl.edu.agh.DSM</groupId>
             <artifactId>DSM-common</artifactId>
+            <groupId>pl.edu.agh.DSM</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>4.0.2.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.hateoas</groupId>
-            <artifactId>spring-hateoas</artifactId>
-            <version>0.9.0.RELEASE</version>
-        </dependency>
-
-        <!--
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jetty</artifactId>
-            <version>1.0.0.RC4</version>
-        </dependency>
-        -->
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <version>1.0.0.RC4</version>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>1.0.0.RC4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.3.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.1.1</version>
-            <type>jar</type>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.6</version>
-            <type>jar</type>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jul-to-slf4j</artifactId>
-            <version>1.7.6</version>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
@@ -99,110 +45,26 @@
         </dependency>
 
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-        <!--
-            test dependencies
-        -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
+            <groupId>org.springframework.hateoas</groupId>
+            <artifactId>spring-hateoas</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.9.5</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>3.2.3.RELEASE</version>
-        </dependency>
     </dependencies>
 
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <compilerId>groovy-eclipse-compiler</compilerId>
-                    <source>${project.sourceLevel}</source>
-                    <target>${project.sourceLevel}</target>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-eclipse-compiler</artifactId>
-                        <version>2.8.0-01</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-eclipse-batch</artifactId>
-                        <version>2.1.8-01</version>
-                    </dependency>
-                </dependencies>
             </plugin>
-
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>appassembler-maven-plugin</artifactId>
-                <version>1.7</version>
-                <configuration>
-                    <programs>
-                        <program>
-                            <mainClass>${project.mainClass}</mainClass>
-                            <id>${project.build.execScriptName}</id>
-                        </program>
-                    </programs>
-                    <binFileExtensions>
-                        <unix>.sh</unix>
-                    </binFileExtensions>
-                    <repositoryLayout>flat</repositoryLayout>
-                    <repositoryName>lib</repositoryName>
-                    <configurationDirectory>conf</configurationDirectory>
-                    <configurationSourceDirectory>src/main/config</configurationSourceDirectory>
-                    <copyConfigurationDirectory>true</copyConfigurationDirectory>
-                    <includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>
-                    <extraJvmArguments>${project.build.extraJvmArgs}</extraJvmArguments>
-                    <projectArtifactFirstInClassPath>true</projectArtifactFirstInClassPath>
-                    <assembleDirectory>target/artifacts/distrib</assembleDirectory>
-                </configuration>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.0.0.RELEASE</version>
                 <executions>
                     <execution>
-                        <id>assemble</id>
-                        <phase>package</phase>
                         <goals>
-                            <goal>assemble</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.7</version>
-                <executions>
-                    <execution>
-                        <id>pack</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <target>
-                                <zip destfile="${project.build.directory}/${project.build.finalName}.zip">
-                                    <zipfileset dir="${project.build.directory}/artifacts/distrib" includes="**"/>
-                                </zip>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
+                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>
