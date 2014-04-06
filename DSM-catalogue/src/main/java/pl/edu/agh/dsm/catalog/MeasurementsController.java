@@ -25,6 +25,7 @@ public class MeasurementsController {
     @RequestMapping(method = GET,value = "")
     public Resources<Measurement> getMeasurements()
     {
+
         Measurement some = new Measurement("some", "dsds");
         Resource element = new Resource(some);
         element.add(new Link("http://wp.pl","wplink"));
