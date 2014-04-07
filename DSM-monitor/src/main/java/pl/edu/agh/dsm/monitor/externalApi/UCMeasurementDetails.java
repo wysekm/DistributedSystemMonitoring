@@ -1,6 +1,6 @@
-package pl.edu.agh.dsm.monitor.api;
+package pl.edu.agh.dsm.monitor.externalApi;
 
-import pl.edu.agh.dsm.monitor.Measurement;
+import pl.edu.agh.dsm.monitor.dto.Measurement;
 
 import java.util.UUID;
 

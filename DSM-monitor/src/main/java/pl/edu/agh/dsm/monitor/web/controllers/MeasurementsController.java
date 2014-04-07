@@ -1,12 +1,17 @@
-package pl.edu.agh.dsm.monitor;
+package pl.edu.agh.dsm.monitor.web.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.EntityLinks;
 import org.springframework.hateoas.ExposesResourceFor;
+import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.agh.dsm.monitor.api.*;
+import pl.edu.agh.dsm.monitor.dto.ComplexMeasurement;
+import pl.edu.agh.dsm.monitor.dto.ComplexMeasurementParam;
+import pl.edu.agh.dsm.monitor.dto.Measurement;
+import pl.edu.agh.dsm.monitor.dto.MeasurementData;
+import pl.edu.agh.dsm.monitor.externalApi.*;
+import pl.edu.agh.dsm.monitor.web.MeasurementResourceAssemblerSupport;
 
 import java.util.List;
 import java.util.UUID;
@@ -18,12 +23,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 @RequestMapping("measurements")
 public class MeasurementsController {
 
-    @Autowired
-    private EntityLinks entityLinks;
-
 
     @Autowired
-    private UCMonitorMeasurementsList ucMonitorMeasurementsList;
+    private MeasurementResourceAssemblerSupport assemblerSupport;
+
+    @Autowired
+    private UCMeasurementsList ucMonitorMeasurementsList;
 
     @Autowired
     private UCAddComplexMeasurement ucAddComplexMeasurement;
@@ -37,38 +42,37 @@ public class MeasurementsController {
     @Autowired
     private UCDeleteComplexMeasurement ucDeleteComplexMeasurement;
 
+
+
     @RequestMapping(method = GET,value = "")
-    public Resources<Measurement> getMeasurements(@RequestParam(value = "metric",defaultValue = "") String metric, @RequestParam(value = "resource",defaultValue = "") String resource)
+    public Resources<Resource<Measurement>> getMeasurements(@RequestParam(value = "metric",defaultValue = "") String metric, @RequestParam(value = "resource",defaultValue = "") String resource)
     {
         List<Measurement> filter = ucMonitorMeasurementsList.filter(metric, resource);
-        //TODO add links
-        return new Resources<Measurement>(filter);
+        return assemblerSupport.addLinks(filter);
     }
 
     @RequestMapping(method = POST,value = "")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addMeasurement(@RequestBody Measurement measurement)
+    public void addMeasurement(@RequestBody ComplexMeasurement complex)
     {
-        ucAddComplexMeasurement.create(measurement);
+        ucAddComplexMeasurement.create(complex);
     }
 
     @RequestMapping(method = GET,value = "/{id}")
-    public Measurement getMeasurement(@PathVariable("id")UUID uuid)
+    public Resource<Measurement> getMeasurement(@PathVariable("id")UUID uuid)
     {
         Measurement details = ucMeasurementDetails.details(uuid);
-        //TODO add links
-        return details;
+        return assemblerSupport.addLinks(details);
     }
+
 
     @RequestMapping(method = GET,value = "/{id}/data")
-    public Measurement getData(@PathVariable("id")UUID uuid)
+    public List<MeasurementData> getData(@PathVariable("id") UUID uuid , @RequestParam(value = "limit",defaultValue = "all") String limit, @RequestParam(value = "value",defaultValue = "") String value)
     {
-        Measurement details = ucMeasurementDataDetails.details(uuid);
-        //TODO add links
-        return details;
+        return ucMeasurementDataDetails.details(uuid,limit,value);
     }
 
-    @RequestMapping(method = DELETE,value = "")
+    @RequestMapping(method = DELETE,value = "/{id}")
     public void deleteMeasurement(@PathVariable("id") UUID uuid)
     {
         ucDeleteComplexMeasurement.delete(uuid);
