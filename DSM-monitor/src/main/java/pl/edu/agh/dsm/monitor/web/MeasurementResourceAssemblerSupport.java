@@ -1,20 +1,15 @@
 package pl.edu.agh.dsm.monitor.web;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityLinks;
 import org.springframework.hateoas.Resource;
-import org.springframework.hateoas.Resources;
 import org.springframework.stereotype.Component;
 import pl.edu.agh.dsm.common.security.AutorizationContext;
-import pl.edu.agh.dsm.monitor.dto.Measurement;
+import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
 import pl.edu.agh.dsm.monitor.externalApi.UCDeleteComplexMeasurement;
 
-import java.util.List;
-
 @Component
-public class MeasurementResourceAssemblerSupport extends AbstractResourceAssemblerSupport<Measurement> {
+public class MeasurementResourceAssemblerSupport extends AbstractResourceAssemblerSupport<MeasurementDto> {
 
 
     private EntityLinks entityLinks;
@@ -30,9 +25,9 @@ public class MeasurementResourceAssemblerSupport extends AbstractResourceAssembl
     }
 
     @Override
-    public Resource<Measurement> addLinks(Measurement measurement) {
+    public Resource<MeasurementDto> addLinks(MeasurementDto measurementDto) {
         //TODO add links for Measurements
 //        ucDeleteComplexMeasurement.havePermission(measurement.getId());
-        return new Resource<>(measurement);
+        return new Resource<>(measurementDto);
     }
 }

@@ -2,35 +2,36 @@ package pl.edu.agh.dsm.monitor.externalApi.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import pl.edu.agh.dsm.common.security.ApplicationUser;
-import pl.edu.agh.dsm.monitor.dto.ComplexMeasurement;
-import pl.edu.agh.dsm.monitor.dto.Measurement;
+import pl.edu.agh.dsm.monitor.dto.ComplexMeasurementDto;
+import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
 import pl.edu.agh.dsm.monitor.externalApi.UCAddComplexMeasurement;
 import pl.edu.agh.dsm.common.security.AutorizationContext;
 import pl.edu.agh.dsm.monitor.annotations.UseCase;
 import pl.edu.agh.dsm.monitor.measurement.CatalogueProxy;
+import pl.edu.agh.dsm.monitor.measurement.ComplexMeasurementFactory;
 import pl.edu.agh.dsm.monitor.measurement.MeasurementRepository;
-
-import java.util.UUID;
 
 @UseCase("UC_PF_MT4D")
 public class UCAddComplexMeasurementImpl implements UCAddComplexMeasurement {
 
-    ComplexMeasurementFactory measurementRepository;
+    MeasurementRepository measurementRepository;
+    ComplexMeasurementFactory complexMeasurementFactory;
     AutorizationContext autorizationContext;
     CatalogueProxy catalogueProxy;
 
-
     @Autowired
-    public UCAddComplexMeasurementImpl(AutorizationContext autorizationContext, CatalogueProxy catalogueProxy, ComplexMeasurementFactory measurementRepository) {
+    public UCAddComplexMeasurementImpl(AutorizationContext autorizationContext, CatalogueProxy catalogueProxy, ComplexMeasurementFactory complexMeasurementFactory, MeasurementRepository measurementRepository) {
         this.autorizationContext = autorizationContext;
         this.catalogueProxy = catalogueProxy;
+        this.complexMeasurementFactory = complexMeasurementFactory;
         this.measurementRepository = measurementRepository;
     }
 
     @Override
-    public void create(ComplexMeasurement complexMeasurement) {
+    public void create(ComplexMeasurementDto complexMeasurementDto) {
         ApplicationUser applicationUser = autorizationContext.getActiveUser();
-        Measurement measurement = measurementRepository.create(complexMeasurement,applicationUser);
-        catalogueProxy.addMeasurement(measurement);
+        MeasurementDto measurementDto = complexMeasurementFactory.create(complexMeasurementDto,applicationUser);
+        measurementRepository.save(measurementDto);
+        catalogueProxy.addMeasurement(measurementDto);
     }
 }

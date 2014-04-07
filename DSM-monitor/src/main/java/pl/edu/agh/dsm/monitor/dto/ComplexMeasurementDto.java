@@ -1,24 +1,22 @@
 package pl.edu.agh.dsm.monitor.dto;
 
-
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
-
 
 @Getter
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class Measurement{
-    @JsonIgnore
-    private UUID id;
-    private String resource;
-    private String metric;
-    private String unit;
+public class ComplexMeasurementDto {
+
+    //TODO change to URL http://127.0.0.1:8081/measurements/359a2051-ab94-40f6-b89a-f4ffec4da2a7",
+    UUID measurement;
+    String type;
+    List<ComplexMeasurementParamDto> params;
+
 
 }
-

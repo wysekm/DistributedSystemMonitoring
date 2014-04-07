@@ -3,9 +3,8 @@ package pl.edu.agh.dsm.monitor.measurement.mocks;
 import com.google.common.base.Predicate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 import pl.edu.agh.dsm.monitor.annotations.MockComponent;
-import pl.edu.agh.dsm.monitor.dto.Measurement;
+import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
 import pl.edu.agh.dsm.monitor.measurement.MeasurementRepository;
 
 import java.util.Collections;
@@ -18,18 +17,24 @@ public class MockMeasurementRepository implements MeasurementRepository {
     Logger logger = LoggerFactory.getLogger(MockMeasurementRepository.class);
 
     @Override
-    public List<Measurement> findAll(Predicate<Measurement> preconditions) {
+    public List<MeasurementDto> findAll(Predicate<MeasurementDto> preconditions) {
         return Collections.emptyList();
     }
 
     @Override
-    public Measurement find(UUID uuid) {
-        return new Measurement();
+    public MeasurementDto find(UUID uuid) {
+        return new MeasurementDto();
     }
 
     @Override
     public void remove(UUID uuid) {
         logger.debug("removed measurement from repo - {}", uuid);
+    }
+
+    @Override
+    public void save(MeasurementDto measurementDto) {
+
+        //To change body of implemented methods use File | Settings | File Templates.
     }
 
 }

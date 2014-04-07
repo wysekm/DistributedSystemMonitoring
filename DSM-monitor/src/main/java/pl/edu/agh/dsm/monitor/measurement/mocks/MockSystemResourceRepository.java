@@ -1,8 +1,7 @@
 package pl.edu.agh.dsm.monitor.measurement.mocks;
 
-import org.springframework.stereotype.Component;
 import pl.edu.agh.dsm.monitor.annotations.MockComponent;
-import pl.edu.agh.dsm.monitor.dto.SystemResource;
+import pl.edu.agh.dsm.monitor.dto.SystemResourceDto;
 import pl.edu.agh.dsm.monitor.measurement.SystemResourceRepository;
 
 import java.util.Collections;
@@ -12,7 +11,7 @@ import java.util.List;
 public class MockSystemResourceRepository implements SystemResourceRepository {
 
     @Override
-    public List<SystemResource> findAll() {
+    public List<SystemResourceDto> findAll() {
         return Collections.emptyList();
     }
 }

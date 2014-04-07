@@ -3,7 +3,7 @@ package pl.edu.agh.dsm.monitor.measurement.mocks;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.edu.agh.dsm.monitor.annotations.MockComponent;
-import pl.edu.agh.dsm.monitor.dto.Measurement;
+import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
 import pl.edu.agh.dsm.monitor.measurement.CatalogueProxy;
 
 import java.util.UUID;
@@ -14,7 +14,7 @@ public class MockCatalogueProxy implements CatalogueProxy {
     static final Logger logger = LoggerFactory.getLogger(MockCatalogueProxy.class);
 
     @Override
-    public void addMeasurement(Measurement uuid) {
+    public void addMeasurement(MeasurementDto uuid) {
         logger.debug("send info about new measurement with id {}", uuid);
     }
 

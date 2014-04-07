@@ -9,6 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class SystemResource {
-    String name;
+public class ComplexMeasurementParamDto {
+    String paramName;
+    int value;
 }

@@ -1,7 +1,7 @@
 package pl.edu.agh.dsm.monitor.externalApi.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import pl.edu.agh.dsm.monitor.dto.SystemResource;
+import pl.edu.agh.dsm.monitor.dto.SystemResourceDto;
 import pl.edu.agh.dsm.monitor.externalApi.UCResourcesList;
 import pl.edu.agh.dsm.monitor.annotations.UseCase;
 import pl.edu.agh.dsm.monitor.measurement.SystemResourceRepository;
@@ -16,7 +16,7 @@ public class UCResourcesListImpl implements UCResourcesList {
     SystemResourceRepository systemResourceRepository;
 
     @Override
-    public List<SystemResource> list() {
+    public List<SystemResourceDto> list() {
         return systemResourceRepository.findAll();
     }
 }

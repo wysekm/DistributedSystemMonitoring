@@ -1,10 +1,10 @@
 package pl.edu.agh.dsm.monitor.externalApi;
 
-import pl.edu.agh.dsm.monitor.dto.Measurement;
+import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
 
 import java.util.List;
 
 public interface UCMeasurementsList {
-    public List<Measurement> filter(String metric, String resource);
+    public List<MeasurementDto> filter(String metric, String resource);
 
 }

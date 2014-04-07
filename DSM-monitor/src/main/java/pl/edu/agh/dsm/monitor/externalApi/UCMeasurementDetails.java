@@ -1,11 +1,11 @@
 package pl.edu.agh.dsm.monitor.externalApi;
 
-import pl.edu.agh.dsm.monitor.dto.Measurement;
+import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
 
 import java.util.UUID;
 
 public interface UCMeasurementDetails {
-    public Measurement details(UUID uuid);
+    public MeasurementDto details(UUID uuid);
 
 
 }

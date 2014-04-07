@@ -1,7 +1,11 @@
 package pl.edu.agh.dsm.monitor.dto;
 
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+
+import java.util.UUID;
 
 
 @Getter
@@ -9,7 +13,12 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class ComplexMeasurementParam {
-    String paramName;
-    int value;
+public class MeasurementDto {
+    @JsonIgnore
+    private UUID id;
+    private String resource;
+    private String metric;
+    private String unit;
+
 }
+

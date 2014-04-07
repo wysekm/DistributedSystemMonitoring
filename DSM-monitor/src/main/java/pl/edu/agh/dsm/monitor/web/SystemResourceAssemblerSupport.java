@@ -4,13 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityLinks;
 import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Component;
-import pl.edu.agh.dsm.common.security.AutorizationContext;
-import pl.edu.agh.dsm.monitor.dto.Measurement;
-import pl.edu.agh.dsm.monitor.dto.SystemResource;
-import pl.edu.agh.dsm.monitor.externalApi.UCDeleteComplexMeasurement;
+import pl.edu.agh.dsm.monitor.dto.SystemResourceDto;
 
 @Component
-public class SystemResourceAssemblerSupport extends AbstractResourceAssemblerSupport<SystemResource> {
+public class SystemResourceAssemblerSupport extends AbstractResourceAssemblerSupport<SystemResourceDto> {
 
 
     private EntityLinks entityLinks;
@@ -21,7 +18,7 @@ public class SystemResourceAssemblerSupport extends AbstractResourceAssemblerSup
     }
 
     @Override
-    public Resource<SystemResource> addLinks(SystemResource measurement) {
+    public Resource<SystemResourceDto> addLinks(SystemResourceDto measurement) {
         //TODO add link to filter
 
 

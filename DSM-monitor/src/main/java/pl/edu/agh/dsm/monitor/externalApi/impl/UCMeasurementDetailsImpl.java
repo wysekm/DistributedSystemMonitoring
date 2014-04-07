@@ -1,7 +1,7 @@
 package pl.edu.agh.dsm.monitor.externalApi.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import pl.edu.agh.dsm.monitor.dto.Measurement;
+import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
 import pl.edu.agh.dsm.monitor.externalApi.UCMeasurementDetails;
 import pl.edu.agh.dsm.monitor.annotations.UseCase;
 import pl.edu.agh.dsm.monitor.measurement.MeasurementRepository;
@@ -19,7 +19,7 @@ public class UCMeasurementDetailsImpl implements UCMeasurementDetails {
     }
 
     @Override
-    public Measurement details(UUID uuid) {
+    public MeasurementDto details(UUID uuid) {
         return repository.find(uuid);
     }
 }

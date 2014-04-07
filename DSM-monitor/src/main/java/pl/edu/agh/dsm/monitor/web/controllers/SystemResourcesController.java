@@ -6,7 +6,7 @@ import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.edu.agh.dsm.monitor.dto.SystemResource;
+import pl.edu.agh.dsm.monitor.dto.SystemResourceDto;
 import pl.edu.agh.dsm.monitor.externalApi.UCResourcesList;
 import pl.edu.agh.dsm.monitor.web.SystemResourceAssemblerSupport;
 
@@ -16,7 +16,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 
 @RestController
-@ExposesResourceFor(SystemResource.class)
+@ExposesResourceFor(SystemResourceDto.class)
 @RequestMapping("resources")
 public class SystemResourcesController {
 
@@ -29,9 +29,9 @@ public class SystemResourcesController {
 
 
     @RequestMapping(method = GET,value = "")
-    public Resources<Resource<SystemResource>> getResources()
+    public Resources<Resource<SystemResourceDto>> getResources()
     {
-        List<SystemResource> filter = ucResourcesList.list();
+        List<SystemResourceDto> filter = ucResourcesList.list();
         return assemblerSupport.addLinks(filter);
     }
 

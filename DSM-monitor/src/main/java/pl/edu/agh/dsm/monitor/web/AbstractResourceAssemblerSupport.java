@@ -4,7 +4,6 @@ import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
-import pl.edu.agh.dsm.monitor.dto.Measurement;
 
 import java.util.List;
 

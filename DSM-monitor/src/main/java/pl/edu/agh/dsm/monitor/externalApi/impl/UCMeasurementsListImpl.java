@@ -2,10 +2,10 @@ package pl.edu.agh.dsm.monitor.externalApi.impl;
 
 import com.google.common.base.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
-import pl.edu.agh.dsm.monitor.dto.Measurement;
+import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
 import pl.edu.agh.dsm.monitor.externalApi.UCMeasurementsList;
 import pl.edu.agh.dsm.monitor.annotations.UseCase;
-import pl.edu.agh.dsm.monitor.measurement.MeasurementPrecondictionFactory;
+import pl.edu.agh.dsm.monitor.measurement.MeasurementPredicateFactory;
 import pl.edu.agh.dsm.monitor.measurement.MeasurementRepository;
 
 import java.util.List;
@@ -14,19 +14,19 @@ import java.util.List;
 public class UCMeasurementsListImpl implements UCMeasurementsList {
 
 
-    MeasurementPrecondictionFactory precondictionFactory;
+    MeasurementPredicateFactory precondictionFactory;
     MeasurementRepository measurementRepository;
 
     @Autowired
-    public UCMeasurementsListImpl(MeasurementRepository measurementRepository, MeasurementPrecondictionFactory precondictionFactory) {
+    public UCMeasurementsListImpl(MeasurementRepository measurementRepository, MeasurementPredicateFactory precondictionFactory) {
         this.measurementRepository = measurementRepository;
         this.precondictionFactory = precondictionFactory;
     }
 
     @Override
-    public List<Measurement> filter(String metric, String resource) {
+    public List<MeasurementDto> filter(String metric, String resource) {
 
-        Predicate<Measurement> preconditions = precondictionFactory.createForMeasurement(metric, resource);
+        Predicate<MeasurementDto> preconditions = precondictionFactory.createForMeasurement(metric, resource);
         return measurementRepository.findAll(preconditions);
     }
 }
