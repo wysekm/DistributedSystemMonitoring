@@ -4,6 +4,7 @@ import com.google.common.base.Predicate;
 import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
 
+//fabryka predykatow do filtrowania wynikow repozytorium
 public interface MeasurementPredicateFactory {
     Predicate<MeasurementDataDto> createForData(DataLimit limit, int value);
 

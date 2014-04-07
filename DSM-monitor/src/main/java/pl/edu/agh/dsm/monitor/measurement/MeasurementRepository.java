@@ -6,6 +6,7 @@ import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
 import java.util.List;
 import java.util.UUID;
 
+//proste repozytorium zasobów. Przechowuje zaosoby w aplikacji
 public interface MeasurementRepository {
     List<MeasurementDto> findAll(Predicate<MeasurementDto> preconditions);
 

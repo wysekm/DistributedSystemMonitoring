@@ -8,29 +8,29 @@ import pl.edu.agh.dsm.monitor.externalApi.UCAddComplexMeasurement;
 import pl.edu.agh.dsm.common.security.AutorizationContext;
 import pl.edu.agh.dsm.monitor.annotations.UseCase;
 import pl.edu.agh.dsm.monitor.measurement.CatalogueProxy;
-import pl.edu.agh.dsm.monitor.measurement.ComplexMeasurementFactory;
+import pl.edu.agh.dsm.monitor.measurement.ComplexMeasurementTaskFactory;
 import pl.edu.agh.dsm.monitor.measurement.MeasurementRepository;
 
 @UseCase("UC_PF_MT4D")
 public class UCAddComplexMeasurementImpl implements UCAddComplexMeasurement {
 
     MeasurementRepository measurementRepository;
-    ComplexMeasurementFactory complexMeasurementFactory;
+    ComplexMeasurementTaskFactory complexMeasurementTaskFactory;
     AutorizationContext autorizationContext;
     CatalogueProxy catalogueProxy;
 
     @Autowired
-    public UCAddComplexMeasurementImpl(AutorizationContext autorizationContext, CatalogueProxy catalogueProxy, ComplexMeasurementFactory complexMeasurementFactory, MeasurementRepository measurementRepository) {
+    public UCAddComplexMeasurementImpl(AutorizationContext autorizationContext, CatalogueProxy catalogueProxy, ComplexMeasurementTaskFactory complexMeasurementTaskFactory, MeasurementRepository measurementRepository) {
         this.autorizationContext = autorizationContext;
         this.catalogueProxy = catalogueProxy;
-        this.complexMeasurementFactory = complexMeasurementFactory;
+        this.complexMeasurementTaskFactory = complexMeasurementTaskFactory;
         this.measurementRepository = measurementRepository;
     }
 
     @Override
     public void create(ComplexMeasurementDto complexMeasurementDto) {
         ApplicationUser applicationUser = autorizationContext.getActiveUser();
-        MeasurementDto measurementDto = complexMeasurementFactory.create(complexMeasurementDto,applicationUser);
+        MeasurementDto measurementDto = complexMeasurementTaskFactory.create(complexMeasurementDto,applicationUser);
         measurementRepository.save(measurementDto);
         catalogueProxy.addMeasurement(measurementDto);
     }
