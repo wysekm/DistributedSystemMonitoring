@@ -6,9 +6,10 @@ import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.monitor.dto.ComplexMeasurementDto;
 import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
-import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
 import pl.edu.agh.dsm.monitor.externalApi.*;
 import pl.edu.agh.dsm.monitor.measurement.DataLimit;
 import pl.edu.agh.dsm.monitor.web.MeasurementResourceAssemblerSupport;

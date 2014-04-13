@@ -1,7 +1,8 @@
-package pl.edu.agh.dsm.monitor.measurement;
+package pl.edu.agh.dsm.common.measurement;
 
 import com.google.common.base.Predicate;
-import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
+
+import pl.edu.agh.dsm.common.dto.MeasurementDto;
 
 import java.util.List;
 import java.util.UUID;

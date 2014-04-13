@@ -6,7 +6,8 @@ import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.edu.agh.dsm.monitor.dto.SystemResourceDto;
+
+import pl.edu.agh.dsm.common.dto.SystemResourceDto;
 import pl.edu.agh.dsm.monitor.externalApi.UCResourcesList;
 import pl.edu.agh.dsm.monitor.web.SystemResourceAssemblerSupport;
 

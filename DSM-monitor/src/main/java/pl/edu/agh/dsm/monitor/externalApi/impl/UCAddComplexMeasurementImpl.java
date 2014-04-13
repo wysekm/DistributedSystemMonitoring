@@ -1,15 +1,16 @@
 package pl.edu.agh.dsm.monitor.externalApi.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import pl.edu.agh.dsm.common.dto.MeasurementDto;
+import pl.edu.agh.dsm.common.measurement.MeasurementRepository;
 import pl.edu.agh.dsm.common.security.ApplicationUser;
 import pl.edu.agh.dsm.monitor.dto.ComplexMeasurementDto;
-import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
 import pl.edu.agh.dsm.monitor.externalApi.UCAddComplexMeasurement;
 import pl.edu.agh.dsm.common.security.AutorizationContext;
 import pl.edu.agh.dsm.monitor.annotations.UseCase;
 import pl.edu.agh.dsm.monitor.measurement.CatalogueProxy;
 import pl.edu.agh.dsm.monitor.measurement.ComplexMeasurementTaskFactory;
-import pl.edu.agh.dsm.monitor.measurement.MeasurementRepository;
 
 @UseCase("UC_PF_MT4D")
 public class UCAddComplexMeasurementImpl implements UCAddComplexMeasurement {

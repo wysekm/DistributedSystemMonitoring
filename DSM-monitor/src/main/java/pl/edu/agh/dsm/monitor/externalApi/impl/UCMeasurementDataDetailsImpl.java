@@ -1,13 +1,16 @@
 package pl.edu.agh.dsm.monitor.externalApi.impl;
 
 import com.google.common.base.Predicate;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
+import pl.edu.agh.dsm.common.measurement.MeasurementPredicateFactory;
 import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.monitor.externalApi.UCMeasurementDataDetails;
 import pl.edu.agh.dsm.monitor.annotations.UseCase;
 import pl.edu.agh.dsm.monitor.measurement.DataLimit;
+import pl.edu.agh.dsm.monitor.measurement.MeasurementDataPredicateFactory;
 import pl.edu.agh.dsm.monitor.measurement.MeasurementDataRepository;
-import pl.edu.agh.dsm.monitor.measurement.MeasurementPredicateFactory;
 
 import java.util.List;
 import java.util.UUID;
@@ -16,11 +19,11 @@ import java.util.UUID;
 public class UCMeasurementDataDetailsImpl implements UCMeasurementDataDetails {
 
 
-    MeasurementPredicateFactory precondictionFactory;
+    MeasurementDataPredicateFactory precondictionFactory;
     MeasurementDataRepository measurementRepository;
 
     @Autowired
-    public UCMeasurementDataDetailsImpl(MeasurementDataRepository measurementRepository, MeasurementPredicateFactory precondictionFactory) {
+    public UCMeasurementDataDetailsImpl(MeasurementDataRepository measurementRepository, MeasurementDataPredicateFactory precondictionFactory) {
         this.measurementRepository = measurementRepository;
         this.precondictionFactory = precondictionFactory;
     }

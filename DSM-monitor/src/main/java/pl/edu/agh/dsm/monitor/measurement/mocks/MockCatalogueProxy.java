@@ -2,8 +2,9 @@ package pl.edu.agh.dsm.monitor.measurement.mocks;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.monitor.annotations.MockComponent;
-import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
 import pl.edu.agh.dsm.monitor.measurement.CatalogueProxy;
 
 import java.util.UUID;

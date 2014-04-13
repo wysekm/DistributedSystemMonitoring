@@ -4,7 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityLinks;
 import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Component;
-import pl.edu.agh.dsm.monitor.dto.SystemResourceDto;
+
+import pl.edu.agh.dsm.common.dto.SystemResourceDto;
 
 @Component
 public class SystemResourceAssemblerSupport extends AbstractResourceAssemblerSupport<SystemResourceDto> {
