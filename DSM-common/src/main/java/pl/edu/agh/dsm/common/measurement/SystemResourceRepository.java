@@ -1,6 +1,6 @@
-package pl.edu.agh.dsm.monitor.measurement;
+package pl.edu.agh.dsm.common.measurement;
 
-import pl.edu.agh.dsm.monitor.dto.SystemResourceDto;
+import pl.edu.agh.dsm.common.dto.SystemResourceDto;
 
 import java.util.List;
 

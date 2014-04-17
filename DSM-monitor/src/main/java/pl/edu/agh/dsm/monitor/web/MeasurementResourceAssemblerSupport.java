@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityLinks;
 import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Component;
+
+import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.common.security.AutorizationContext;
-import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
 import pl.edu.agh.dsm.monitor.externalApi.UCDeleteComplexMeasurement;
 
 @Component

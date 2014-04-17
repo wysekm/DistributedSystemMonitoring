@@ -1,6 +1,6 @@
 package pl.edu.agh.dsm.monitor.measurement;
 
-import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
+import pl.edu.agh.dsm.common.dto.MeasurementDto;
 
 import java.util.UUID;
 

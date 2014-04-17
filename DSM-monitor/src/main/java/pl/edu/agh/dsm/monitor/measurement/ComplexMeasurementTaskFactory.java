@@ -1,8 +1,8 @@
 package pl.edu.agh.dsm.monitor.measurement;
 
+import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.common.security.ApplicationUser;
 import pl.edu.agh.dsm.monitor.dto.ComplexMeasurementDto;
-import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
 
 /*
 * Klsa wykonuje nastepujace zadania

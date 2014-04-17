@@ -1,11 +1,13 @@
 package pl.edu.agh.dsm.monitor.measurement.mocks;
 
 import com.google.common.base.Predicate;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import pl.edu.agh.dsm.common.dto.MeasurementDto;
+import pl.edu.agh.dsm.common.measurement.MeasurementRepository;
 import pl.edu.agh.dsm.monitor.annotations.MockComponent;
-import pl.edu.agh.dsm.monitor.dto.MeasurementDto;
-import pl.edu.agh.dsm.monitor.measurement.MeasurementRepository;
 
 import java.util.Collections;
 import java.util.List;

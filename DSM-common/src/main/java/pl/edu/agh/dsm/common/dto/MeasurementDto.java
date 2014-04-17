@@ -1,4 +1,4 @@
-package pl.edu.agh.dsm.monitor.dto;
+package pl.edu.agh.dsm.common.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
