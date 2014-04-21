@@ -2,8 +2,8 @@ package pl.edu.agh.dsm.monitor.externalApi.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import pl.edu.agh.dsm.common.DescribedBoolean;
-import pl.edu.agh.dsm.common.DescribedBooleanImpl;
+import pl.edu.agh.dsm.common.ActionPossibility;
+import pl.edu.agh.dsm.common.ActionPossibilityImpl;
 import pl.edu.agh.dsm.common.measurement.MeasurementRepository;
 import pl.edu.agh.dsm.monitor.externalApi.UCDeleteComplexMeasurement;
 import pl.edu.agh.dsm.monitor.annotations.UseCase;
@@ -38,8 +38,8 @@ public class UCDeleteComplexMeasurementImpl implements UCDeleteComplexMeasuremen
     }
 
     @Override
-    public DescribedBoolean havePermission(UUID uuid) {
+    public ActionPossibility havePermission(UUID uuid) {
         boolean havePerm = measurementPermisionResolver.canRemove(uuid);
-        return havePerm ? new DescribedBooleanImpl() : new DescribedBooleanImpl(false,"Podany uzytkownik nie moze usunac tego pomiaru");
+        return ActionPossibilityImpl.makeDecision(havePerm, "Podany uzytkownik nie moze usunac tego pomiaru");
     }
 }

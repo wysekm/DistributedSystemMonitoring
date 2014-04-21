@@ -6,8 +6,8 @@ public class InternalErrorException extends RuntimeException {
         super(message);
     }
 
-    public static void check(DescribedBoolean describedBoolean)
+    public static void check(ActionPossibility actionPossibility)
     {
-        if(!describedBoolean.getValue()) throw new IllegalArgumentException(describedBoolean.getReason());
+        if(!actionPossibility.isPossible()) throw new IllegalArgumentException(actionPossibility.getReason());
     }
 }
