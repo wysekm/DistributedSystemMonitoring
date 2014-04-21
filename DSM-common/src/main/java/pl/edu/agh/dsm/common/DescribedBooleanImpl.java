@@ -1,15 +1,18 @@
 package pl.edu.agh.dsm.common;
 
 
-import lombok.*;
-
-
-@AllArgsConstructor
-@NoArgsConstructor
 public class DescribedBooleanImpl implements DescribedBoolean {
 
     boolean value;
     String reason;
+
+    public DescribedBooleanImpl(boolean value, String reason) {
+        this.value = value;
+        this.reason = reason;
+    }
+
+    public DescribedBooleanImpl() {
+    }
 
     public String getReason() {
         return reason;
