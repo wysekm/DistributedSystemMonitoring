@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.*;
 import org.springframework.hateoas.config.EnableEntityLinks;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
-import pl.edu.agh.dsm.common.security.MockAutorizationContext;
-import pl.edu.agh.dsm.monitor.annotations.MockComponent;
 
+import pl.edu.agh.dsm.common.annotations.MockComponent;
+import pl.edu.agh.dsm.common.security.MockAutorizationContext;
 import static org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
 
 @Configuration

@@ -2,10 +2,10 @@ package pl.edu.agh.dsm.monitor.externalApi.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import pl.edu.agh.dsm.common.annotations.UseCase;
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.common.measurement.MeasurementRepository;
 import pl.edu.agh.dsm.monitor.externalApi.UCMeasurementDetails;
-import pl.edu.agh.dsm.monitor.annotations.UseCase;
 
 import java.util.UUID;
 

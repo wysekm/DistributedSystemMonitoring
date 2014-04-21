@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import pl.edu.agh.dsm.common.DescribedBoolean;
 import pl.edu.agh.dsm.common.DescribedBooleanImpl;
+import pl.edu.agh.dsm.common.annotations.UseCase;
 import pl.edu.agh.dsm.common.measurement.MeasurementRepository;
 import pl.edu.agh.dsm.monitor.externalApi.UCDeleteComplexMeasurement;
-import pl.edu.agh.dsm.monitor.annotations.UseCase;
 import pl.edu.agh.dsm.monitor.measurement.CatalogueProxy;
 import pl.edu.agh.dsm.monitor.measurement.MeasurementPermisionResolver;
 

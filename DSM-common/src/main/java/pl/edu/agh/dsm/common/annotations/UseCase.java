@@ -1,4 +1,4 @@
-package pl.edu.agh.dsm.monitor.annotations;
+package pl.edu.agh.dsm.common.annotations;
 
 import org.springframework.stereotype.Component;
 

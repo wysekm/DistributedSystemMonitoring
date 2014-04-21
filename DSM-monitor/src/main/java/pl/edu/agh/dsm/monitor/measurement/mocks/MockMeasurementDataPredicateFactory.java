@@ -1,6 +1,6 @@
 package pl.edu.agh.dsm.monitor.measurement.mocks;
 
-import pl.edu.agh.dsm.monitor.annotations.MockComponent;
+import pl.edu.agh.dsm.common.annotations.MockComponent;
 import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.monitor.measurement.DataLimit;
 import pl.edu.agh.dsm.monitor.measurement.MeasurementDataPredicateFactory;

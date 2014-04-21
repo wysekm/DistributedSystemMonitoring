@@ -2,10 +2,10 @@ package pl.edu.agh.dsm.monitor.externalApi.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import pl.edu.agh.dsm.common.annotations.UseCase;
 import pl.edu.agh.dsm.common.dto.SystemResourceDto;
 import pl.edu.agh.dsm.common.measurement.SystemResourceRepository;
 import pl.edu.agh.dsm.monitor.externalApi.UCResourcesList;
-import pl.edu.agh.dsm.monitor.annotations.UseCase;
 
 import java.util.List;
 
