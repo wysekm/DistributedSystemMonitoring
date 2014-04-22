@@ -19,7 +19,7 @@ public class Sensor {
 
     public static void main(String[] args) {
         if (args.length < 3) {
-            System.out.println("Usage: sensor <monitor address> <resource> <metric> [<metric> [ ... ]]");
+            System.out.println("Usage: sensor <monitor address> <resource> <metric> <time ms> [<metric> <time ms> [ ... ]]");
             log.error("Not enough arguments supplied.");
             System.exit(1);
         }
@@ -50,15 +50,18 @@ public class Sensor {
     private static void startSensors(String[] args, SensorConfiguration sensorConfiguration, SensorSocket sensorSocket) {
         log.trace("Starting sensors.");
         MonitoredFactory factory = new MonitoredFactory();
-        for (int i = 2; i < args.length; ++i) {
+        for (int i = 2; i < args.length; i+=2) {
             log.info("Starting sensor for metric " + args[i]);
             try {
                 SensorThread thread = new SensorThread(factory.createMonitoredResource(args[i]), sensorConfiguration, sensorSocket);
-                es.scheduleAtFixedRate(thread, 0, 2500, TimeUnit.MILLISECONDS);
+                es.scheduleAtFixedRate(thread, 0, Integer.parseInt(args[i+1]), TimeUnit.MILLISECONDS);
             } catch (MonitoringException ex) {
                 log.error("MonitoringException caught while starting sensor for metric " + args[i] + ": ", ex);
+            } catch(IndexOutOfBoundsException ex) {
+                log.error("IndexOutOfBoundsException caught while starting sensor for metric " + args[i] + ": ", ex);
+            } catch(NumberFormatException ex) {
+                log.error("NumberFormatException caught while starting sensor for metric " + args[i] + ": ", ex);
             }
         }
     }
-
 }
