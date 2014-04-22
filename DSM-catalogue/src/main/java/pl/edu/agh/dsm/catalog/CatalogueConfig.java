@@ -5,18 +5,20 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.hateoas.config.EnableEntityLinks;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
-
-import static org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
+import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
 
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan(excludeFilters =
-        @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class)
+        @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class),
+		value={"pl.edu.agh.dsm.catalog.controller", "pl.edu.agh.dsm.catalog.service", "pl.edu.agh.dsm.common.measurement.mocks"}
 )
 @EnableEntityLinks
 @EnableHypermediaSupport(type = HypermediaType.HAL)
+@ImportResource("security-context.xml")
 public class CatalogueConfig {
 
 

@@ -1,7 +1,8 @@
 package pl.edu.agh.dsm.monitor.measurement.mocks;
 
 import com.google.common.base.Predicate;
-import pl.edu.agh.dsm.monitor.annotations.MockComponent;
+
+import pl.edu.agh.dsm.common.annotations.MockComponent;
 import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.monitor.measurement.MeasurementDataRepository;
 
