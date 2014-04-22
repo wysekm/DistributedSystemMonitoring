@@ -3,10 +3,8 @@ package pl.edu.agh.dsm.monitor.measurement.impl;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.sun.javafx.collections.MappingChange;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.monitor.measurement.MeasurementDataRepository;
 
@@ -22,7 +20,7 @@ public class MeasurementDataRepositoryImpl implements MeasurementDataRepository 
     public List<MeasurementDataDto> find(UUID uuid, Predicate<MeasurementDataDto> preconditions) {
         logger.debug("find list of MeasurementDataDto with measurement uuid {} and data predicate {}", uuid, preconditions);
 
-        List<MeasurementDataDto>  measurementDataList = repo.get(uuid);
+        List<MeasurementDataDto> measurementDataList = repo.get(uuid);
         Iterable<MeasurementDataDto> iter = Lists.newArrayList();
         Iterables.addAll(measurementDataList, iter);
 
@@ -30,7 +28,7 @@ public class MeasurementDataRepositoryImpl implements MeasurementDataRepository 
     }
 
     @Override
-    public void add(MeasurementDataDto measurementDataDto, UUID uuid) {
+    public void add(UUID uuid, MeasurementDataDto measurementDataDto) {
         logger.debug("add new measurementData {} with measurement uuid {} to repo", measurementDataDto, uuid);
 
         List<MeasurementDataDto> measurementDataList = repo.get(uuid);
@@ -45,7 +43,7 @@ public class MeasurementDataRepositoryImpl implements MeasurementDataRepository 
     }
 
     @Override
-    public void remove(MeasurementDataDto measurementDataDto, UUID uuid) {
+    public void remove(UUID uuid, MeasurementDataDto measurementDataDto) {
         logger.debug("remove measurementData {} with measurement uuid {} from repo", measurementDataDto, uuid);
 
         List<MeasurementDataDto> measurementDataList = repo.get(uuid);
