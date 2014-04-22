@@ -8,4 +8,7 @@ import java.util.UUID;
 
 public interface MeasurementDataRepository {
     List<MeasurementDataDto> find(UUID uuid, Predicate<MeasurementDataDto> preconditions);
+
+    void add(MeasurementDataDto measurementDataDto, UUID uuid);
+    void remove(MeasurementDataDto measurementDataDto, UUID uuid);
 }
