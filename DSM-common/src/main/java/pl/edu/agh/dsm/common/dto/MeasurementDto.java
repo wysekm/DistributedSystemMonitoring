@@ -1,30 +1,37 @@
 package pl.edu.agh.dsm.common.dto;
 
 
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.util.UUID;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class MeasurementDto {
-    @JsonIgnore
+
+	@JsonIgnore
     private UUID id;
     private String resource;
     private String metric;
     private String unit;
+    @JsonIgnore
+    private String monitor;
 
-    public MeasurementDto(UUID id, String resource, String metric, String unit) {
+    public MeasurementDto(UUID id, String resource, String metric, String unit, String monitor) {
         this.id = id;
         this.resource = resource;
         this.metric = metric;
         this.unit = unit;
+        this.monitor = monitor;
     }
 
     public MeasurementDto() {
     }
 
+    @JsonIgnore
+	@JsonProperty("id")
     public UUID getId() {
         return this.id;
     }
@@ -40,8 +47,26 @@ public class MeasurementDto {
     public String getUnit() {
         return this.unit;
     }
+    
+    @JsonIgnore
+	@JsonProperty("monitor")
+    public String getMonitor() {
+		return monitor;
+	}
 
-    public boolean equals(Object o) {
+    //It is done to enable deserialization from Json and at the same time leave serialization disabled
+	@JsonProperty("id")
+	private void setId(UUID id) {
+		this.id = id;
+	}
+
+	//It is done to enable deserialization from Json and at the same time leave serialization disabled
+	@JsonProperty("monitor")
+	private void setMonitor(String monitor) {
+		this.monitor = monitor;
+	}
+
+	public boolean equals(Object o) {
         if (o == this) return true;
         if (!(o instanceof MeasurementDto)) return false;
         final MeasurementDto other = (MeasurementDto) o;

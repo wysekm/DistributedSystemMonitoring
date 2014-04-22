@@ -14,7 +14,7 @@ import pl.edu.agh.dsm.common.measurement.MeasurementPredicateFactory;
 import pl.edu.agh.dsm.common.measurement.MeasurementRepository;
 
 @Service
-public class MeasurementServiceImpl implements MeasurementsService {
+public class MeasurementsServiceImpl implements MeasurementsService {
 
 	@Autowired
 	MeasurementRepository measurementRepository;
