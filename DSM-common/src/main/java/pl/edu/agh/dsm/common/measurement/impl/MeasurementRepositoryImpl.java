@@ -15,14 +15,14 @@ public class MeasurementRepositoryImpl implements MeasurementRepository {
 
     static final Logger logger = LoggerFactory.getLogger(MeasurementRepositoryImpl.class);
 
-    List<MeasurementDto> collector = Lists.newArrayList();
+    static List<MeasurementDto> repo = Lists.newArrayList();
 
     @Override
     public List<MeasurementDto> findAll(Predicate<MeasurementDto> preconditions) {
         logger.debug("find all measurements with conditions {}" , preconditions);
 
         Iterable<MeasurementDto> iter = Lists.newArrayList();
-        Iterables.addAll(collector, iter);
+        Iterables.addAll(repo, iter);
 
         return Lists.newArrayList(Iterables.filter(iter, preconditions));
     }
@@ -32,7 +32,7 @@ public class MeasurementRepositoryImpl implements MeasurementRepository {
         logger.debug("find measurement with id {}" , uuid);
 
         Iterable<MeasurementDto> iter = Lists.newArrayList();
-        Iterables.addAll(collector, iter);
+        Iterables.addAll(repo, iter);
 
         return Iterables.find(iter, new Predicate<MeasurementDto>() {
             @Override
@@ -46,13 +46,13 @@ public class MeasurementRepositoryImpl implements MeasurementRepository {
     public void remove(UUID uuid) {
         logger.debug("remove measurement with id {}" , uuid);
 
-        collector.remove(find(uuid));
+        repo.remove(find(uuid));
     }
 
     @Override
     public void save(MeasurementDto measurementDto) {
         logger.debug("save measurement {}" , measurementDto);
 
-        collector.add(measurementDto);
+        repo.add(measurementDto);
     }
 }
