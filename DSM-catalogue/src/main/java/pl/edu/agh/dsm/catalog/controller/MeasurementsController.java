@@ -49,7 +49,6 @@ public class MeasurementsController {
 		return new Resources<Resource<MeasurementDto>>(resources);
 	}
 
-	@Secured({"ROLE_MONITOR"})
 	@RequestMapping(method = POST, value = "", consumes = {"application/xml", "application/json"})
 	@ResponseStatus(HttpStatus.CREATED)
 	public @ResponseBody
@@ -59,7 +58,6 @@ public class MeasurementsController {
 		return result;
 	}
 
-	@Secured({"ROLE_MONITOR"})
 	@RequestMapping(method = DELETE, value = "/{id}")
 	public void deleteMeasurement(@PathVariable("id") UUID uuid) {
 		service.deleteMeasurement(uuid);
