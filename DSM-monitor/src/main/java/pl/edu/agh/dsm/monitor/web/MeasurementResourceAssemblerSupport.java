@@ -15,12 +15,10 @@ public class MeasurementResourceAssemblerSupport extends AbstractResourceAssembl
 
     private EntityLinks entityLinks;
     private UCDeleteComplexMeasurement ucDeleteComplexMeasurement;
-    private AutorizationContext autorizationContext;
 
 
     @Autowired
-    public MeasurementResourceAssemblerSupport(AutorizationContext autorizationContext, EntityLinks entityLinks, UCDeleteComplexMeasurement ucDeleteComplexMeasurement) {
-        this.autorizationContext = autorizationContext;
+    public MeasurementResourceAssemblerSupport(EntityLinks entityLinks, UCDeleteComplexMeasurement ucDeleteComplexMeasurement) {
         this.entityLinks = entityLinks;
         this.ucDeleteComplexMeasurement = ucDeleteComplexMeasurement;
     }
