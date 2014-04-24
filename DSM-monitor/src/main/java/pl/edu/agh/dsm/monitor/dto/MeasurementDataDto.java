@@ -17,6 +17,8 @@ public class MeasurementDataDto {
     public MeasurementDataDto() {
     }
 
+
+
     public long getTimestamp() {
         return this.timestamp;
     }

@@ -8,7 +8,7 @@ public class SimpleMeasurementDataDto {
     String resource;
     String metric;
     long timestamp;
-    int value;
+    long value;
 
 
     @Override
@@ -33,7 +33,7 @@ public class SimpleMeasurementDataDto {
         result = 31 * result + (resource != null ? resource.hashCode() : 0);
         result = 31 * result + (metric != null ? metric.hashCode() : 0);
         result = 31 * result + (int) (timestamp ^ (timestamp >>> 32));
-        result = 31 * result + value;
+        result = 31 * result + (int) (value ^ (value >>> 32));
         return result;
     }
 
@@ -69,11 +69,11 @@ public class SimpleMeasurementDataDto {
         this.timestamp = timestamp;
     }
 
-    public int getValue() {
+    public long getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(long value) {
         this.value = value;
     }
 }
