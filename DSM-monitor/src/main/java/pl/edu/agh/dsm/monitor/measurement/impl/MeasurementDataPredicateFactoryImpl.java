@@ -1,6 +1,7 @@
 package pl.edu.agh.dsm.monitor.measurement.impl;
 
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
@@ -18,20 +19,27 @@ public class MeasurementDataPredicateFactoryImpl implements MeasurementDataPredi
     public Predicate<MeasurementDataDto> createForData(final DataLimit limit, final int value) {
         logger.debug("create predicate with limit {}, value {}", limit, value);
 
-        return new Predicate<MeasurementDataDto>() {
+        if (limit.equals(DataLimit.all)) {
+            return Predicates.alwaysTrue();
+        } else if (limit.equals(DataLimit.since)) {
+            return new Predicate<MeasurementDataDto>() {
 
-            private int count = value;
-
-            @Override
-            public boolean apply(MeasurementDataDto measurementDataDto) {
-                if (limit.equals(DataLimit.all)) {
-                    return true;
-                } else if (limit.equals(DataLimit.since)) {
+                @Override
+                public boolean apply(MeasurementDataDto measurementDataDto) {
                     return (System.currentTimeMillis() - measurementDataDto.getTimestamp()) <= TimeUnit.MILLISECONDS.convert(value, TimeUnit.MINUTES);
-                } else {
+                }
+            };
+        } else if (limit.equals(DataLimit.last)) {
+            return new Predicate<MeasurementDataDto>() {
+                private int count = value;
+
+                @Override
+                public boolean apply(MeasurementDataDto measurementDataDto) {
                     return count-- > 0 ? true : false;
                 }
-            }
-        };
+            };
+        } else {
+            return Predicates.alwaysFalse();
+        }
     }
 }
