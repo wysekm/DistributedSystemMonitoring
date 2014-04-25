@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.monitor.measurement.DataLimit;
 import pl.edu.agh.dsm.monitor.measurement.MeasurementDataPredicateFactory;
-import pl.edu.agh.dsm.monitor.web.SystemResourceAssemblerSupport;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,16 +19,17 @@ public class MeasurementDataPredicateFactoryImpl implements MeasurementDataPredi
         logger.debug("create predicate with limit {}, value {}", limit, value);
 
         return new Predicate<MeasurementDataDto>() {
+
+            private int count = value;
+
             @Override
             public boolean apply(MeasurementDataDto measurementDataDto) {
-                if(limit.equals(DataLimit.all)){
+                if (limit.equals(DataLimit.all)) {
                     return true;
-                } else if(limit.equals(DataLimit.since)){
+                } else if (limit.equals(DataLimit.since)) {
                     return (System.currentTimeMillis() - measurementDataDto.getTimestamp()) <= TimeUnit.MILLISECONDS.convert(value, TimeUnit.MINUTES);
-                } else{
-                    //TODO filtr x last
-
-                    return true;
+                } else {
+                    return count-- > 0 ? true : false;
                 }
             }
         };

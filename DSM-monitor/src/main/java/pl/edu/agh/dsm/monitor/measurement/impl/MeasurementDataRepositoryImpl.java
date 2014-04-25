@@ -38,7 +38,7 @@ public class MeasurementDataRepositoryImpl implements MeasurementDataRepository 
             measurementDataList.add(measurementDataDto);
             repo.put(uuid, measurementDataList);
         } else {
-            measurementDataList.add(measurementDataDto);
+            measurementDataList.add(0, measurementDataDto);
         }
     }
 
