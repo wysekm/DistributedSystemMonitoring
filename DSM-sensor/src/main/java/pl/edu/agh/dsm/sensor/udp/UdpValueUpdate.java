@@ -17,6 +17,10 @@ public class UdpValueUpdate {
         this.id = id;
     }
 
+    public String getResource() {
+        return resource;
+    }
+
     public void setResource(String resource) {
         this.resource = resource;
     }
@@ -44,4 +48,5 @@ public class UdpValueUpdate {
     public void setValue(Double value) {
         this.value = value;
     }
+
 }
