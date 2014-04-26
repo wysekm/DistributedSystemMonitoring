@@ -15,16 +15,14 @@ public class MeasurementDataRepositoryImpl implements MeasurementDataRepository 
 
     static final Logger logger = LoggerFactory.getLogger(MeasurementDataRepositoryImpl.class);
     static Map<UUID, List<MeasurementDataDto>> repo = new HashMap<>();
+    final int MAX_DATA_LIMIT = 10;
 
     @Override
     public List<MeasurementDataDto> find(UUID uuid, Predicate<MeasurementDataDto> preconditions) {
         logger.debug("find list of MeasurementDataDto with measurement uuid {} and data predicate {}", uuid, preconditions);
 
         List<MeasurementDataDto> measurementDataList = repo.get(uuid);
-        Iterable<MeasurementDataDto> iter = Lists.newArrayList();
-        Iterables.addAll(measurementDataList, iter);
-
-        return Lists.newArrayList(Iterables.filter(iter, preconditions));
+        return Lists.newArrayList(Iterables.filter(measurementDataList, preconditions));
     }
 
     @Override
@@ -38,6 +36,10 @@ public class MeasurementDataRepositoryImpl implements MeasurementDataRepository 
             measurementDataList.add(measurementDataDto);
             repo.put(uuid, measurementDataList);
         } else {
+            int listSize = measurementDataList.size();
+            if (listSize >= MAX_DATA_LIMIT) {
+                measurementDataList.remove(listSize - 1);
+            }
             measurementDataList.add(0, measurementDataDto);
         }
     }

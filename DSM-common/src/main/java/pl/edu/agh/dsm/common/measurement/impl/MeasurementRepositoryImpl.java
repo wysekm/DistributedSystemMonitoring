@@ -14,27 +14,20 @@ import java.util.UUID;
 public class MeasurementRepositoryImpl implements MeasurementRepository {
 
     static final Logger logger = LoggerFactory.getLogger(MeasurementRepositoryImpl.class);
-
     static List<MeasurementDto> repo = Lists.newArrayList();
 
     @Override
     public List<MeasurementDto> findAll(Predicate<MeasurementDto> preconditions) {
-        logger.debug("find all measurements with conditions {}" , preconditions);
+        logger.debug("find all measurements with conditions {}", preconditions);
 
-        Iterable<MeasurementDto> iter = Lists.newArrayList();
-        Iterables.addAll(repo, iter);
-
-        return Lists.newArrayList(Iterables.filter(iter, preconditions));
+        return Lists.newArrayList(Iterables.filter(repo, preconditions));
     }
 
     @Override
     public MeasurementDto find(final UUID uuid) {
-        logger.debug("find measurement with id {}" , uuid);
+        logger.debug("find measurement with id {}", uuid);
 
-        Iterable<MeasurementDto> iter = Lists.newArrayList();
-        Iterables.addAll(repo, iter);
-
-        return Iterables.find(iter, new Predicate<MeasurementDto>() {
+        return Iterables.find(repo, new Predicate<MeasurementDto>() {
             @Override
             public boolean apply(MeasurementDto measurementDto) {
                 return measurementDto.getId().equals(uuid);
@@ -44,14 +37,14 @@ public class MeasurementRepositoryImpl implements MeasurementRepository {
 
     @Override
     public void remove(UUID uuid) {
-        logger.debug("remove measurement with id {}" , uuid);
+        logger.debug("remove measurement with id {}", uuid);
 
         repo.remove(find(uuid));
     }
 
     @Override
     public void save(MeasurementDto measurementDto) {
-        logger.debug("save measurement {}" , measurementDto);
+        logger.debug("save measurement {}", measurementDto);
 
         repo.add(measurementDto);
     }

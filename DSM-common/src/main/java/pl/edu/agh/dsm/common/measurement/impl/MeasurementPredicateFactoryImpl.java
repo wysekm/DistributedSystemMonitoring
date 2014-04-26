@@ -40,7 +40,7 @@ public class MeasurementPredicateFactoryImpl implements MeasurementPredicateFact
                 }
             };
         } else {
-            return Predicates.alwaysFalse();
+            return Predicates.alwaysTrue();
         }
     }
 }

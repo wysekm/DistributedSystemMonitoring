@@ -19,9 +19,7 @@ public class MeasurementDataPredicateFactoryImpl implements MeasurementDataPredi
     public Predicate<MeasurementDataDto> createForData(final DataLimit limit, final int value) {
         logger.debug("create predicate with limit {}, value {}", limit, value);
 
-        if (limit.equals(DataLimit.all)) {
-            return Predicates.alwaysTrue();
-        } else if (limit.equals(DataLimit.since)) {
+        if (limit.equals(DataLimit.since)) {
             return new Predicate<MeasurementDataDto>() {
 
                 @Override
@@ -39,7 +37,7 @@ public class MeasurementDataPredicateFactoryImpl implements MeasurementDataPredi
                 }
             };
         } else {
-            return Predicates.alwaysFalse();
+            return Predicates.alwaysTrue();
         }
     }
 }
