@@ -2,11 +2,15 @@ package pl.edu.agh.dsm.common.measurement.impl;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.common.dto.SystemResourceDto;
+import pl.edu.agh.dsm.common.measurement.MeasurementRepository;
 import pl.edu.agh.dsm.common.measurement.SystemResourceRepository;
 
 import java.util.ArrayList;
@@ -14,12 +18,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Component
 public class SystemResourceRepositoryImpl implements SystemResourceRepository {
 
     static final Logger logger = LoggerFactory.getLogger(SystemResourceRepositoryImpl.class);
 
     @Autowired
-    MeasurementRepositoryImpl measurementRepo;
+    MeasurementRepository measurementRepo;
 
     @Override
     public List<SystemResourceDto> findAll() {

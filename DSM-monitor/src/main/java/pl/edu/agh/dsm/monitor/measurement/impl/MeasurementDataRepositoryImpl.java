@@ -3,19 +3,22 @@ package pl.edu.agh.dsm.monitor.measurement.impl;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
 import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.monitor.measurement.MeasurementDataRepository;
 
 import java.util.*;
 
-
+@Component
 public class MeasurementDataRepositoryImpl implements MeasurementDataRepository {
 
     static final Logger logger = LoggerFactory.getLogger(MeasurementDataRepositoryImpl.class);
     static Map<UUID, List<MeasurementDataDto>> repo = new HashMap<>();
-    final int MAX_DATA_LIMIT = 10;
+    static final int MAX_DATA_LIMIT = 10;
 
     @Override
     public List<MeasurementDataDto> find(UUID uuid, Predicate<MeasurementDataDto> preconditions) {

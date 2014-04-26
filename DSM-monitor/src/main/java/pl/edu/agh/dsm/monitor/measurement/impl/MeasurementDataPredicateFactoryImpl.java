@@ -2,15 +2,18 @@ package pl.edu.agh.dsm.monitor.measurement.impl;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
 import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.monitor.measurement.DataLimit;
 import pl.edu.agh.dsm.monitor.measurement.MeasurementDataPredicateFactory;
 
 import java.util.concurrent.TimeUnit;
 
-
+@Component
 public class MeasurementDataPredicateFactoryImpl implements MeasurementDataPredicateFactory {
 
     static final Logger logger = LoggerFactory.getLogger(MeasurementDataPredicateFactoryImpl.class);

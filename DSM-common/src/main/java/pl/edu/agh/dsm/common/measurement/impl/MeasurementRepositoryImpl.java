@@ -3,14 +3,18 @@ package pl.edu.agh.dsm.common.measurement.impl;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.common.measurement.MeasurementRepository;
 
 import java.util.List;
 import java.util.UUID;
 
+@Component
 public class MeasurementRepositoryImpl implements MeasurementRepository {
 
     static final Logger logger = LoggerFactory.getLogger(MeasurementRepositoryImpl.class);

@@ -2,11 +2,15 @@ package pl.edu.agh.dsm.common.measurement.impl;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.common.measurement.MeasurementPredicateFactory;
 
+@Component
 public class MeasurementPredicateFactoryImpl implements MeasurementPredicateFactory {
 
     static final Logger logger = LoggerFactory.getLogger(MeasurementPredicateFactoryImpl.class);

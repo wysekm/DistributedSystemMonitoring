@@ -16,7 +16,8 @@ import static org.springframework.hateoas.config.EnableHypermediaSupport.Hyperme
         {
                 @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class),
                 @ComponentScan.Filter(type = FilterType.ANNOTATION, value = MockComponent.class)
-        }
+        },
+	value = {"pl.edu.agh.dsm.monitor.measurement.impl", "pl.edu.agh.dsm.common.measurement.impl"}
 )
 @Import({MocksConfiguration.class})
 @EnableEntityLinks

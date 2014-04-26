@@ -18,12 +18,12 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-
-import java.util.logging.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class HttpClientUtil {
 	
-	private static Logger logger = Logger.getLogger("HttpClientUtil");
+	static final Logger logger = LoggerFactory.getLogger(HttpClientUtil.class);
 
 	public static class HttpResponseResult {
 		public String resultContent;
@@ -71,7 +71,7 @@ public class HttpClientUtil {
 		CloseableHttpClient httpclient = clientBuilder.build();
 		HttpResponseResult result = null;
 		try {
-			logger.log(Level.FINE, "Executing request " + request.getRequestLine());
+			logger.debug("Executing request {}", request.getRequestLine());
 			CloseableHttpResponse response = httpclient.execute(request);
 			try {
 				StatusLine statusLine = response.getStatusLine();
