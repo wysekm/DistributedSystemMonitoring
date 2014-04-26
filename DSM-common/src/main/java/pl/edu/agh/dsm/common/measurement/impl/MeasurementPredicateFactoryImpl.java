@@ -23,7 +23,7 @@ public class MeasurementPredicateFactoryImpl implements
 		logger.debug("create new measurement predicate with metric " + metric
 				+ " and resource " + resource);
 
-		if (metric != null && resource != null) {
+		if (metric != null && resource != null && !metric.isEmpty() && !resource.isEmpty()) {
 			return new Predicate<MeasurementDto>() {
 
 				@Override
@@ -32,7 +32,7 @@ public class MeasurementPredicateFactoryImpl implements
 							&& measurementDto.getResource().equals(resource);
 				}
 			};
-		} else if (metric != null) {
+		} else if (metric != null && !metric.isEmpty()) {
 			return new Predicate<MeasurementDto>() {
 
 				@Override
@@ -40,7 +40,7 @@ public class MeasurementPredicateFactoryImpl implements
 					return measurementDto.getMetric().equals(metric);
 				}
 			};
-		} else if (resource != null) {
+		} else if (resource != null && !resource.isEmpty()) {
 			return new Predicate<MeasurementDto>() {
 
 				@Override
