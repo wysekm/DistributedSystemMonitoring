@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="MonitorsModel_1" class="pl.edu.agh.dsm.front.models.MonitorsModel">
+        <constructor-arg name="id" value="1" />
+        <constructor-arg name="name" value="pierwszy" />
+    </bean>
+
+    <bean id="MonitorsModel_2" class="pl.edu.agh.dsm.front.models.MonitorsModel">
+        <constructor-arg name="id" value="2" />
+        <constructor-arg name="name" value="drugi" />
+    </bean>
+
+    <bean id="MonitorsModel_3" class="pl.edu.agh.dsm.front.models.MonitorsModel">
+        <constructor-arg name="id" value="trzeci" />
+        <constructor-arg name="name" value="trzeci" />
+    </bean>
+
+</beans>

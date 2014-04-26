@@ -1,0 +1,14 @@
+.main {
+    width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+.btn-group {
+    margin: auto;
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+}
