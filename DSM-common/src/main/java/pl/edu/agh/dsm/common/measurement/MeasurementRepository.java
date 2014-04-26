@@ -9,10 +9,11 @@ import java.util.UUID;
 
 //proste repozytorium zasobów. Przechowuje zaosoby w aplikacji
 public interface MeasurementRepository {
-    List<MeasurementDto> findAll(Predicate<MeasurementDto> preconditions);
+	List<MeasurementDto> findAll(Predicate<MeasurementDto> preconditions);
 
-    MeasurementDto find(UUID uuid);
+	MeasurementDto find(UUID uuid);
 
-    void remove(UUID uuid);
-    void save(MeasurementDto measurementDto);
+	void remove(UUID uuid);
+
+	void save(MeasurementDto measurementDto);
 }

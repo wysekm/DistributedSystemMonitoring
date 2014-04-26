@@ -9,19 +9,21 @@ import java.util.UUID;
 
 public class MonitoredCpu extends MonitoredResource {
 
-    public static final String METRIC_NAME = "cpu";
+	public static final String METRIC_NAME = "cpu";
 
-    public MonitoredCpu() {
-        super(METRIC_NAME);
-    }
+	public MonitoredCpu() {
+		super(METRIC_NAME);
+	}
 
-    @Override
-    public double checkValue() throws MonitoringException {
-        try {
-            return sigar.getCpuPerc().getCombined();
-        } catch (SigarException ex) {
-            throw new MonitoringException("SigarException caught while performing resource check: ", ex);
-        }
-    }
+	@Override
+	public double checkValue() throws MonitoringException {
+		try {
+			return sigar.getCpuPerc().getCombined();
+		} catch (SigarException ex) {
+			throw new MonitoringException(
+					"SigarException caught while performing resource check: ",
+					ex);
+		}
+	}
 
 }

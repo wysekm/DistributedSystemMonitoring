@@ -16,27 +16,28 @@ import java.util.UUID;
 @MockComponent
 public class MockMeasurementRepository implements MeasurementRepository {
 
-    Logger logger = LoggerFactory.getLogger(MockMeasurementRepository.class);
+	Logger logger = LoggerFactory.getLogger(MockMeasurementRepository.class);
 
-    @Override
-    public List<MeasurementDto> findAll(Predicate<MeasurementDto> preconditions) {
-        return Collections.emptyList();
-    }
+	@Override
+	public List<MeasurementDto> findAll(Predicate<MeasurementDto> preconditions) {
+		return Collections.emptyList();
+	}
 
-    @Override
-    public MeasurementDto find(UUID uuid) {
-        return new MeasurementDto();
-    }
+	@Override
+	public MeasurementDto find(UUID uuid) {
+		return new MeasurementDto();
+	}
 
-    @Override
-    public void remove(UUID uuid) {
-        logger.debug("removed measurement from repo - {}", uuid);
-    }
+	@Override
+	public void remove(UUID uuid) {
+		logger.debug("removed measurement from repo - {}", uuid);
+	}
 
-    @Override
-    public void save(MeasurementDto measurementDto) {
+	@Override
+	public void save(MeasurementDto measurementDto) {
 
-        //To change body of implemented methods use File | Settings | File Templates.
-    }
+		// To change body of implemented methods use File | Settings | File
+		// Templates.
+	}
 
 }

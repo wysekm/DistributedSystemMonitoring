@@ -5,19 +5,20 @@ import org.slf4j.LoggerFactory;
 
 public class SensorConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(SensorConfiguration.class);
+	private static final Logger log = LoggerFactory
+			.getLogger(SensorConfiguration.class);
 
-    private String resource;
+	private String resource;
 
-    public SensorConfiguration() {
-        log.trace("Creating SensorConfiguration instance.");
-    }
+	public SensorConfiguration() {
+		log.trace("Creating SensorConfiguration instance.");
+	}
 
-    public void setResource(String resource) {
-        this.resource = resource;
-    }
+	public void setResource(String resource) {
+		this.resource = resource;
+	}
 
-    public String getResource() {
-        return resource;
-    }
+	public String getResource() {
+		return resource;
+	}
 }

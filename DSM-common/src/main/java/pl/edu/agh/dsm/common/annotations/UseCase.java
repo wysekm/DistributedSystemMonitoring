@@ -8,9 +8,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Component
- @Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.RUNTIME)
 // @Transactional(propagation = Propagation.REQUIRED)
- @Target(ElementType.TYPE)
- public @interface UseCase {
-     String value() default "";
+@Target(ElementType.TYPE)
+public @interface UseCase {
+	String value() default "";
 }

@@ -12,26 +12,23 @@ import static org.springframework.hateoas.config.EnableHypermediaSupport.Hyperme
 
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan(excludeFilters =
-        {
-                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class),
-                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = MockComponent.class)
-        },
-	value = {"pl.edu.agh.dsm.monitor.measurement.impl", "pl.edu.agh.dsm.common.measurement.impl"}
-)
-@Import({MocksConfiguration.class})
+@ComponentScan(excludeFilters = {
+		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class),
+		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = MockComponent.class) }, value = {
+		"pl.edu.agh.dsm.monitor.measurement.impl",
+		"pl.edu.agh.dsm.common.measurement.impl" })
+@Import({ MocksConfiguration.class })
 @EnableEntityLinks
 @EnableHypermediaSupport(type = HypermediaType.HAL)
 public class MonitorConfig {
 
-    //use -Dspring.profiles.active="mockComponents" for mockImpl
-    public static void main(String[] args) {
-        SpringApplication.run(MonitorConfig.class, args);
-    }
+	// use -Dspring.profiles.active="mockComponents" for mockImpl
+	public static void main(String[] args) {
+		SpringApplication.run(MonitorConfig.class, args);
+	}
 
-    @Bean
-    public MockAutorizationContext getAutorizationContext()
-    {
-        return new MockAutorizationContext();
-    }
+	@Bean
+	public MockAutorizationContext getAutorizationContext() {
+		return new MockAutorizationContext();
+	}
 }

@@ -38,9 +38,10 @@ public class MeasurementsController {
 			@RequestParam(value = "metric", defaultValue = "") String metric,
 			@RequestParam(value = "resource", defaultValue = "") String resource) {
 
-		List<MeasurementDto> measurements = service.getMeasurements(metric, resource);
+		List<MeasurementDto> measurements = service.getMeasurements(metric,
+				resource);
 		List<Resource<MeasurementDto>> resources = new ArrayList<>();
-		for(MeasurementDto measurement : measurements) {
+		for (MeasurementDto measurement : measurements) {
 			Resource<MeasurementDto> element = new Resource<>(measurement);
 			element.add(constructDetailsLink(measurement));
 			resources.add(element);
@@ -48,7 +49,8 @@ public class MeasurementsController {
 		return new Resources<Resource<MeasurementDto>>(resources);
 	}
 
-	@RequestMapping(method = POST, value = "", consumes = {"application/xml", "application/json"})
+	@RequestMapping(method = POST, value = "", consumes = { "application/xml",
+			"application/json" })
 	@ResponseStatus(HttpStatus.CREATED)
 	public @ResponseBody
 	MeasurementDto addMeasurement(@RequestBody MeasurementDto measurement) {
@@ -61,9 +63,10 @@ public class MeasurementsController {
 	public void deleteMeasurement(@PathVariable("id") UUID uuid) {
 		service.deleteMeasurement(uuid);
 	}
-	
+
 	private Link constructDetailsLink(MeasurementDto measurement) {
-		String href = measurement.getMonitor() + "/measurements/" + measurement.getId();
+		String href = measurement.getMonitor() + "/measurements/"
+				+ measurement.getId();
 		return new Link(href, "details");
 	}
 }

@@ -12,15 +12,16 @@ import java.util.UUID;
 @MockComponent
 public class MockCatalogueProxy implements CatalogueProxy {
 
-    static final Logger logger = LoggerFactory.getLogger(MockCatalogueProxy.class);
+	static final Logger logger = LoggerFactory
+			.getLogger(MockCatalogueProxy.class);
 
-    @Override
-    public void addMeasurement(MeasurementDto uuid) {
-        logger.debug("send info about new measurement with id {}", uuid);
-    }
+	@Override
+	public void addMeasurement(MeasurementDto uuid) {
+		logger.debug("send info about new measurement with id {}", uuid);
+	}
 
-    @Override
-    public void removeMeasurement(UUID uuid) {
-        logger.debug("send info about removed measurement with id {}", uuid);
-    }
+	@Override
+	public void removeMeasurement(UUID uuid) {
+		logger.debug("send info about removed measurement with id {}", uuid);
+	}
 }

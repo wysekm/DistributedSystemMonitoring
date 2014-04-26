@@ -18,19 +18,22 @@ import java.util.UUID;
 @UseCase("UC_PF_MT4C")
 public class UCMeasurementDataDetailsImpl implements UCMeasurementDataDetails {
 
+	MeasurementDataPredicateFactory precondictionFactory;
+	MeasurementDataRepository measurementRepository;
 
-    MeasurementDataPredicateFactory precondictionFactory;
-    MeasurementDataRepository measurementRepository;
+	@Autowired
+	public UCMeasurementDataDetailsImpl(
+			MeasurementDataRepository measurementRepository,
+			MeasurementDataPredicateFactory precondictionFactory) {
+		this.measurementRepository = measurementRepository;
+		this.precondictionFactory = precondictionFactory;
+	}
 
-    @Autowired
-    public UCMeasurementDataDetailsImpl(MeasurementDataRepository measurementRepository, MeasurementDataPredicateFactory precondictionFactory) {
-        this.measurementRepository = measurementRepository;
-        this.precondictionFactory = precondictionFactory;
-    }
-
-    @Override
-    public List<MeasurementDataDto> details(UUID uuid, DataLimit limit, int value) {
-        Predicate<MeasurementDataDto> preconditions = precondictionFactory.createForData(limit, value);
-        return measurementRepository.find(uuid, preconditions);
-    }
+	@Override
+	public List<MeasurementDataDto> details(UUID uuid, DataLimit limit,
+			int value) {
+		Predicate<MeasurementDataDto> preconditions = precondictionFactory
+				.createForData(limit, value);
+		return measurementRepository.find(uuid, preconditions);
+	}
 }

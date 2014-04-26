@@ -5,6 +5,6 @@ import pl.edu.agh.dsm.common.dto.SystemResourceDto;
 import java.util.List;
 
 public interface UCResourcesList {
-    public List<SystemResourceDto> list();
+	public List<SystemResourceDto> list();
 
 }

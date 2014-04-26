@@ -15,26 +15,21 @@ import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
-
 @RestController
 @ExposesResourceFor(SystemResourceDto.class)
 @RequestMapping("resources")
 public class SystemResourcesController {
 
+	@Autowired
+	private SystemResourceAssemblerSupport assemblerSupport;
 
-    @Autowired
-    private SystemResourceAssemblerSupport assemblerSupport;
+	@Autowired
+	UCResourcesList ucResourcesList;
 
-    @Autowired
-    UCResourcesList ucResourcesList;
-
-
-    @RequestMapping(method = GET,value = "")
-    public Resources<Resource<SystemResourceDto>> getResources()
-    {
-        List<SystemResourceDto> filter = ucResourcesList.list();
-        return assemblerSupport.addLinks(filter);
-    }
-
+	@RequestMapping(method = GET, value = "")
+	public Resources<Resource<SystemResourceDto>> getResources() {
+		List<SystemResourceDto> filter = ucResourcesList.list();
+		return assemblerSupport.addLinks(filter);
+	}
 
 }

@@ -21,29 +21,31 @@ import java.util.Set;
 @Component
 public class SystemResourceRepositoryImpl implements SystemResourceRepository {
 
-    static final Logger logger = LoggerFactory.getLogger(SystemResourceRepositoryImpl.class);
+	static final Logger logger = LoggerFactory
+			.getLogger(SystemResourceRepositoryImpl.class);
 
-    @Autowired
-    MeasurementRepository measurementRepo;
+	@Autowired
+	MeasurementRepository measurementRepo;
 
-    @Override
-    public List<SystemResourceDto> findAll() {
-        logger.debug("find all resources");
+	@Override
+	public List<SystemResourceDto> findAll() {
+		logger.debug("find all resources");
 
-        List<SystemResourceDto> listOfResources = new ArrayList<>();
-        Predicate<MeasurementDto> predicate = Predicates.alwaysTrue();
-        List<MeasurementDto> listOfMeasurements = measurementRepo.findAll(predicate);
+		List<SystemResourceDto> listOfResources = new ArrayList<>();
+		Predicate<MeasurementDto> predicate = Predicates.alwaysTrue();
+		List<MeasurementDto> listOfMeasurements = measurementRepo
+				.findAll(predicate);
 
-        Set<String> resources = new HashSet<>();
-        for (MeasurementDto dto : listOfMeasurements) {
-            resources.add(dto.getResource());
-        }
+		Set<String> resources = new HashSet<>();
+		for (MeasurementDto dto : listOfMeasurements) {
+			resources.add(dto.getResource());
+		}
 
-        for (String name : resources) {
-            SystemResourceDto resourceDto = new SystemResourceDto(name);
-            listOfResources.add(resourceDto);
-        }
+		for (String name : resources) {
+			SystemResourceDto resourceDto = new SystemResourceDto(name);
+			listOfResources.add(resourceDto);
+		}
 
-        return listOfResources;
-    }
+		return listOfResources;
+	}
 }

@@ -8,8 +8,7 @@ import org.springframework.context.annotation.Profile;
 import pl.edu.agh.dsm.common.annotations.MockComponent;
 
 @Configuration
-@ComponentScan(useDefaultFilters = false, includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, value = MockComponent.class),
-	value={"pl.edu.agh.dsm.common.measurement.mocks"})
+@ComponentScan(useDefaultFilters = false, includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, value = MockComponent.class), value = { "pl.edu.agh.dsm.common.measurement.mocks" })
 @Profile("mockComponents")
 public class MocksConfiguration {
 

@@ -10,8 +10,8 @@ import java.util.List;
 @MockComponent
 public class MockSystemResourceRepository implements SystemResourceRepository {
 
-    @Override
-    public List<SystemResourceDto> findAll() {
-        return Collections.emptyList();
-    }
+	@Override
+	public List<SystemResourceDto> findAll() {
+		return Collections.emptyList();
+	}
 }
