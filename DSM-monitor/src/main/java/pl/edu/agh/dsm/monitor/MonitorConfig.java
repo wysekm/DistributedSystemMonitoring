@@ -24,14 +24,22 @@ import static org.springframework.hateoas.config.EnableHypermediaSupport.Hyperme
 @EnableEntityLinks
 @EnableHypermediaSupport(type = HypermediaType.HAL)
 public class MonitorConfig {
-	
+
 	static Properties properties;
+
+	static {
+		properties = new Properties();
+		try {
+			properties.load(MonitorConfig.class.getClassLoader()
+					.getResourceAsStream("monitor.properties"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	// use -Dspring.profiles.active="mockComponents" for mockImpl
 	public static void main(String[] args) throws IOException {
-		properties = new Properties();
-		properties.load(MonitorConfig.class.getClassLoader().getResourceAsStream("monitor.properties"));
-		
+
 		SpringApplication.run(MonitorConfig.class, args);
 	}
 
@@ -39,7 +47,7 @@ public class MonitorConfig {
 	public MockAutorizationContext getAutorizationContext() {
 		return new MockAutorizationContext();
 	}
-	
+
 	public static String getCatalogueAddress() {
 		return properties.getProperty("catalogue.address");
 	}
