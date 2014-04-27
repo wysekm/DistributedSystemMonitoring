@@ -1,51 +1,62 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="845" measuredH="899" mockupW="793" mockupH="820">
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="898" measuredH="1166" mockupW="846" mockupH="1087">
   <controls>
-    <control controlID="37" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="52" y="79" w="793" h="820" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="52" y="79" w="846" h="1087" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <text>A%20Web%20Page%0Ahttp%3A//</text>
       </controlProperties>
     </control>
-    <control controlID="38" controlTypeID="com.balsamiq.mockups::Image" x="356" y="235" w="184" h="138" measuredW="77" measuredH="79" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::Image" x="383" y="236" w="184" h="138" measuredW="77" measuredH="79" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <text>logo_aplikacji</text>
       </controlProperties>
     </control>
-    <control controlID="41" controlTypeID="com.balsamiq.mockups::Button" x="237" y="174" w="-1" h="-1" measuredW="115" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Lista%20monitorow</text>
-      </controlProperties>
-    </control>
-    <control controlID="42" controlTypeID="com.balsamiq.mockups::Button" x="367" y="174" w="-1" h="-1" measuredW="162" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Wyszukiwanie%20zasobow</text>
-      </controlProperties>
-    </control>
-    <control controlID="43" controlTypeID="com.balsamiq.mockups::Button" x="544" y="174" w="-1" h="-1" measuredW="84" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Logowanie</text>
-      </controlProperties>
-    </control>
-    <control controlID="44" controlTypeID="com.balsamiq.mockups::Label" x="637" y="179" w="-1" h="-1" measuredW="193" measuredH="17" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Label" x="665" y="210" w="-1" h="-1" measuredW="193" measuredH="17" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
         <size>9</size>
         <text>Obecnie%20nie%20jest%20zalogowany%20zaden%20uzytkownik</text>
       </controlProperties>
     </control>
-    <control controlID="59" controlTypeID="com.balsamiq.mockups::Label" x="349" y="388" w="-1" h="-1" measuredW="199" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Label" x="69" y="382" w="812" h="-1" measuredW="804" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Wykresy%20dla%20wybranych%20pomiarow</text>
+        <text>Ponizej%20przedstawione%20sa%20wykresy%20pomiarow%20dla%20wybranych%20zasobow%20%28aktualizowane%20co%205%20sekund%29%20oraz%20pomiarow%20zlozonych%20%28statyczne%29</text>
       </controlProperties>
     </control>
-    <control controlID="65" controlTypeID="com.balsamiq.mockups::LineChart" x="356" y="424" w="-1" h="-1" measuredW="187" measuredH="175" zOrder="7" locked="false" isInGroup="-1"/>
-    <control controlID="66" controlTypeID="com.balsamiq.mockups::LineChart" x="356" y="642" w="-1" h="-1" measuredW="187" measuredH="175" zOrder="8" locked="false" isInGroup="-1"/>
-    <control controlID="67" controlTypeID="com.balsamiq.mockups::Label" x="420" y="606" w="-1" h="-1" measuredW="58" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
+    <control controlID="65" controlTypeID="com.balsamiq.mockups::LineChart" x="383" y="436" w="-1" h="-1" measuredW="187" measuredH="175" zOrder="4" locked="false" isInGroup="-1"/>
+    <control controlID="66" controlTypeID="com.balsamiq.mockups::LineChart" x="383" y="921" w="-1" h="-1" measuredW="187" measuredH="175" zOrder="5" locked="false" isInGroup="-1"/>
+    <control controlID="67" controlTypeID="com.balsamiq.mockups::Label" x="447" y="618" w="-1" h="-1" measuredW="58" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
         <text>PC1%2C%20CPU</text>
       </controlProperties>
     </control>
-    <control controlID="68" controlTypeID="com.balsamiq.mockups::Label" x="420" y="824" w="-1" h="-1" measuredW="61" measuredH="21" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="68" controlTypeID="com.balsamiq.mockups::Label" x="447" y="1103" w="-1" h="-1" measuredW="61" measuredH="21" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
         <text>PC2%2C%20CPU</text>
+      </controlProperties>
+    </control>
+    <control controlID="71" controlTypeID="com.balsamiq.mockups::Button" x="130" y="174" w="-1" h="-1" measuredW="126" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dostepne%20zasoby</text>
+      </controlProperties>
+    </control>
+    <control controlID="72" controlTypeID="com.balsamiq.mockups::Button" x="278" y="174" w="-1" h="-1" measuredW="162" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Wyszukiwanie%20zasobow</text>
+      </controlProperties>
+    </control>
+    <control controlID="73" controlTypeID="com.balsamiq.mockups::Button" x="627" y="174" w="-1" h="-1" measuredW="84" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Logowanie</text>
+      </controlProperties>
+    </control>
+    <control controlID="74" controlTypeID="com.balsamiq.mockups::Button" x="468" y="174" w="-1" h="-1" measuredW="136" measuredH="27" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Wszystkie%20pomiary</text>
+      </controlProperties>
+    </control>
+    <control controlID="75" controlTypeID="com.balsamiq.mockups::LineChart" x="383" y="673" w="-1" h="-1" measuredW="187" measuredH="175" zOrder="12" locked="false" isInGroup="-1"/>
+    <control controlID="76" controlTypeID="com.balsamiq.mockups::Label" x="418" y="863" w="-1" h="-1" measuredW="111" measuredH="21" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>PC2%2C%20Zlozony%20CPU</text>
       </controlProperties>
     </control>
   </controls>

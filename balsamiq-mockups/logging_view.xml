@@ -15,40 +15,45 @@
         <text>Podaj%20dane%20do%20logowania%3A</text>
       </controlProperties>
     </control>
-    <control controlID="41" controlTypeID="com.balsamiq.mockups::Button" x="237" y="174" w="-1" h="-1" measuredW="115" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Lista%20monitorow</text>
-      </controlProperties>
-    </control>
-    <control controlID="42" controlTypeID="com.balsamiq.mockups::Button" x="367" y="174" w="-1" h="-1" measuredW="162" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Wyszukiwanie%20zasobow</text>
-      </controlProperties>
-    </control>
-    <control controlID="43" controlTypeID="com.balsamiq.mockups::Button" x="544" y="174" w="-1" h="-1" measuredW="84" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Logowanie</text>
-      </controlProperties>
-    </control>
-    <control controlID="44" controlTypeID="com.balsamiq.mockups::Label" x="637" y="179" w="-1" h="-1" measuredW="193" measuredH="17" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Label" x="637" y="203" w="-1" h="-1" measuredW="193" measuredH="17" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <size>9</size>
         <text>Obecnie%20nie%20jest%20zalogowany%20zaden%20uzytkownik</text>
       </controlProperties>
     </control>
-    <control controlID="45" controlTypeID="com.balsamiq.mockups::TextInput" x="396" y="418" w="-1" h="-1" measuredW="117" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::TextInput" x="396" y="418" w="-1" h="-1" measuredW="117" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Wpisz%20swoj%20Login</text>
       </controlProperties>
     </control>
-    <control controlID="46" controlTypeID="com.balsamiq.mockups::TextInput" x="385" y="452" w="138" h="-1" measuredW="126" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::TextInput" x="385" y="452" w="138" h="-1" measuredW="126" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Wpisz%20swoje%20Haslo</text>
       </controlProperties>
     </control>
-    <control controlID="47" controlTypeID="com.balsamiq.mockups::Button" x="420" y="486" w="-1" h="-1" measuredW="68" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Button" x="420" y="486" w="-1" h="-1" measuredW="68" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Zaloguj</text>
+      </controlProperties>
+    </control>
+    <control controlID="50" controlTypeID="com.balsamiq.mockups::Button" x="125" y="170" w="-1" h="-1" measuredW="126" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dostepne%20zasoby</text>
+      </controlProperties>
+    </control>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::Button" x="273" y="170" w="-1" h="-1" measuredW="162" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Wyszukiwanie%20zasobow</text>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Button" x="622" y="170" w="-1" h="-1" measuredW="84" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Logowanie</text>
+      </controlProperties>
+    </control>
+    <control controlID="53" controlTypeID="com.balsamiq.mockups::Button" x="463" y="170" w="-1" h="-1" measuredW="136" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Wszystkie%20pomiary</text>
       </controlProperties>
     </control>
   </controls>
