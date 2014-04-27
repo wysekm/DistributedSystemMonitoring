@@ -1,5 +1,8 @@
 package pl.edu.agh.dsm.monitor;
 
+import java.io.IOException;
+import java.util.Properties;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.*;
@@ -21,14 +24,23 @@ import static org.springframework.hateoas.config.EnableHypermediaSupport.Hyperme
 @EnableEntityLinks
 @EnableHypermediaSupport(type = HypermediaType.HAL)
 public class MonitorConfig {
+	
+	static Properties properties;
 
 	// use -Dspring.profiles.active="mockComponents" for mockImpl
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		properties = new Properties();
+		properties.load(MonitorConfig.class.getClassLoader().getResourceAsStream("monitor.properties"));
+		
 		SpringApplication.run(MonitorConfig.class, args);
 	}
 
 	@Bean
 	public MockAutorizationContext getAutorizationContext() {
 		return new MockAutorizationContext();
+	}
+	
+	public static String getCatalogueAddress() {
+		return properties.getProperty("catalogue.address");
 	}
 }
