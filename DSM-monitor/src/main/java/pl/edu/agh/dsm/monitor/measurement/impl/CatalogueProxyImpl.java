@@ -51,12 +51,6 @@ public class CatalogueProxyImpl implements CatalogueProxy {
 		} catch (IOException e) {
 			throw new InternalErrorException(e.getMessage());
 		}
-
-		try {
-			result = makeGetRequest("http://localhost:8080/measurements", null);
-		} catch (IOException e) {
-			throw new InternalErrorException(e.getMessage());
-		}
 	}
 
 	@Override
