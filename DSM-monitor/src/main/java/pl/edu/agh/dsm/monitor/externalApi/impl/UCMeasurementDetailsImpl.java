@@ -12,15 +12,15 @@ import java.util.UUID;
 @UseCase("UC_PF_MT4B")
 public class UCMeasurementDetailsImpl implements UCMeasurementDetails {
 
-    MeasurementRepository repository;
+	MeasurementRepository repository;
 
-    @Autowired
-    public UCMeasurementDetailsImpl(MeasurementRepository repository) {
-        this.repository = repository;
-    }
+	@Autowired
+	public UCMeasurementDetailsImpl(MeasurementRepository repository) {
+		this.repository = repository;
+	}
 
-    @Override
-    public MeasurementDto details(UUID uuid) {
-        return repository.find(uuid);
-    }
+	@Override
+	public MeasurementDto details(UUID uuid) {
+		return repository.find(uuid);
+	}
 }

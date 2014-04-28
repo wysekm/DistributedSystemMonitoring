@@ -14,7 +14,6 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,9 +38,10 @@ public class MeasurementsController {
 			@RequestParam(value = "metric", defaultValue = "") String metric,
 			@RequestParam(value = "resource", defaultValue = "") String resource) {
 
-		List<MeasurementDto> measurements = service.getMeasurements(metric, resource);
+		List<MeasurementDto> measurements = service.getMeasurements(metric,
+				resource);
 		List<Resource<MeasurementDto>> resources = new ArrayList<>();
-		for(MeasurementDto measurement : measurements) {
+		for (MeasurementDto measurement : measurements) {
 			Resource<MeasurementDto> element = new Resource<>(measurement);
 			element.add(constructDetailsLink(measurement));
 			resources.add(element);
@@ -49,8 +49,8 @@ public class MeasurementsController {
 		return new Resources<Resource<MeasurementDto>>(resources);
 	}
 
-	@Secured({"ROLE_MONITOR"})
-	@RequestMapping(method = POST, value = "", consumes = {"application/xml", "application/json"})
+	@RequestMapping(method = POST, value = "", consumes = { "application/xml",
+			"application/json" })
 	@ResponseStatus(HttpStatus.CREATED)
 	public @ResponseBody
 	MeasurementDto addMeasurement(@RequestBody MeasurementDto measurement) {
@@ -59,14 +59,14 @@ public class MeasurementsController {
 		return result;
 	}
 
-	@Secured({"ROLE_MONITOR"})
 	@RequestMapping(method = DELETE, value = "/{id}")
 	public void deleteMeasurement(@PathVariable("id") UUID uuid) {
 		service.deleteMeasurement(uuid);
 	}
-	
+
 	private Link constructDetailsLink(MeasurementDto measurement) {
-		String href = measurement.getMonitor() + "/measurements/" + measurement.getId();
+		String href = measurement.getMonitor() + "/measurements/"
+				+ measurement.getId();
 		return new Link(href, "details");
 	}
 }

@@ -5,40 +5,45 @@
         <text>A%20Web%20Page%0Ahttp%3A//</text>
       </controlProperties>
     </control>
-    <control controlID="38" controlTypeID="com.balsamiq.mockups::Image" x="344" y="198" w="184" h="138" measuredW="77" measuredH="79" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::Image" x="350" y="205" w="184" h="138" measuredW="77" measuredH="79" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <text>logo_aplikacji</text>
       </controlProperties>
     </control>
-    <control controlID="39" controlTypeID="com.balsamiq.mockups::Label" x="228" y="369" w="416" h="-1" measuredW="367" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Label" x="234" y="369" w="416" h="-1" measuredW="362" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Witaj%20w%20kliencie%20aplikacji%20Rozproszony%20Monitoring%20Systemowy.%20</text>
+        <text>Witaj%20w%20kliencie%20aplikacji%20Rozproszony%20Monitoring%20Systemowy</text>
       </controlProperties>
     </control>
-    <control controlID="40" controlTypeID="com.balsamiq.mockups::Label" x="201" y="405" w="-1" h="-1" measuredW="470" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::Label" x="210" y="405" w="-1" h="-1" measuredW="421" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Aby%20zaczac%20korzystac%20z%20aplikacji%20wybierz%20zadana%20akcje%20z%20panelu%20u%20gory%20strony.</text>
+        <text>Aby%20zaczac%20korzystac%20z%20aplikacji%20wybierz%20akcje%20z%20panelu%20u%20gory%20strony</text>
       </controlProperties>
     </control>
-    <control controlID="41" controlTypeID="com.balsamiq.mockups::Button" x="225" y="137" w="-1" h="-1" measuredW="115" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Button" x="119" y="137" w="-1" h="-1" measuredW="126" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Lista%20monitorow</text>
+        <text>Dostepne%20zasoby</text>
       </controlProperties>
     </control>
-    <control controlID="42" controlTypeID="com.balsamiq.mockups::Button" x="355" y="137" w="-1" h="-1" measuredW="162" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::Button" x="267" y="137" w="-1" h="-1" measuredW="162" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Wyszukiwanie%20zasobow</text>
       </controlProperties>
     </control>
-    <control controlID="43" controlTypeID="com.balsamiq.mockups::Button" x="532" y="137" w="-1" h="-1" measuredW="84" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::Button" x="616" y="137" w="-1" h="-1" measuredW="84" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Logowanie</text>
       </controlProperties>
     </control>
-    <control controlID="44" controlTypeID="com.balsamiq.mockups::Label" x="625" y="142" w="-1" h="-1" measuredW="193" measuredH="17" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Label" x="631" y="173" w="-1" h="-1" measuredW="193" measuredH="17" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
         <size>9</size>
         <text>Obecnie%20nie%20jest%20zalogowany%20zaden%20uzytkownik</text>
+      </controlProperties>
+    </control>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Button" x="457" y="137" w="-1" h="-1" measuredW="136" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Wszystkie%20pomiary</text>
       </controlProperties>
     </control>
   </controls>

@@ -5,6 +5,7 @@ import pl.edu.agh.dsm.common.ActionPossibility;
 import java.util.UUID;
 
 public interface UCDeleteComplexMeasurement {
-    public void delete(UUID uuid) ;
-    public ActionPossibility havePermission(UUID uuid);
+	public void delete(UUID uuid);
+
+	public ActionPossibility havePermission(UUID uuid);
 }

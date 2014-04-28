@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface UCMeasurementDataDetails {
-    public List<MeasurementDataDto> details(UUID uuid, DataLimit limit, int value);
-
+	public List<MeasurementDataDto> details(UUID uuid, DataLimit limit,
+			int value);
 
 }

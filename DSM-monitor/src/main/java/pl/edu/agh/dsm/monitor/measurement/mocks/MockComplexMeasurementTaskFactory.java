@@ -9,10 +9,13 @@ import pl.edu.agh.dsm.monitor.measurement.ComplexMeasurementTaskFactory;
 import java.util.UUID;
 
 @MockComponent
-public class MockComplexMeasurementTaskFactory implements ComplexMeasurementTaskFactory {
+public class MockComplexMeasurementTaskFactory implements
+		ComplexMeasurementTaskFactory {
 
-    @Override
-    public MeasurementDto create(ComplexMeasurementDto complexMeasurementDto, ApplicationUser applicationUser) {
-        return new MeasurementDto(UUID.randomUUID(), "zeus", complexMeasurementDto.getType(),"%", "http://localhost:8081");
-    }
+	@Override
+	public MeasurementDto create(ComplexMeasurementDto complexMeasurementDto,
+			ApplicationUser applicationUser) {
+		return new MeasurementDto(UUID.randomUUID(), "zeus",
+				complexMeasurementDto.getType(), "%", "http://localhost:8081");
+	}
 }

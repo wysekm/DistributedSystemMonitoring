@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!--<parent> <artifactId>DSM-parent</artifactId> <groupId>pl.edu.agh.DSM</groupId> 
+		<version>1.0-SNAPSHOT</version> </parent> -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>pl.edu.agh.DSM</groupId>
+	<artifactId>DSM-sensor</artifactId>
+	<version>1.0-SNAPSHOT</version>
+
+	<properties>
+		<project.sourceLevel>1.7</project.sourceLevel>
+		<project.mainClass>pl.edu.agh.dsm.sensor.Sensor</project.mainClass>
+		<project.build.finalName>${project.artifactId}</project.build.finalName>
+		<project.build.execScriptName>sensor</project.build.execScriptName>
+		<project.build.extraJvmArgs>-Xms8m -Xmx16m</project.build.extraJvmArgs>
+		<sigar.version>1.6.5.132-6</sigar.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.hyperic</groupId>
+			<artifactId>sigar</artifactId>
+			<version>${sigar.version}</version>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hyperic</groupId>
+			<artifactId>sigar-dist</artifactId>
+			<version>${sigar.version}</version>
+			<type>zip</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${project.sourceLevel}</source>
+					<target>${project.sourceLevel}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>appassembler-maven-plugin</artifactId>
+				<version>1.7</version>
+				<configuration>
+					<programs>
+						<program>
+							<mainClass>${project.mainClass}</mainClass>
+							<id>${project.build.execScriptName}</id>
+						</program>
+					</programs>
+					<binFileExtensions>
+						<unix>.sh</unix>
+					</binFileExtensions>
+					<repositoryLayout>flat</repositoryLayout>
+					<repositoryName>lib</repositoryName>
+					<configurationDirectory>conf</configurationDirectory>
+					<configurationSourceDirectory>src/main/config</configurationSourceDirectory>
+					<copyConfigurationDirectory>true</copyConfigurationDirectory>
+					<includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>
+					<extraJvmArguments>${project.build.extraJvmArgs}</extraJvmArguments>
+					<projectArtifactFirstInClassPath>true</projectArtifactFirstInClassPath>
+					<assembleDirectory>target/artifacts/distrib</assembleDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<id>assemble</id>
+						<phase>package</phase>
+						<goals>
+							<goal>assemble</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>unpack</id>
+						<phase>validate</phase>
+						<configuration>
+							<target>
+								<echo>Copying SIGAR ${sigar.version} native libraries to local
+									build directory</echo>
+								<mkdir dir="${project.basedir}/tmp" />
+								<mkdir dir="${project.basedir}/lib/native" />
+								<copy toDir="${project.basedir}/tmp">
+									<fileset
+										dir="${settings.localRepository}/org/hyperic/sigar-dist/${sigar.version}"
+										includes="*.zip" />
+								</copy>
+								<unzip dest="${project.basedir}/tmp">
+									<fileset dir="${project.basedir}/tmp" includes="*.zip" />
+									<patternset>
+										<exclude name="**/lib/sigar.jar" />
+										<include name="**/lib/bcel*.jar" />
+										<include name="**/lib/*.so" />
+										<include name="**/lib/*.sl" />
+										<include name="**/lib/*.dll" />
+										<include name="**/lib/*.dylib" />
+									</patternset>
+								</unzip>
+								<copy todir="${project.basedir}/lib/native" flatten="true">
+									<fileset dir="${project.basedir}/tmp">
+										<include name="**/lib/*" />
+									</fileset>
+								</copy>
+								<delete dir="${project.basedir}/tmp" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+
+					<execution>
+						<id>pack</id>
+						<phase>package</phase>
+						<configuration>
+							<target>
+								<copy todir="${project.build.directory}/artifacts/distrib/lib"
+									flatten="true">
+									<fileset dir="${project.basedir}/lib/native">
+										<include name="*" />
+									</fileset>
+								</copy>
+								<zip destfile="${project.build.directory}/${project.build.finalName}.zip">
+									<zipfileset dir="${project.build.directory}/artifacts/distrib"
+										includes="**" />
+								</zip>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.16</version>
+				<configuration>
+					<parallel>methods</parallel>
+					<threadCount>50</threadCount>
+					<argLine>-Djava.library.path=lib\native</argLine>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+	<repositories>
+		<repository>
+			<id>thirdparty-uploads</id>
+			<name>JBoss Thirdparty Uploads</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/thirdparty-uploads</url>
+		</repository>
+	</repositories>
+
+</project>

@@ -8,13 +8,14 @@ import pl.edu.agh.dsm.monitor.measurement.MeasurementDataPredicateFactory;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
-
 @MockComponent
-public class MockMeasurementDataPredicateFactory implements MeasurementDataPredicateFactory {
+public class MockMeasurementDataPredicateFactory implements
+		MeasurementDataPredicateFactory {
 
-    @Override
-    public Predicate<MeasurementDataDto> createForData(DataLimit limit, int value) {
+	@Override
+	public Predicate<MeasurementDataDto> createForData(DataLimit limit,
+			int value) {
 
-        return Predicates.alwaysTrue();
-    }
+		return Predicates.alwaysTrue();
+	}
 }

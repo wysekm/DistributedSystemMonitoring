@@ -12,12 +12,11 @@ import java.util.List;
 @UseCase("UC_PF_MT4E")
 public class UCResourcesListImpl implements UCResourcesList {
 
+	@Autowired
+	SystemResourceRepository systemResourceRepository;
 
-    @Autowired
-    SystemResourceRepository systemResourceRepository;
-
-    @Override
-    public List<SystemResourceDto> list() {
-        return systemResourceRepository.findAll();
-    }
+	@Override
+	public List<SystemResourceDto> list() {
+		return systemResourceRepository.findAll();
+	}
 }

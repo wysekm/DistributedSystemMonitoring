@@ -4,45 +4,46 @@ import java.util.UUID;
 
 public class MockAutorizationContext implements AutorizationContext {
 
-    class MockRequestUser implements ApplicationUser
-    {
-        UUID id = UUID.randomUUID();
-        String name = "mockUser";
+	class MockRequestUser implements ApplicationUser {
+		UUID id = UUID.randomUUID();
+		String name = "mockUser";
 
-        public MockRequestUser() {
-        }
+		public MockRequestUser() {
+		}
 
-        public UUID getId() {
-            return this.id;
-        }
+		public UUID getId() {
+			return this.id;
+		}
 
-        public String getName() {
-            return this.name;
-        }
+		public String getName() {
+			return this.name;
+		}
 
+		@Override
+		public boolean equals(Object o) {
+			if (this == o)
+				return true;
+			if (!(o instanceof MockRequestUser))
+				return false;
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof MockRequestUser)) return false;
+			MockRequestUser that = (MockRequestUser) o;
 
-            MockRequestUser that = (MockRequestUser) o;
+			if (!id.equals(that.id))
+				return false;
 
-            if (!id.equals(that.id)) return false;
+			return true;
+		}
 
-            return true;
-        }
+		@Override
+		public int hashCode() {
+			return id.hashCode();
+		}
+	}
 
-        @Override
-        public int hashCode() {
-            return id.hashCode();
-        }
-    }
+	MockRequestUser mockRequestUser = new MockRequestUser();
 
-    MockRequestUser mockRequestUser = new MockRequestUser();
-
-    @Override
-    public ApplicationUser getActiveUser() {
-        return mockRequestUser;
-    }
+	@Override
+	public ApplicationUser getActiveUser() {
+		return mockRequestUser;
+	}
 }

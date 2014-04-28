@@ -10,23 +10,26 @@ import pl.edu.agh.dsm.common.security.AutorizationContext;
 import pl.edu.agh.dsm.monitor.externalApi.UCDeleteComplexMeasurement;
 
 @Component
-public class MeasurementResourceAssemblerSupport extends AbstractResourceAssemblerSupport<MeasurementDto> {
+public class MeasurementResourceAssemblerSupport extends
+		AbstractResourceAssemblerSupport<MeasurementDto> {
 
+	private EntityLinks entityLinks;
+	private UCDeleteComplexMeasurement ucDeleteComplexMeasurement;
+	private AutorizationContext autorizationContext;
 
-    private EntityLinks entityLinks;
-    private UCDeleteComplexMeasurement ucDeleteComplexMeasurement;
+	@Autowired
+	public MeasurementResourceAssemblerSupport(
+			AutorizationContext autorizationContext, EntityLinks entityLinks,
+			UCDeleteComplexMeasurement ucDeleteComplexMeasurement) {
+		this.autorizationContext = autorizationContext;
+		this.entityLinks = entityLinks;
+		this.ucDeleteComplexMeasurement = ucDeleteComplexMeasurement;
+	}
 
-
-    @Autowired
-    public MeasurementResourceAssemblerSupport(EntityLinks entityLinks, UCDeleteComplexMeasurement ucDeleteComplexMeasurement) {
-        this.entityLinks = entityLinks;
-        this.ucDeleteComplexMeasurement = ucDeleteComplexMeasurement;
-    }
-
-    @Override
-    public Resource<MeasurementDto> addLinks(MeasurementDto measurementDto) {
-        //TODO add links for Measurements
-//        ucDeleteComplexMeasurement.havePermission(measurement.getId());
-        return new Resource<>(measurementDto);
-    }
+	@Override
+	public Resource<MeasurementDto> addLinks(MeasurementDto measurementDto) {
+		// TODO add links for Measurements
+		// ucDeleteComplexMeasurement.havePermission(measurement.getId());
+		return new Resource<>(measurementDto);
+	}
 }

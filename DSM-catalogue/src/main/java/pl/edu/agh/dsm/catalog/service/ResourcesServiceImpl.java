@@ -13,7 +13,7 @@ public class ResourcesServiceImpl implements ResourcesService {
 
 	@Autowired
 	private SystemResourceRepository resourceRepository;
-	
+
 	@Override
 	public List<SystemResourceDto> getResources() {
 		return resourceRepository.findAll();

@@ -18,3 +18,21 @@ target/
 
 
 #TODO dodac wpisy dotyczace eclipsa
+.project
+.settings/org.eclipse.core.resources.prefs
+.settings/org.eclipse.m2e.core.prefs
+DSM-catalogue/.classpath
+DSM-catalogue/.project
+DSM-catalogue/.settings/org.eclipse.core.resources.prefs
+DSM-catalogue/.settings/org.eclipse.jdt.core.prefs
+DSM-catalogue/.settings/org.eclipse.m2e.core.prefs
+DSM-common/.classpath
+DSM-common/.project
+DSM-common/.settings/org.eclipse.core.resources.prefs
+DSM-common/.settings/org.eclipse.jdt.core.prefs
+DSM-common/.settings/org.eclipse.m2e.core.prefs
+DSM-monitor/.classpath
+DSM-monitor/.project
+DSM-monitor/.settings/org.eclipse.core.resources.prefs
+DSM-monitor/.settings/org.eclipse.jdt.core.prefs
+DSM-monitor/.settings/org.eclipse.m2e.core.prefs

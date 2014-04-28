@@ -2,37 +2,50 @@ package pl.edu.agh.dsm.common.measurement.impl;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.common.dto.SystemResourceDto;
+import pl.edu.agh.dsm.common.measurement.MeasurementRepository;
 import pl.edu.agh.dsm.common.measurement.SystemResourceRepository;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+@Component
 public class SystemResourceRepositoryImpl implements SystemResourceRepository {
 
-    static final Logger logger = LoggerFactory.getLogger(SystemResourceRepositoryImpl.class);
+	static final Logger logger = LoggerFactory
+			.getLogger(SystemResourceRepositoryImpl.class);
 
-    @Override
-    public List<SystemResourceDto> findAll() {
-        logger.debug("find all resources");
+	@Autowired
+	MeasurementRepository measurementRepo;
 
-        List<SystemResourceDto> listOfResources = new ArrayList<>();
-        MeasurementRepositoryImpl measurementRepo = new MeasurementRepositoryImpl();
-        Predicate<MeasurementDto> predicate = Predicates.alwaysTrue();
-        List<MeasurementDto> listOfMeasurements = measurementRepo.findAll(predicate);
+	@Override
+	public List<SystemResourceDto> findAll() {
+		logger.debug("find all resources");
 
-        Set<String> resources = new HashSet<>();
-        for (MeasurementDto dto : listOfMeasurements) {
-            resources.add(dto.getResource());
-        }
+		List<SystemResourceDto> listOfResources = new ArrayList<>();
+		Predicate<MeasurementDto> predicate = Predicates.alwaysTrue();
+		List<MeasurementDto> listOfMeasurements = measurementRepo
+				.findAll(predicate);
 
-        for (String name : resources) {
-            SystemResourceDto resourceDto = new SystemResourceDto(name);
-            listOfResources.add(resourceDto);
-        }
+		Set<String> resources = new HashSet<>();
+		for (MeasurementDto dto : listOfMeasurements) {
+			resources.add(dto.getResource());
+		}
 
-        return listOfResources;
-    }
+		for (String name : resources) {
+			SystemResourceDto resourceDto = new SystemResourceDto(name);
+			listOfResources.add(resourceDto);
+		}
+
+		return listOfResources;
+	}
 }

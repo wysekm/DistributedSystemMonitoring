@@ -5,7 +5,6 @@ import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import java.util.UUID;
 
 public interface UCMeasurementDetails {
-    public MeasurementDto details(UUID uuid);
-
+	public MeasurementDto details(UUID uuid);
 
 }

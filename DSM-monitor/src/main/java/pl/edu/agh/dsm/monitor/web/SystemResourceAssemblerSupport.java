@@ -8,21 +8,20 @@ import org.springframework.stereotype.Component;
 import pl.edu.agh.dsm.common.dto.SystemResourceDto;
 
 @Component
-public class SystemResourceAssemblerSupport extends AbstractResourceAssemblerSupport<SystemResourceDto> {
+public class SystemResourceAssemblerSupport extends
+		AbstractResourceAssemblerSupport<SystemResourceDto> {
 
+	private EntityLinks entityLinks;
 
-    private EntityLinks entityLinks;
+	@Autowired
+	public SystemResourceAssemblerSupport(EntityLinks entityLinks) {
+		this.entityLinks = entityLinks;
+	}
 
-    @Autowired
-    public SystemResourceAssemblerSupport(EntityLinks entityLinks) {
-        this.entityLinks = entityLinks;
-    }
+	@Override
+	public Resource<SystemResourceDto> addLinks(SystemResourceDto measurement) {
+		// TODO add link to filter
 
-    @Override
-    public Resource<SystemResourceDto> addLinks(SystemResourceDto measurement) {
-        //TODO add link to filter
-
-
-        return new Resource<>(measurement);
-    }
+		return new Resource<>(measurement);
+	}
 }

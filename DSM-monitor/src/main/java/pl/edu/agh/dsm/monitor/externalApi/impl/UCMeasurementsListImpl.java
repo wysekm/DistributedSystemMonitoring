@@ -15,20 +15,21 @@ import java.util.List;
 @UseCase("UC_PF_MT4A")
 public class UCMeasurementsListImpl implements UCMeasurementsList {
 
+	MeasurementPredicateFactory precondictionFactory;
+	MeasurementRepository measurementRepository;
 
-    MeasurementPredicateFactory precondictionFactory;
-    MeasurementRepository measurementRepository;
+	@Autowired
+	public UCMeasurementsListImpl(MeasurementRepository measurementRepository,
+			MeasurementPredicateFactory precondictionFactory) {
+		this.measurementRepository = measurementRepository;
+		this.precondictionFactory = precondictionFactory;
+	}
 
-    @Autowired
-    public UCMeasurementsListImpl(MeasurementRepository measurementRepository, MeasurementPredicateFactory precondictionFactory) {
-        this.measurementRepository = measurementRepository;
-        this.precondictionFactory = precondictionFactory;
-    }
+	@Override
+	public List<MeasurementDto> filter(String metric, String resource) {
 
-    @Override
-    public List<MeasurementDto> filter(String metric, String resource) {
-
-        Predicate<MeasurementDto> preconditions = precondictionFactory.createForMeasurement(metric, resource);
-        return measurementRepository.findAll(preconditions);
-    }
+		Predicate<MeasurementDto> preconditions = precondictionFactory
+				.createForMeasurement(metric, resource);
+		return measurementRepository.findAll(preconditions);
+	}
 }

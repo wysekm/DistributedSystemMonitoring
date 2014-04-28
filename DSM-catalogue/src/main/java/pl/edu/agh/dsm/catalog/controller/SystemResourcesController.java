@@ -34,7 +34,7 @@ public class SystemResourcesController {
 
 		List<SystemResourceDto> list = service.getResources();
 		List<Resource<SystemResourceDto>> resources = new ArrayList<>();
-		for(SystemResourceDto resource : list) {
+		for (SystemResourceDto resource : list) {
 			Resource<SystemResourceDto> element = new Resource<>(resource);
 			element.add(constructLink(resource));
 			resources.add(element);
@@ -43,9 +43,10 @@ public class SystemResourcesController {
 	}
 
 	private Link constructLink(SystemResourceDto resource) {
-		String href = entityLinks.linkToCollectionResource(MeasurementDto.class).getHref();
+		String href = entityLinks
+				.linkToCollectionResource(MeasurementDto.class).getHref();
 		href += "?resource=" + resource.getName();
 		return new Link(href, "measurements");
 	}
-	
+
 }

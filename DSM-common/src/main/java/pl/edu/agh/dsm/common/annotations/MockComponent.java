@@ -14,5 +14,5 @@ import java.lang.annotation.Target;
 // @Transactional(propagation = Propagation.REQUIRED)
 @Target(ElementType.TYPE)
 public @interface MockComponent {
-    String value() default "";
+	String value() default "";
 }
