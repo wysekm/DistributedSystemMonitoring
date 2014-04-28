@@ -13,6 +13,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 // @Transactional(propagation = Propagation.REQUIRED)
 @Target(ElementType.TYPE)
-public @interface MockComponent {
+public @interface GuiMockComponent {
 	String value() default "";
 }

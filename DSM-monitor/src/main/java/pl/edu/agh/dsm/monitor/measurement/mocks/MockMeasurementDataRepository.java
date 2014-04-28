@@ -2,7 +2,7 @@ package pl.edu.agh.dsm.monitor.measurement.mocks;
 
 import com.google.common.base.Predicate;
 
-import pl.edu.agh.dsm.common.annotations.MockComponent;
+import pl.edu.agh.dsm.common.annotations.GuiMockComponent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-@MockComponent
+@GuiMockComponent
 public class MockMeasurementDataRepository implements MeasurementDataRepository {
 
 	static final Logger logger = LoggerFactory

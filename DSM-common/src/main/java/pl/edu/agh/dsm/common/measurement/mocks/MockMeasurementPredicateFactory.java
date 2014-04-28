@@ -1,13 +1,13 @@
 package pl.edu.agh.dsm.common.measurement.mocks;
 
+import pl.edu.agh.dsm.common.annotations.GuiMockComponent;
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.common.measurement.MeasurementPredicateFactory;
-import pl.edu.agh.dsm.common.annotations.MockComponent;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
-@MockComponent
+@GuiMockComponent
 public class MockMeasurementPredicateFactory implements
 		MeasurementPredicateFactory {
 

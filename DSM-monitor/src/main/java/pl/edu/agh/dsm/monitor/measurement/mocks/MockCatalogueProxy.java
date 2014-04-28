@@ -3,13 +3,13 @@ package pl.edu.agh.dsm.monitor.measurement.mocks;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import pl.edu.agh.dsm.common.annotations.MockComponent;
+import pl.edu.agh.dsm.common.annotations.GuiMockComponent;
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.monitor.measurement.CatalogueProxy;
 
 import java.util.UUID;
 
-@MockComponent
+@GuiMockComponent
 public class MockCatalogueProxy implements CatalogueProxy {
 
 	static final Logger logger = LoggerFactory

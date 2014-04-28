@@ -10,7 +10,6 @@
 
 	<artifactId>DSM-common</artifactId>
 
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -5,15 +5,15 @@ import com.google.common.base.Predicate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import pl.edu.agh.dsm.common.annotations.GuiMockComponent;
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.common.measurement.MeasurementRepository;
-import pl.edu.agh.dsm.common.annotations.MockComponent;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-@MockComponent
+@GuiMockComponent
 public class MockMeasurementRepository implements MeasurementRepository {
 
 	Logger logger = LoggerFactory.getLogger(MockMeasurementRepository.class);

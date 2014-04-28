@@ -2,6 +2,8 @@ package pl.edu.agh.dsm.common.security;
 
 import java.util.UUID;
 
+//@MockComponent
+//@Component
 public class MockAutorizationContext implements AutorizationContext {
 
 	class MockRequestUser implements ApplicationUser {

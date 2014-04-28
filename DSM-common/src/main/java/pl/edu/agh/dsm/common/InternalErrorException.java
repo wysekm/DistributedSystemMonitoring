@@ -2,7 +2,11 @@ package pl.edu.agh.dsm.common;
 
 public class InternalErrorException extends RuntimeException {
 
-	public InternalErrorException(String message) {
+    public InternalErrorException(Throwable cause) {
+        super(cause);
+    }
+
+    public InternalErrorException(String message) {
 		super(message);
 	}
 

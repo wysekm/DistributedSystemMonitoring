@@ -1,6 +1,6 @@
 package pl.edu.agh.dsm.monitor.measurement.mocks;
 
-import pl.edu.agh.dsm.common.annotations.MockComponent;
+import pl.edu.agh.dsm.common.annotations.GuiMockComponent;
 import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.monitor.measurement.DataLimit;
 import pl.edu.agh.dsm.monitor.measurement.MeasurementDataPredicateFactory;
@@ -8,7 +8,7 @@ import pl.edu.agh.dsm.monitor.measurement.MeasurementDataPredicateFactory;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
-@MockComponent
+@GuiMockComponent
 public class MockMeasurementDataPredicateFactory implements
 		MeasurementDataPredicateFactory {
 

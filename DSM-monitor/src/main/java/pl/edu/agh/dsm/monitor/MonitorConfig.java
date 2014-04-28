@@ -1,15 +1,16 @@
 package pl.edu.agh.dsm.monitor;
 
 import java.io.IOException;
-import java.util.Properties;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.hateoas.config.EnableEntityLinks;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 
-import pl.edu.agh.dsm.common.annotations.MockComponent;
+import pl.edu.agh.dsm.common.annotations.GuiMockComponent;
 import pl.edu.agh.dsm.common.security.MockAutorizationContext;
 import static org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
 
@@ -17,29 +18,17 @@ import static org.springframework.hateoas.config.EnableHypermediaSupport.Hyperme
 @EnableAutoConfiguration
 @ComponentScan(excludeFilters = {
 		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class),
-		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = MockComponent.class) }, value = {
-		"pl.edu.agh.dsm.monitor.measurement.impl",
-		"pl.edu.agh.dsm.common.measurement.impl" })
-@Import({ MocksConfiguration.class })
+		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = GuiMockComponent.class) },
+        value = { "pl.edu.agh.dsm.monitor", "pl.edu.agh.dsm.common.measurement.impl" })
+@Import({ GuiMocksConfiguration.class })
 @EnableEntityLinks
 @EnableHypermediaSupport(type = HypermediaType.HAL)
+@PropertySource(value = "monitor.properties")
+@EnableConfigurationProperties()
 public class MonitorConfig {
-
-	static Properties properties;
-
-	static {
-		properties = new Properties();
-		try {
-			properties.load(MonitorConfig.class.getClassLoader()
-					.getResourceAsStream("monitor.properties"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	// use -Dspring.profiles.active="mockComponents" for mockImpl
 	public static void main(String[] args) throws IOException {
-
 		SpringApplication.run(MonitorConfig.class, args);
 	}
 
@@ -48,7 +37,9 @@ public class MonitorConfig {
 		return new MockAutorizationContext();
 	}
 
-	public static String getCatalogueAddress() {
-		return properties.getProperty("catalogue.address");
-	}
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
+
 }
