@@ -1,11 +1,10 @@
 package pl.edu.agh.dsm.monitor.internalApi;
 
 import static pl.edu.agh.dsm.common.utils.HttpClientUtil.makeDeleteRequest;
-import static pl.edu.agh.dsm.common.utils.HttpClientUtil.makeGetRequest;
 import static pl.edu.agh.dsm.common.utils.HttpClientUtil.makePostRequest;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
+import java.io.IOException;
+import java.util.UUID;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
@@ -22,10 +21,8 @@ import org.springframework.stereotype.Component;
 import pl.edu.agh.dsm.common.InternalErrorException;
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.common.utils.HttpClientUtil.HttpResponseResult;
-import pl.edu.agh.dsm.monitor.MonitorConfig;
 
-import java.io.IOException;
-import java.util.UUID;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 public class CatalogueProxyImpl implements CatalogueProxy{
@@ -33,19 +30,19 @@ public class CatalogueProxyImpl implements CatalogueProxy{
 	static final Logger logger = LoggerFactory
 			.getLogger(CatalogueProxyImpl.class);
 
-    @Value("${catalogue.address}")
-    String catalogueAdress;
+	@Value("${catalogue.address}")
+	String catalogueAdress;
 
-    @Autowired
-    ObjectMapper objectMapper;
+	@Autowired
+	ObjectMapper objectMapper;
 
 
 	@Override
 	public void addMeasurement(MeasurementDto dto) {
 
 
-//        ObjectWriter objectWriter = objectMapper.writerWithView("JakisProfil".getClass());
-//        objectWriter.writeValueAsString()
+//		ObjectWriter objectWriter = objectMapper.writerWithView("JakisProfil".getClass());
+//		objectWriter.writeValueAsString()
 
 		logger.debug("send info about new measurement with id {}", dto);
 
