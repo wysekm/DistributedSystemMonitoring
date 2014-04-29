@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 public class MeasurementDataDto {
 
 	long timestamp;
-	long data;
+	double data;
 
-	public MeasurementDataDto(long timestamp, long data) {
+	public MeasurementDataDto(long timestamp, double data) {
 		this.timestamp = timestamp;
 		this.data = data;
 	}
@@ -17,40 +17,47 @@ public class MeasurementDataDto {
 	}
 
 	public long getTimestamp() {
-		return this.timestamp;
+		return timestamp;
 	}
 
-	public long getData() {
-		return this.data;
+	public void setTimestamp(long timestamp) {
+		this.timestamp = timestamp;
 	}
 
-	public boolean equals(Object o) {
-		if (o == this)
-			return true;
-		if (!(o instanceof MeasurementDataDto))
-			return false;
-		final MeasurementDataDto other = (MeasurementDataDto) o;
-		if (!other.canEqual((Object) this))
-			return false;
-		if (this.getTimestamp() != other.getTimestamp())
-			return false;
-		if (this.getData() != other.getData())
-			return false;
-		return true;
+	public double getData() {
+		return data;
 	}
 
+	public void setData(double data) {
+		this.data = data;
+	}
+
+	@Override
 	public int hashCode() {
-		final int PRIME = 59;
+		final int prime = 31;
 		int result = 1;
-		final long $timestamp = this.getTimestamp();
-		result = result * PRIME + (int) ($timestamp >>> 32 ^ $timestamp);
-		final long $data = this.getData();
-		result = result * PRIME + (int) ($data >>> 32 ^ $data);
+		long temp;
+		temp = Double.doubleToLongBits(data);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + (int) (timestamp ^ (timestamp >>> 32));
 		return result;
 	}
 
-	public boolean canEqual(Object other) {
-		return other instanceof MeasurementDataDto;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MeasurementDataDto other = (MeasurementDataDto) obj;
+		if (Double.doubleToLongBits(data) != Double
+				.doubleToLongBits(other.data))
+			return false;
+		if (timestamp != other.timestamp)
+			return false;
+		return true;
 	}
 
 	@Override

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-ip="http://www.springframework.org/schema/integration/ip"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/ip http://www.springframework.org/schema/integration/ip/spring-integration-ip.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<int-ip:udp-inbound-channel-adapter
+		id="receiverChannel" channel="objectMapperInput" port="9000"
+		multicast="false" check-length="false" pool-size="10" lookup-host="false" />
+
+	<int:json-to-object-transformer
+		input-channel="objectMapperInput" type="pl.edu.agh.dsm.monitor.dto.SimpleMeasurementDataDto"
+		output-channel="processSensorData" />
+
+	<int:service-activator input-channel="processSensorData"
+		ref="sensorDataReceiverService" method="processSensorData" />
+
+	<bean id="sensorDataReceiverService" class="pl.edu.agh.dsm.monitor.service.SensorDataReceiverServiceImpl" />
+
+</beans>

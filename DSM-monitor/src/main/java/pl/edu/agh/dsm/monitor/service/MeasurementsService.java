@@ -19,6 +19,4 @@ public interface MeasurementsService {
 	@UseCase("UC_PF_MT4C")
 	public List<MeasurementDataDto> getData(UUID uuid, DataLimit limit, int value);
 	
-	public void addNewData(SimpleMeasurementDataDto dto);
-	
 }

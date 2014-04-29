@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import pl.edu.agh.dsm.common.annotations.GuiMockComponent;
 import pl.edu.agh.dsm.monitor.dto.SimpleMeasurementDataDto;
-import pl.edu.agh.dsm.monitor.service.MeasurementsService;
+import pl.edu.agh.dsm.monitor.service.SensorDataReceiverService;
 
 @GuiMockComponent
 public class SensorActivityMock implements Runnable {
@@ -22,7 +22,7 @@ public class SensorActivityMock implements Runnable {
 	private Thread thread;
 	
 	@Autowired
-	private MeasurementsService measurementService;
+	private SensorDataReceiverService sensorDataReceiver;
 	
 	private UUID[] uuids = { UUID.fromString("0cb419a8-aa9b-41ba-ad33-4869eaa6581b"), 
 			UUID.fromString("ad3a085b-a849-491f-9708-821ba02ae7a6") , 
@@ -43,7 +43,7 @@ public class SensorActivityMock implements Runnable {
 		try {
 			while(true) {
 				SimpleMeasurementDataDto data = generateMeasurement();
-				measurementService.addNewData(data);
+				sensorDataReceiver.processSensorData(data);
 				Thread.sleep(4000);
 			}
 		} catch (InterruptedException e) {

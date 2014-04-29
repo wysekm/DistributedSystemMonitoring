@@ -21,8 +21,7 @@ public class MeasurementDtoFactoryImpl implements MeasurementDtoFactory {
 
 	@Override
 	public MeasurementDto createNewMeasurement(SimpleMeasurementDataDto dto) {
-		//TODO dodać unit to SimpleMeasurementDataDto
 		String monitorAdress = "http://localhost:" + monitorPort;
-		return new MeasurementDto(dto.getId(), dto.getResource(), dto.getMetric(), "someUnit", monitorAdress);
+		return new MeasurementDto(dto.getId(), dto.getResource(), dto.getMetric(), dto.getUnit(), monitorAdress);
 	}
 }

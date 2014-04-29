@@ -27,6 +27,7 @@ import static org.springframework.hateoas.config.EnableHypermediaSupport.Hyperme
 	@PropertySource("monitor.properties"),
 	@PropertySource("application.properties")
 })
+@ImportResource("udp-client-context.xml")
 @EnableConfigurationProperties()
 public class MonitorConfig {
 

@@ -3,19 +3,13 @@ package pl.edu.agh.dsm.monitor.dto;
 import java.util.UUID;
 
 public class SimpleMeasurementDataDto {
+	
 	UUID id;
 	String resource;
 	String metric;
+	String unit;
 	long timestamp;
-	long value;
-
-	public String getMetric() {
-		return metric;
-	}
-
-	public void setMetric(String metric) {
-		this.metric = metric;
-	}
+	double value;
 
 	public UUID getId() {
 		return id;
@@ -33,6 +27,22 @@ public class SimpleMeasurementDataDto {
 		this.resource = resource;
 	}
 
+	public String getMetric() {
+		return metric;
+	}
+
+	public void setMetric(String metric) {
+		this.metric = metric;
+	}
+
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
 	public long getTimestamp() {
 		return timestamp;
 	}
@@ -41,46 +51,65 @@ public class SimpleMeasurementDataDto {
 		this.timestamp = timestamp;
 	}
 
-	public long getValue() {
+	public double getValue() {
 		return value;
 	}
 
-	public void setValue(long value) {
+	public void setValue(double value) {
 		this.value = value;
-	}
-	
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (!(o instanceof SimpleMeasurementDataDto))
-			return false;
-
-		SimpleMeasurementDataDto that = (SimpleMeasurementDataDto) o;
-
-		if (timestamp != that.timestamp)
-			return false;
-		if (value != that.value)
-			return false;
-		if (id != null ? !id.equals(that.id) : that.id != null)
-			return false;
-		if (metric != null ? !metric.equals(that.metric) : that.metric != null)
-			return false;
-		if (resource != null ? !resource.equals(that.resource)
-				: that.resource != null)
-			return false;
-
-		return true;
 	}
 
 	@Override
 	public int hashCode() {
-		int result = id != null ? id.hashCode() : 0;
-		result = 31 * result + (resource != null ? resource.hashCode() : 0);
-		result = 31 * result + (metric != null ? metric.hashCode() : 0);
-		result = 31 * result + (int) (timestamp ^ (timestamp >>> 32));
-		result = 31 * result + (int) (value ^ (value >>> 32));
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((metric == null) ? 0 : metric.hashCode());
+		result = prime * result
+				+ ((resource == null) ? 0 : resource.hashCode());
+		result = prime * result + (int) (timestamp ^ (timestamp >>> 32));
+		result = prime * result + ((unit == null) ? 0 : unit.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(value);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SimpleMeasurementDataDto other = (SimpleMeasurementDataDto) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (metric == null) {
+			if (other.metric != null)
+				return false;
+		} else if (!metric.equals(other.metric))
+			return false;
+		if (resource == null) {
+			if (other.resource != null)
+				return false;
+		} else if (!resource.equals(other.resource))
+			return false;
+		if (timestamp != other.timestamp)
+			return false;
+		if (unit == null) {
+			if (other.unit != null)
+				return false;
+		} else if (!unit.equals(other.unit))
+			return false;
+		if (Double.doubleToLongBits(value) != Double
+				.doubleToLongBits(other.value))
+			return false;
+		return true;
 	}
 
 	@Override
