@@ -15,7 +15,7 @@ import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType
 @EnableAutoConfiguration
 @ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class), value = {
 		"pl.edu.agh.dsm.catalog.controller", "pl.edu.agh.dsm.catalog.service",
-		"pl.edu.agh.dsm.common.measurement.impl" })
+		"pl.edu.agh.dsm.common.repository", "pl.edu.agh.dsm.common.service" })
 @Import({ MocksConfiguration.class })
 @EnableEntityLinks
 @EnableHypermediaSupport(type = HypermediaType.HAL)

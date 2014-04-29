@@ -14,9 +14,9 @@ import org.springframework.hateoas.Resources;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import pl.edu.agh.dsm.catalog.service.ResourcesService;
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.common.dto.SystemResourceDto;
+import pl.edu.agh.dsm.common.service.ResourcesService;
 
 @RestController
 @ExposesResourceFor(SystemResourceDto.class)
@@ -32,7 +32,7 @@ public class SystemResourcesController {
 	@RequestMapping(method = GET, value = "")
 	public Resources<Resource<SystemResourceDto>> getResources() {
 
-		List<SystemResourceDto> list = service.getResources();
+		List<SystemResourceDto> list = service.getList();
 		List<Resource<SystemResourceDto>> resources = new ArrayList<>();
 		for (SystemResourceDto resource : list) {
 			Resource<SystemResourceDto> element = new Resource<>(resource);

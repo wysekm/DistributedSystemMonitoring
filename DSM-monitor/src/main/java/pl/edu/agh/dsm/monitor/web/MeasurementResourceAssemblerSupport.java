@@ -7,23 +7,24 @@ import org.springframework.stereotype.Component;
 
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.common.security.AutorizationContext;
-import pl.edu.agh.dsm.monitor.externalApi.UCDeleteComplexMeasurement;
+import pl.edu.agh.dsm.monitor.service.ComplexMeasurementsService;
 
 @Component
 public class MeasurementResourceAssemblerSupport extends
 		AbstractResourceAssemblerSupport<MeasurementDto> {
 
 	private EntityLinks entityLinks;
-	private UCDeleteComplexMeasurement ucDeleteComplexMeasurement;
+	private ComplexMeasurementsService complexMeasurementsService;
 	private AutorizationContext autorizationContext;
 
 	@Autowired
-	public MeasurementResourceAssemblerSupport(
-			AutorizationContext autorizationContext, EntityLinks entityLinks,
-			UCDeleteComplexMeasurement ucDeleteComplexMeasurement) {
-		this.autorizationContext = autorizationContext;
+	public MeasurementResourceAssemblerSupport(EntityLinks entityLinks,
+			ComplexMeasurementsService complexMeasurementsService,
+			AutorizationContext autorizationContext) {
+		super();
 		this.entityLinks = entityLinks;
-		this.ucDeleteComplexMeasurement = ucDeleteComplexMeasurement;
+		this.complexMeasurementsService = complexMeasurementsService;
+		this.autorizationContext = autorizationContext;
 	}
 
 	@Override

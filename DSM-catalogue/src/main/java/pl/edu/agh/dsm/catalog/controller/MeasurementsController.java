@@ -63,7 +63,9 @@ public class MeasurementsController {
 	public void deleteMeasurement(@PathVariable("id") UUID uuid) {
 		service.deleteMeasurement(uuid);
 	}
-
+	
+	
+	// TODO use AbstractResourceAssemblerSupport<T> instead
 	private Link constructDetailsLink(MeasurementDto measurement) {
 		String href = measurement.getMonitor() + "/measurements/"
 				+ measurement.getId();

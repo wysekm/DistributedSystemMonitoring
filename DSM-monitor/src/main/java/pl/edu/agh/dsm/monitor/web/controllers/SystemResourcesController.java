@@ -1,5 +1,9 @@
 package pl.edu.agh.dsm.monitor.web.controllers;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.Resource;
@@ -8,12 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import pl.edu.agh.dsm.common.dto.SystemResourceDto;
-import pl.edu.agh.dsm.monitor.externalApi.UCResourcesList;
+import pl.edu.agh.dsm.common.service.ResourcesService;
 import pl.edu.agh.dsm.monitor.web.SystemResourceAssemblerSupport;
-
-import java.util.List;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 @ExposesResourceFor(SystemResourceDto.class)
@@ -24,11 +24,11 @@ public class SystemResourcesController {
 	private SystemResourceAssemblerSupport assemblerSupport;
 
 	@Autowired
-	UCResourcesList ucResourcesList;
+	ResourcesService resourceService;
 
 	@RequestMapping(method = GET, value = "")
 	public Resources<Resource<SystemResourceDto>> getResources() {
-		List<SystemResourceDto> filter = ucResourcesList.list();
+		List<SystemResourceDto> filter = resourceService.getList();
 		return assemblerSupport.addLinks(filter);
 	}
 

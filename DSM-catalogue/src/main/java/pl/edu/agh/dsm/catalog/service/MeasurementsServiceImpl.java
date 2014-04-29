@@ -10,8 +10,8 @@ import com.google.common.base.Predicate;
 
 import pl.edu.agh.dsm.common.InternalErrorException;
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
-import pl.edu.agh.dsm.common.measurement.MeasurementPredicateFactory;
-import pl.edu.agh.dsm.common.measurement.MeasurementRepository;
+import pl.edu.agh.dsm.common.repository.MeasurementRepository;
+import pl.edu.agh.dsm.common.repository.predicate.MeasurementPredicateFactory;
 
 @Service
 public class MeasurementsServiceImpl implements MeasurementsService {

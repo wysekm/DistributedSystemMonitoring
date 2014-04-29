@@ -1,23 +1,31 @@
 package pl.edu.agh.dsm.monitor.web.controllers;
 
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.monitor.dto.ComplexMeasurementDto;
 import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
-import pl.edu.agh.dsm.monitor.externalApi.*;
-import pl.edu.agh.dsm.monitor.measurement.DataLimit;
+import pl.edu.agh.dsm.monitor.repository.predicate.DataLimit;
+import pl.edu.agh.dsm.monitor.service.ComplexMeasurementsService;
+import pl.edu.agh.dsm.monitor.service.MeasurementsService;
 import pl.edu.agh.dsm.monitor.web.MeasurementResourceAssemblerSupport;
-
-import java.util.List;
-import java.util.UUID;
-
-import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @RestController
 @ExposesResourceFor(MeasurementDto.class)
@@ -28,38 +36,28 @@ public class MeasurementsController {
 	private MeasurementResourceAssemblerSupport assemblerSupport;
 
 	@Autowired
-	private UCMeasurementsList ucMonitorMeasurementsList;
-
+	private MeasurementsService measurementService;
+	
 	@Autowired
-	private UCAddComplexMeasurement ucAddComplexMeasurement;
-
-	@Autowired
-	private UCMeasurementDetails ucMeasurementDetails;
-
-	@Autowired
-	private UCMeasurementDataDetails ucMeasurementDataDetails;
-
-	@Autowired
-	private UCDeleteComplexMeasurement ucDeleteComplexMeasurement;
+	private ComplexMeasurementsService complexMeasurementService;
 
 	@RequestMapping(method = GET, value = "")
 	public Resources<Resource<MeasurementDto>> getMeasurements(
 			@RequestParam(value = "metric", defaultValue = "") String metric,
 			@RequestParam(value = "resource", defaultValue = "") String resource) {
-		List<MeasurementDto> filter = ucMonitorMeasurementsList.filter(metric,
-				resource);
-		return assemblerSupport.addLinks(filter);
+		List<MeasurementDto> list = measurementService.getList(metric, resource);
+		return assemblerSupport.addLinks(list);
 	}
 
 	@RequestMapping(method = POST, value = "")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void addMeasurement(@RequestBody ComplexMeasurementDto complex) {
-		ucAddComplexMeasurement.create(complex);
+		complexMeasurementService.create(complex);
 	}
 
 	@RequestMapping(method = GET, value = "/{id}")
 	public Resource<MeasurementDto> getMeasurement(@PathVariable("id") UUID uuid) {
-		MeasurementDto details = ucMeasurementDetails.details(uuid);
+		MeasurementDto details = measurementService.getDetails(uuid);
 		return assemblerSupport.addLinks(details);
 	}
 
@@ -68,12 +66,13 @@ public class MeasurementsController {
 			@PathVariable("id") UUID uuid,
 			@RequestParam(value = "limit", defaultValue = "all") DataLimit limit,
 			@RequestParam(value = "value", defaultValue = "0") int value) {
-		return ucMeasurementDataDetails.details(uuid, limit, value);
+		return measurementService.getData(uuid, limit, value);
 	}
 
 	@RequestMapping(method = DELETE, value = "/{id}")
 	public void deleteMeasurement(@PathVariable("id") UUID uuid) {
-		ucDeleteComplexMeasurement.delete(uuid);
+		complexMeasurementService.delete(uuid);
 	}
-
+	
+	//TODO getComplexDetails
 }

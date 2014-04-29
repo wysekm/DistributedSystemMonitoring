@@ -1,0 +1,15 @@
+package pl.edu.agh.dsm.monitor.internalApi;
+
+import pl.edu.agh.dsm.common.dto.MeasurementDto;
+import pl.edu.agh.dsm.common.security.ApplicationUser;
+import pl.edu.agh.dsm.monitor.dto.ComplexMeasurementDto;
+
+/*
+ * Klsa wykonuje nastepujace zadania
+ * Tworzy obiekt klasy measurement ktory bedzie reprezentowal pomiar zlozony
+ * Tworzy i ruchamia nowe taski które co jakis czas będą dodawały nowe pomiary złożone
+ * */
+public interface ComplexMeasurementTaskFactory {
+	MeasurementDto create(ComplexMeasurementDto complexMeasurementDto,
+			ApplicationUser applicationUser);
+}

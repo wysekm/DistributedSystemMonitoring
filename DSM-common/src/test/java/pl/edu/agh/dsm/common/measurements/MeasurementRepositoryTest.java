@@ -2,12 +2,14 @@ package pl.edu.agh.dsm.common.measurements;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
-import pl.edu.agh.dsm.common.measurement.MeasurementRepository;
-import pl.edu.agh.dsm.common.measurement.impl.MeasurementRepositoryImpl;
+import pl.edu.agh.dsm.common.repository.MeasurementRepository;
+import pl.edu.agh.dsm.common.repository.MeasurementRepositoryImpl;
 
 import java.io.IOException;
 import java.util.List;

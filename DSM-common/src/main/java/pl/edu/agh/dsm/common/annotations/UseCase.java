@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 @Component
 @Retention(RetentionPolicy.RUNTIME)
 // @Transactional(propagation = Propagation.REQUIRED)
-@Target(ElementType.TYPE)
+@Target({ElementType.TYPE, ElementType.METHOD})
 public @interface UseCase {
 	String value() default "";
 }

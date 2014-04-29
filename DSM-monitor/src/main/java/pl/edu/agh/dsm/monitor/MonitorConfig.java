@@ -19,11 +19,14 @@ import static org.springframework.hateoas.config.EnableHypermediaSupport.Hyperme
 @ComponentScan(excludeFilters = {
 		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class),
 		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = GuiMockComponent.class) },
-        value = { "pl.edu.agh.dsm.monitor", "pl.edu.agh.dsm.common.measurement.impl" })
+		value = { "pl.edu.agh.dsm.monitor", "pl.edu.agh.dsm.common" })
 @Import({ GuiMocksConfiguration.class })
 @EnableEntityLinks
 @EnableHypermediaSupport(type = HypermediaType.HAL)
-@PropertySource(value = "monitor.properties")
+@PropertySources({
+	@PropertySource("monitor.properties"),
+	@PropertySource("application.properties")
+})
 @EnableConfigurationProperties()
 public class MonitorConfig {
 
@@ -37,9 +40,9 @@ public class MonitorConfig {
 		return new MockAutorizationContext();
 	}
 
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
+	@Bean
+	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+		return new PropertySourcesPlaceholderConfigurer();
+	}
 
 }
