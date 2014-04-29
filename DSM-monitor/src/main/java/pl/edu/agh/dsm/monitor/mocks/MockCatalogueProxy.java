@@ -9,7 +9,7 @@ import pl.edu.agh.dsm.monitor.internalApi.CatalogueProxy;
 
 import java.util.UUID;
 
-@GuiMockComponent
+//@GuiMockComponent
 public class MockCatalogueProxy implements CatalogueProxy {
 
 	static final Logger logger = LoggerFactory

@@ -52,4 +52,10 @@ public class MeasurementDataDto {
 	public boolean canEqual(Object other) {
 		return other instanceof MeasurementDataDto;
 	}
+
+	@Override
+	public String toString() {
+		return "MeasurementDataDto [timestamp=" + timestamp + ", data=" + data
+				+ "]";
+	}
 }

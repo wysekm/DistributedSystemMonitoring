@@ -13,6 +13,7 @@ import pl.edu.agh.dsm.common.repository.MeasurementRepository;
 import pl.edu.agh.dsm.common.repository.predicate.MeasurementPredicateFactory;
 import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.monitor.dto.SimpleMeasurementDataDto;
+import pl.edu.agh.dsm.monitor.internalApi.CatalogueProxy;
 import pl.edu.agh.dsm.monitor.internalApi.MeasurementDtoFactory;
 import pl.edu.agh.dsm.monitor.repository.MeasurementDataRepository;
 import pl.edu.agh.dsm.monitor.repository.predicate.DataLimit;
@@ -21,6 +22,9 @@ import pl.edu.agh.dsm.monitor.repository.predicate.MeasurementDataPredicateFacto
 @Service
 public class MeasurementServiceImpl implements MeasurementsService {
 
+	@Autowired
+	CatalogueProxy catalogueProxy;
+	
 	@Autowired
 	MeasurementPredicateFactory precondictionFactory;
 	
@@ -62,6 +66,7 @@ public class MeasurementServiceImpl implements MeasurementsService {
 		if(measurementRepository.find(dto.getId()) == null) {
 			MeasurementDto measurement = measurementDtoFactory.createNewMeasurement(dto);
 			measurementRepository.save(measurement);
+			catalogueProxy.addMeasurement(measurement);
 		}
 		measurementDataRepository.add(dto.getId(), measurementData);
 	}

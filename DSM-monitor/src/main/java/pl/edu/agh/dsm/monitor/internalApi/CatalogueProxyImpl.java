@@ -41,18 +41,19 @@ public class CatalogueProxyImpl implements CatalogueProxy{
 
 
 	@Override
-	public void addMeasurement(MeasurementDto uuid) {
+	public void addMeasurement(MeasurementDto dto) {
 
 
 //        ObjectWriter objectWriter = objectMapper.writerWithView("JakisProfil".getClass());
 //        objectWriter.writeValueAsString()
 
-		logger.debug("send info about new measurement with id {}", uuid);
+		logger.debug("send info about new measurement with id {}", dto);
 
-		String data = "{\n" + "\"id\":\"" + uuid.getId() + "\",\n"
-				+ "\"monitor\": \"" + uuid.getMonitor() + "\",\n"
-				+ "\"resource\": \"" + uuid.getResource() + "\",\n"
-				+ "\"metric\": \"" + uuid.getMetric() + "\"\n" + "}";
+		String data = "{\n" + "\"id\":\"" + dto.getId() + "\",\n"
+				+ "\"monitor\": \"" + dto.getMonitor() + "\",\n"
+				+ "\"resource\": \"" + dto.getResource() + "\",\n"
+				+ "\"unit\": \"" + dto.getUnit() + "\",\n"
+				+ "\"metric\": \"" + dto.getMetric() + "\"\n" + "}";
 		HttpEntity dataEntity = new StringEntity(data,
 				ContentType.APPLICATION_JSON);
 		Credentials userCredentials = new UsernamePasswordCredentials(

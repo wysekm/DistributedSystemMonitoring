@@ -44,4 +44,9 @@ public class SystemResourceDto {
 	public boolean canEqual(Object other) {
 		return other instanceof SystemResourceDto;
 	}
+
+	@Override
+	public String toString() {
+		return "SystemResourceDto [name=" + name + "]";
+	}
 }

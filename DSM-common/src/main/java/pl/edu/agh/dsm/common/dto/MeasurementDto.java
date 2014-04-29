@@ -115,4 +115,11 @@ public class MeasurementDto {
 	public boolean canEqual(Object other) {
 		return other instanceof MeasurementDto;
 	}
+
+	@Override
+	public String toString() {
+		return "MeasurementDto [id=" + id + ", resource=" + resource
+				+ ", metric=" + metric + ", unit=" + unit + ", monitor="
+				+ monitor + "]";
+	}
 }

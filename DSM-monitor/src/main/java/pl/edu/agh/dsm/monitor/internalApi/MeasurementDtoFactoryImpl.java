@@ -13,8 +13,6 @@ public class MeasurementDtoFactoryImpl implements MeasurementDtoFactory {
 	@Value("${server.port}")
 	String monitorPort;
 	
-	String monitorAdress = "http://localhost:" + monitorPort;
-	
 	@Override
 	public MeasurementDataDto createNewMeasurementData(
 			SimpleMeasurementDataDto dto) {
@@ -24,6 +22,7 @@ public class MeasurementDtoFactoryImpl implements MeasurementDtoFactory {
 	@Override
 	public MeasurementDto createNewMeasurement(SimpleMeasurementDataDto dto) {
 		//TODO dodać unit to SimpleMeasurementDataDto
+		String monitorAdress = "http://localhost:" + monitorPort;
 		return new MeasurementDto(dto.getId(), dto.getResource(), dto.getMetric(), "someUnit", monitorAdress);
 	}
 }
