@@ -20,6 +20,7 @@ Główne sekcje:
 
 * [Home](https://github.com/wysekm/DistributedSystemMonitoring/wiki) - główna strona wiki projektu
 * [Dokumentacja techniczna](https://github.com/wysekm/DistributedSystemMonitoring/wiki/Dokumentacja-techniczna) - dokumentacja techniczna projektu
+* [Dokumentacja użytkownika](https://github.com/wysekm/DistributedSystemMonitoring/wiki/Dokumentacja-U%C5%BCytkownika) - dokumentacja użytkownika
 
 Wszystkie strony wiki dostępne są pod adresem: https://github.com/wysekm/DistributedSystemMonitoring/wiki/_pages
 
