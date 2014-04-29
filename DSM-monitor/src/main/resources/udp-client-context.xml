@@ -9,8 +9,8 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<int-ip:udp-inbound-channel-adapter
-		id="receiverChannel" channel="objectMapperInput" port="9000"
-		multicast="false" check-length="false" pool-size="10" lookup-host="false" />
+		id="receiverChannel" channel="objectMapperInput" port="${udp.client.port}"
+		multicast="false" check-length="false" pool-size="${udp.client.pool-size}" lookup-host="false" />
 
 	<int:json-to-object-transformer
 		input-channel="objectMapperInput" type="pl.edu.agh.dsm.monitor.dto.SimpleMeasurementDataDto"

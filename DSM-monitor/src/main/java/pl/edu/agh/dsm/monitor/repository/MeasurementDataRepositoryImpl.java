@@ -6,6 +6,7 @@ import com.google.common.collect.Lists;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
@@ -18,7 +19,9 @@ public class MeasurementDataRepositoryImpl implements MeasurementDataRepository 
 	static final Logger logger = LoggerFactory
 			.getLogger(MeasurementDataRepositoryImpl.class);
 	static Map<UUID, List<MeasurementDataDto>> repo = new HashMap<>();
-	static final int MAX_DATA_LIMIT = 10;
+	
+	@Value("${data.storing.limit}")
+	int maxDataLimit;
 
 	@Override
 	public List<MeasurementDataDto> find(UUID uuid,
@@ -46,7 +49,7 @@ public class MeasurementDataRepositoryImpl implements MeasurementDataRepository 
 			repo.put(uuid, measurementDataList);
 		} else {
 			int listSize = measurementDataList.size();
-			if (listSize >= MAX_DATA_LIMIT) {
+			if (listSize >= maxDataLimit) {
 				measurementDataList.remove(listSize - 1);
 			}
 			measurementDataList.add(0, measurementDataDto);

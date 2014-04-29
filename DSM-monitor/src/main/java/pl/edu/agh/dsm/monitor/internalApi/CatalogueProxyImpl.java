@@ -40,7 +40,7 @@ public class CatalogueProxyImpl implements CatalogueProxy{
 	@Override
 	public void addMeasurement(MeasurementDto dto) {
 
-
+//		TODO
 //		ObjectWriter objectWriter = objectMapper.writerWithView("JakisProfil".getClass());
 //		objectWriter.writeValueAsString()
 

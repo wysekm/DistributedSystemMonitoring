@@ -23,10 +23,7 @@ import static org.springframework.hateoas.config.EnableHypermediaSupport.Hyperme
 @Import({ GuiMocksConfiguration.class })
 @EnableEntityLinks
 @EnableHypermediaSupport(type = HypermediaType.HAL)
-@PropertySources({
-	@PropertySource("monitor.properties"),
-	@PropertySource("application.properties")
-})
+@PropertySource("application.properties")
 @ImportResource("udp-client-context.xml")
 @EnableConfigurationProperties()
 public class MonitorConfig {
