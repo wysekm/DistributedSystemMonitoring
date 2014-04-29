@@ -4,13 +4,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.ExposesResourceFor;
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpStatus;
@@ -23,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import pl.edu.agh.dsm.catalog.service.MeasurementsService;
+import pl.edu.agh.dsm.catalog.web.MeasurementResourceAssemblerSupport;
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
 
 @RestController
@@ -32,6 +31,9 @@ public class MeasurementsController {
 
 	@Autowired
 	private MeasurementsService service;
+	
+	@Autowired
+	MeasurementResourceAssemblerSupport assmeblerSupport;
 
 	@RequestMapping(method = GET, value = "")
 	public Resources<Resource<MeasurementDto>> getMeasurements(
@@ -40,13 +42,7 @@ public class MeasurementsController {
 
 		List<MeasurementDto> measurements = service.getMeasurements(metric,
 				resource);
-		List<Resource<MeasurementDto>> resources = new ArrayList<>();
-		for (MeasurementDto measurement : measurements) {
-			Resource<MeasurementDto> element = new Resource<>(measurement);
-			element.add(constructDetailsLink(measurement));
-			resources.add(element);
-		}
-		return new Resources<Resource<MeasurementDto>>(resources);
+		return assmeblerSupport.addLinks(measurements);
 	}
 
 	@RequestMapping(method = POST, value = "", consumes = { "application/xml",
@@ -62,13 +58,5 @@ public class MeasurementsController {
 	@RequestMapping(method = DELETE, value = "/{id}")
 	public void deleteMeasurement(@PathVariable("id") UUID uuid) {
 		service.deleteMeasurement(uuid);
-	}
-	
-	
-	// TODO use AbstractResourceAssemblerSupport<T> instead
-	private Link constructDetailsLink(MeasurementDto measurement) {
-		String href = measurement.getMonitor() + "/measurements/"
-				+ measurement.getId();
-		return new Link(href, "details");
 	}
 }

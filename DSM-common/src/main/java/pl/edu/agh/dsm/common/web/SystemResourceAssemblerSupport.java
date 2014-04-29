@@ -1,11 +1,14 @@
-package pl.edu.agh.dsm.monitor.web;
+package pl.edu.agh.dsm.common.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityLinks;
+import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Component;
 
+import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.common.dto.SystemResourceDto;
+import pl.edu.agh.dsm.common.web.AbstractResourceAssemblerSupport;
 
 @Component
 public class SystemResourceAssemblerSupport extends
@@ -19,9 +22,13 @@ public class SystemResourceAssemblerSupport extends
 	}
 
 	@Override
-	public Resource<SystemResourceDto> addLinks(SystemResourceDto measurement) {
-		// TODO add link to filter
-
-		return new Resource<>(measurement);
+	public Resource<SystemResourceDto> addLinks(SystemResourceDto dto) {
+		Resource <SystemResourceDto> resource = new Resource<>(dto);
+		String href = entityLinks
+				.linkToCollectionResource(MeasurementDto.class).getHref();
+		href += "?resource=" + dto.getName();
+		Link link = new Link(href, "measurements");
+		resource.add(link);
+		return resource;
 	}
 }

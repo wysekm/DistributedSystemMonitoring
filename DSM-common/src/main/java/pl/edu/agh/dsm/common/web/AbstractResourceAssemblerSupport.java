@@ -1,4 +1,4 @@
-package pl.edu.agh.dsm.monitor.web;
+package pl.edu.agh.dsm.common.web;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;

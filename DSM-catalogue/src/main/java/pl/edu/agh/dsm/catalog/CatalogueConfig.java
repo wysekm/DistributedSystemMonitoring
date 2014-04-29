@@ -11,11 +11,14 @@ import org.springframework.hateoas.config.EnableEntityLinks;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
 
+import pl.edu.agh.dsm.common.annotations.GuiMockComponent;
+
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class), value = {
-		"pl.edu.agh.dsm.catalog.controller", "pl.edu.agh.dsm.catalog.service",
-		"pl.edu.agh.dsm.common.repository", "pl.edu.agh.dsm.common.service" })
+@ComponentScan(excludeFilters = {
+		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class),
+		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = GuiMockComponent.class)}, 
+		value = {"pl.edu.agh.dsm.catalog", "pl.edu.agh.dsm.common" })
 @Import({ MocksConfiguration.class })
 @EnableEntityLinks
 @EnableHypermediaSupport(type = HypermediaType.HAL)

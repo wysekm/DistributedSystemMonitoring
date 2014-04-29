@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pl.edu.agh.dsm.common.dto.SystemResourceDto;
 import pl.edu.agh.dsm.common.service.ResourcesService;
-import pl.edu.agh.dsm.monitor.web.SystemResourceAssemblerSupport;
+import pl.edu.agh.dsm.common.web.SystemResourceAssemblerSupport;
 
 @RestController
 @ExposesResourceFor(SystemResourceDto.class)
