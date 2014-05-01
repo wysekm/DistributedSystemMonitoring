@@ -8,6 +8,7 @@ public class UdpValueUpdate {
 	private String metric;
 	private Date timestamp;
 	private Double value;
+	private String unit;
 
 	public String getId() {
 		return id;
@@ -49,4 +50,11 @@ public class UdpValueUpdate {
 		this.value = value;
 	}
 
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
 }
