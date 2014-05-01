@@ -5,8 +5,6 @@ import org.hyperic.sigar.SigarException;
 import pl.edu.agh.dsm.sensor.monitored.MonitoredResource;
 import pl.edu.agh.dsm.sensor.monitored.MonitoringException;
 
-import java.util.UUID;
-
 public class MonitoredCpu extends MonitoredResource {
 
 	public static final String METRIC_NAME = "cpu";
@@ -18,12 +16,18 @@ public class MonitoredCpu extends MonitoredResource {
 	@Override
 	public double checkValue() throws MonitoringException {
 		try {
-			return sigar.getCpuPerc().getCombined();
+			return new Sigar().getCpuPerc().getCombined();
 		} catch (SigarException ex) {
 			throw new MonitoringException(
 					"SigarException caught while performing resource check: ",
-					ex);
+					ex
+			);
 		}
+	}
+
+	@Override
+	public String getUnit() {
+		return "%";
 	}
 
 }

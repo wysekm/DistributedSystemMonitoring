@@ -35,7 +35,7 @@ public class SensorThread implements Runnable {
 		Double result;
 		try {
 			result = resource.checkValue();
-			announceNewValue(resource.getId(), resource.getMetric(), result);
+			announceNewValue(resource.getId(), resource.getMetric(), result, resource.getUnit());
 			log.trace("Successfully checked value of resource "
 					+ resource.getId() + ", got result: " + result);
 		} catch (MonitoringException ex) {
@@ -55,7 +55,7 @@ public class SensorThread implements Runnable {
 	}
 
 	private void announceNewValue(String resourceId, String metric,
-			Double resourceValue) {
+			Double resourceValue, String unit) {
 		log.trace("Sending update to monitor server (resource id: "
 				+ resourceId + ")");
 		UdpValueUpdate val = new UdpValueUpdate();
@@ -64,6 +64,7 @@ public class SensorThread implements Runnable {
 		val.setMetric(metric);
 		val.setTimestamp(new Date());
 		val.setValue(resourceValue);
+		val.setUnit(unit);
 		socket.sendData(val);
 	}
 }
