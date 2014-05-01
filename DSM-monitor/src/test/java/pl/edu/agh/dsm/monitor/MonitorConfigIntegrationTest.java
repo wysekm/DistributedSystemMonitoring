@@ -29,11 +29,11 @@ public class MonitorConfigIntegrationTest {
 	@Test
 	public void testPropertiesFromEnv() throws Exception {
 		String property = environment.getProperty("catalogue.address");
-		Assert.assertEquals("http://localhost:8080", property);
+		Assert.assertEquals("http://localhost:8081", property);
 	}
 
 	@Test
 	public void testPropertyFromValue() throws Exception {
-		Assert.assertEquals("http://localhost:8080", catalogueAdress);
+		Assert.assertEquals("http://localhost:8081", catalogueAdress);
 	}
 }
