@@ -16,7 +16,7 @@ public class MonitoredCpu extends MonitoredResource {
 	@Override
 	public double checkValue() throws MonitoringException {
 		try {
-			return new Sigar().getCpuPerc().getCombined();
+			return 100 * new Sigar().getCpuPerc().getCombined();
 		} catch (SigarException ex) {
 			throw new MonitoringException(
 					"SigarException caught while performing resource check: ",
