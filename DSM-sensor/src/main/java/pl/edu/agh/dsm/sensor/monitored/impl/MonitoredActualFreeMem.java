@@ -9,7 +9,7 @@ public class MonitoredActualFreeMem extends MonitoredResource {
 
 	public static final String METRIC_NAME = "actualFreeMem";
 
-	public MonitoredActualMem() {
+	public MonitoredActualFreeMem() {
 		super(METRIC_NAME);
 	}
 

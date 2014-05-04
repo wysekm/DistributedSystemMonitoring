@@ -9,7 +9,7 @@ public class MonitoredPercentageFreeMem extends MonitoredResource {
 
 	public static final String METRIC_NAME = "percentFreeMem";
 
-	public MonitoredActualMem() {
+	public MonitoredPercentageFreeMem() {
 		super(METRIC_NAME);
 	}
 
