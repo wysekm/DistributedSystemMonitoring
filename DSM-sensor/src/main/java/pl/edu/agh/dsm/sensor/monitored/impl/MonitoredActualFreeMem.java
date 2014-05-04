@@ -7,7 +7,7 @@ import pl.edu.agh.dsm.sensor.monitored.MonitoringException;
 
 public class MonitoredActualFreeMem extends MonitoredResource {
 
-	public static final String METRIC_NAME = "actualFreeMem";
+	public static final String METRIC_NAME = "actualFreeMemUsage";
 
 	public MonitoredActualFreeMem() {
 		super(METRIC_NAME);
@@ -16,7 +16,7 @@ public class MonitoredActualFreeMem extends MonitoredResource {
 	@Override
 	public double checkValue() throws MonitoringException {
 		try {
-			return new Sigar().getMem().getActualFree().doubleValue();
+			return new Sigar().getMem().getActualFree();
 		} catch (SigarException ex) {
 			throw new MonitoringException(
 					"SigarException caught while performing resource check: ",

@@ -16,7 +16,7 @@ public class MonitoredPercentageUsedMem extends MonitoredResource {
 	@Override
 	public double checkValue() throws MonitoringException {
 		try {
-			return 100 * new Sigar().getMem().getUsedPercent();
+			return new Sigar().getMem().getUsedPercent();
 		} catch (SigarException ex) {
 			throw new MonitoringException(
 					"SigarException caught while performing resource check: ",

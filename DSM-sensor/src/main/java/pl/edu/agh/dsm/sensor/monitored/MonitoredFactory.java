@@ -1,6 +1,10 @@
 package pl.edu.agh.dsm.sensor.monitored;
 
 import pl.edu.agh.dsm.sensor.monitored.impl.MonitoredCpu;
+import pl.edu.agh.dsm.sensor.monitored.impl.MonitoredActualMem;
+import pl.edu.agh.dsm.sensor.monitored.impl.MonitoredActualFreeMem;
+import pl.edu.agh.dsm.sensor.monitored.impl.MonitoredPercentageFreeMem;
+import pl.edu.agh.dsm.sensor.monitored.impl.MonitoredPercentageUsedMem;
 
 public class MonitoredFactory {
 

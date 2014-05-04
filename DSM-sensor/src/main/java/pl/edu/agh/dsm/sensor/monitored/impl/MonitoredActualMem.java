@@ -16,7 +16,7 @@ public class MonitoredActualMem extends MonitoredResource {
 	@Override
 	public double checkValue() throws MonitoringException {
 		try {
-			return new Sigar().getMem().getActualUsed().doubleValue();
+			return new Sigar().getMem().getActualUsed();
 		} catch (SigarException ex) {
 			throw new MonitoringException(
 					"SigarException caught while performing resource check: ",
