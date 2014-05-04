@@ -27,7 +27,7 @@ public class MonitoredActualFreeMem extends MonitoredResource {
 
 	@Override
 	public String getUnit() {
-		return "MB";
+		return "B";
 	}
 
 }
