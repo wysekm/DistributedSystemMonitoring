@@ -3,6 +3,7 @@ package pl.edu.agh.dsm.front.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +24,7 @@ public class ProxyController {
 
     Logger logger = Logger.getLogger("frontend.proxy");
 
-    @RequestMapping()
+    @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String getData(@RequestParam("url") String name, @RequestParam("method") String method) {
         RestClient restClient = new RestClient();
