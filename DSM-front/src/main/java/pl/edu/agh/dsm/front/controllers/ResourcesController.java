@@ -75,7 +75,7 @@ public class ResourcesController {
                         item.setDetails(dta.step("_links").step("details").getString("href"));
                         item.setMetric(dta.getString("metric"));
                         item.setResource(dta.getString("resource"));
-                        item.setSelf(dta.step("_links").step("self").getString("href"));
+//                        item.setSelf(dta.step("_links").step("self").getString("href"));
                         resources.getList().add(item);
                     }
                 }
@@ -101,7 +101,7 @@ public class ResourcesController {
                     item.setDetails(dta.step("_links").step("details").getString("href"));
                     item.setMetric(dta.getString("metric"));
                     item.setResource(dta.getString("resource"));
-                    item.setSelf(dta.step("_links").step("self").getString("href"));
+//                    item.setSelf(dta.step("_links").step("self").getString("href"));
                     resources.getList().add(item);
                 }
             }
@@ -137,7 +137,7 @@ public class ResourcesController {
                     item.setDetails(dta.step("_links").step("details").getString("href"));
                     item.setMetric(dta.getString("metric"));
                     item.setResource(dta.getString("resource"));
-                    item.setSelf(dta.step("_links").step("self").getString("href"));
+//                    item.setSelf(dta.step("_links").step("self").getString("href"));
                     resources.getList().add(item);
                 }
             }
@@ -161,7 +161,7 @@ public class ResourcesController {
     static public class RST_KT_MSL_cls {
         private String resource;
         private String metric;
-        private String self;
+        private String self = "";
         private String details;
         private Boolean selected = false;
 

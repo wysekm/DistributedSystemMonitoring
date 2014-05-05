@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 
 @Controller
-@RequestMapping("")
+@RequestMapping("/**")
 public class MainController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getIndex() {
