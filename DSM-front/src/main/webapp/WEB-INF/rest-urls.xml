@@ -3,14 +3,29 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="rst_kt_msl" class="pl.edu.agh.dsm.front.system.RestClient">
+    <bean id="RST_KT_MSL" class="pl.edu.agh.dsm.front.system.RestClient">
         <property name="httpMethod" value="GET" />
-        <property name="url" value="http://localhost:8080/DSM-front/example/monitors/"/>
+        <property name="url" value="http://localhost:8082/DSM-front/example/RST_KT_MSL/"/>
     </bean>
 
-    <bean id="rst_mt_msg" class="pl.edu.agh.dsm.front.system.RestClient">
+
+
+    <bean id="RST_MT_MSG" class="pl.edu.agh.dsm.front.system.RestClient">
         <property name="httpMethod" value="GET" />
-        <property name="url" value="http://localhost:8080/DSM-front/example/resources/"/>
+        <property name="url" value="http://localhost:8082/DSM-front/example/resources/"/>
+    </bean>
+
+    <bean id="RST_KT_RSL" class="pl.edu.agh.dsm.front.system.RestClient">
+        <property name="httpMethod" value="GET" />
+        <!--<property name="url" value="http://localhost:8081/resources" />-->
+        <property name="url" value="http://localhost:8082/DSM-front/example/rst_kt_rsl/" />
+    </bean>
+
+
+    <!-- deprecated -->
+    <bean id="rst_kt_msl" class="pl.edu.agh.dsm.front.system.RestClient">
+        <property name="httpMethod" value="GET" />
+        <property name="url" value="http://localhost:8082/DSM-front/example/RST_KT_MSL/"/>
     </bean>
 
 <!--    <bean id="rst_mt_rsl" class="pl.edu.agh.dsm.front.system.RestClient">

@@ -11,6 +11,6 @@
 <script language="JavaScript" type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.js/"></script>
 <%--<script language="JavaScript" src="${pageContext.request.contextPath}/resources/bootstrap/config.json"></script>--%>
 <script language="JavaScript" type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.js"></script>
+<script language="JavaScript" type="text/javascript" src="${pageContext.request.contextPath}/resources/js/proxy.js"></script>
 <script language="JavaScript" type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.jqplot.js"></script>
-<script language="JavaScript" type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ploter.js"></script>
 <script language="JavaScript" type="text/javascript" src="${pageContext.request.contextPath}/resources/js/monitors.js"></script>

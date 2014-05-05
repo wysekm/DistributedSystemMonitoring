@@ -21,7 +21,7 @@ import java.util.List;
 @RequestMapping("/monitors/")
 public class MonitorController {
     @Autowired
-    RestClient rst_kt_msl;
+    RestClient RST_KT_MSL;
 
     @Autowired
     RestKeys restKeys;
@@ -30,7 +30,7 @@ public class MonitorController {
     public ModelAndView get() {
         final ModelAndView mv = new ModelAndView("monitors");
         final MetricModelSet metrics = new MetricModelSet();
-        rst_kt_msl.send(null, new RestClient.RestCallback() {
+        RST_KT_MSL.send(null, new RestClient.RestCallback() {
             @Override
             public void onCallback(HashMap data) {
 //                mv.addObject(restKeys.getMeasurements(), data.get(restKeys.getMeasurements()));

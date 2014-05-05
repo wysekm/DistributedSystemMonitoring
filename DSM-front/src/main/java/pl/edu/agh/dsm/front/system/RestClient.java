@@ -20,8 +20,6 @@ import java.util.logging.Logger;
 
 @Component
 public class RestClient {
-    @Autowired
-    RestKeys restKeys;
     Logger logger = Logger.getLogger("frontend.rest.client");
 
     private RestTemplate restTemplate = new RestTemplate();
@@ -31,6 +29,12 @@ public class RestClient {
         restTemplate.getMessageConverters().add(new FormHttpMessageConverter());
         restTemplate.getMessageConverters().add(new ByteArrayHttpMessageConverter());
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+    }
+
+    private boolean asIs = false;
+
+    public void asIs(boolean b) {
+        this.asIs = b;
     }
 
     public interface RestCallback {
@@ -74,8 +78,8 @@ public class RestClient {
         );
 
 
-        if (response.getBody().containsKey(restKeys.get_embedded())) {
-            callback.onCallback((HashMap) response.getBody().get(restKeys.get_embedded()));
+        if (response.getBody().containsKey("_embedded") && !asIs) {
+            callback.onCallback((HashMap) response.getBody().get("_embedded"));
         }else {
             callback.onCallback(response.getBody());
         }

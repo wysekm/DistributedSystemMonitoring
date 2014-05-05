@@ -2,33 +2,37 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="top.jsp"/>
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/measurements.js"></script>
+
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Lista dostępnych monitorów:</h3>
+        <h3 class="panel-title">Lista dostępnych pomiarów dla wybranych monitorów:</h3>
     </div>
     <div class="panel-body">
-        <form:form modelAttribute="rsc" method="post" action="${pageContext.request.contextPath}/graph/">
-
-                <c:forEach var="item" items="${rsc.rscSet}" varStatus="loop">
-                    <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Zasób</th>
-                        <th>Pomiar</th>
-                        <th>Twórz wykres</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+        <form:form modelAttribute="measurements" method="post" action="${pageContext.request.contextPath}/graph/">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Zasób</th>
+                    <th>Pomiar</th>
+                    <th>Aktualna wartość</th>
+                    <th>Twórz wykres</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="item" items="${measurements.list}" varStatus="loop">
                     <tr>
                         <td>${item.resource}</td>
-                        <td>${item.metric} [${item.unit}]</td>
+                        <td>${item.metric}</td>
                         <td>
-                            <form:checkbox path="rscSet[${loop.index}].selected" />
-                            <form:hidden path="rscSet[${loop.index}].resource" />
-                            <form:hidden path="rscSet[${loop.index}].href" />
-                            <form:hidden path="rscSet[${loop.index}].self" />
-                            <form:hidden path="rscSet[${loop.index}].unit" />
-                            <form:hidden path="rscSet[${loop.index}].metric" />
+                            <div class="measurements" data-url="${item.details}">0</div>
+                        </td>
+                        <td>
+                            <form:checkbox path="list[${loop.index}].selected" />
+                            <form:hidden path="list[${loop.index}].resource" />
+                            <form:hidden path="list[${loop.index}].details" />
+                            <form:hidden path="list[${loop.index}].self" />
+                            <form:hidden path="list[${loop.index}].metric" />
                         </td>
                     </tr>
                 </c:forEach>

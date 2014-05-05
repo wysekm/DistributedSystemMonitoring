@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import pl.edu.agh.dsm.front.models.ResourceModel;
-import pl.edu.agh.dsm.front.models.ResourceModelSet;
 
 /**
  * Created by Sakushu on 2014-04-26.
@@ -23,12 +21,13 @@ public class GraphController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView post(@ModelAttribute("rsc") ResourceModelSet rsc) {
+    public ModelAndView post(@ModelAttribute("rsc") ResourcesController.RST_KT_MSL_list rsc) {
         ModelAndView mv = new ModelAndView("plot");
-        ResourceModelSet rsc_nd = new ResourceModelSet();
-        for (ResourceModel rm : rsc.getRscSet()) {
-            if (rm.getSelected())
-                rsc_nd.getRscSet().add(rm);
+        ResourcesController.RST_KT_MSL_list rsc_nd = new ResourcesController.RST_KT_MSL_list();
+        for (ResourcesController.RST_KT_MSL_cls rm : rsc.getList()) {
+            if (!rm.getSelected())
+                continue;
+            rsc_nd.getList().add(rm);
         }
         mv.addObject("rsc", rsc_nd);
         return mv;

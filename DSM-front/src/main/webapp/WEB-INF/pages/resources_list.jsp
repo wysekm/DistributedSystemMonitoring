@@ -7,34 +7,28 @@
         <h3 class="panel-title">Lista dostępnych monitorów:</h3>
     </div>
     <div class="panel-body">
-        <form:form modelAttribute="rsc" method="post" action="${pageContext.request.contextPath}/graph/">
-
-                <c:forEach var="item" items="${rsc.rscSet}" varStatus="loop">
-                    <table class="table">
+        <form:form modelAttribute="measurements" method="post" action="${pageContext.request.contextPath}/res/measurements/">
+                <c:forEach var="item" items="${measurements.rscSet}" varStatus="loop">
+                    <table class="table table-condensed">
                     <thead>
                     <tr>
-                        <th>Zasób</th>
-                        <th>Pomiar</th>
-                        <th>Twórz wykres</th>
+                        <th style="width:550px;">Zasób</th>
+                        <th>Wybierz</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td>${item.resource}</td>
-                        <td>${item.metric} [${item.unit}]</td>
+                        <td>${item.sName}</td>
                         <td>
                             <form:checkbox path="rscSet[${loop.index}].selected" />
-                            <form:hidden path="rscSet[${loop.index}].resource" />
-                            <form:hidden path="rscSet[${loop.index}].href" />
-                            <form:hidden path="rscSet[${loop.index}].self" />
-                            <form:hidden path="rscSet[${loop.index}].unit" />
-                            <form:hidden path="rscSet[${loop.index}].metric" />
+                            <form:hidden path="rscSet[${loop.index}].sName" />
+                            <form:hidden path="rscSet[${loop.index}].measurements" />
                         </td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
-            <input type="submit" class="btn btn-default" value="Pokaż wykresy" />
+            <input type="submit" class="btn btn-default" value="Szczegóły" />
         </form:form>
     </div>
 </div>

@@ -26,7 +26,7 @@ public class ExampleController {
                 "          \"href\" : \"http://monitor1/measurements/c40fac9f-8c96-4476-b435-aa52e4b17e08\"\n" +
                 "        },\n" +
                 "        \"data\" : {\n" +
-                "          \"href\" : \"/DSM-front/example/graph/usage/\"\n" +
+                "          \"href\" : \"http://127.0.0.1:8082/DSM-front/example/graph/usage/\"\n" +
                 "        }\n" +
                 "      }\n" +
                 "    }, {\n" +
@@ -38,7 +38,7 @@ public class ExampleController {
                 "          \"href\" : \"http://monitor1/measurements/bffb94a2-2152-4559-992e-f9348da19619\"\n" +
                 "        },\n" +
                 "        \"data\" : {\n" +
-                "          \"href\" : \"/DSM-front/example/graph/usage/\"\n" +
+                "          \"href\" : \"http://127.0.0.1:8082/DSM-front/example/graph/usage/\"\n" +
                 "        }\n" +
                 "      }\n" +
                 "    } ]\n" +
@@ -69,20 +69,19 @@ public class ExampleController {
                 "}";
     }
 
-    @RequestMapping(value = "monitors/", method = RequestMethod.GET)
+    @RequestMapping(value = {"monitors/", "RST_KT_MSL/"}, method = RequestMethod.GET)
     @ResponseBody
     public String getMonitors() {
         return "{\n" +
                 "  \"_embedded\" : {\n" +
                 "    \"measurements\" : [ {\n" +
                 "      \"resource\" : \"atena_1A\",\n" +
-                "      \"metric\" : \"memUsage\",\n" +
                 "      \"_links\" : {\n" +
                 "        \"self\" : {\n" +
-                "          \"href\" : \"/DSM-front/example/resources/\"\n" +
+                "          \"href\" : \"http://127.0.0.1:8082/DSM-front/example/resources/\"\n" +
                 "        },\n" +
                 "        \"details\" : {\n" +
-                "          \"href\" : \"/DSM-front/example/resources/\"\n" +
+                "          \"href\" : \"http://127.0.0.1:8082/DSM-front/example/resources/\"\n" +
                 "        }\n" +
                 "      }\n" +
                 "    }, {\n" +
@@ -90,10 +89,10 @@ public class ExampleController {
                 "      \"metric\" : \"memUsage\",\n" +
                 "      \"_links\" : {\n" +
                 "        \"self\" : {\n" +
-                "          \"href\" : \"/DSM-front/example/resources/\"\n" +
+                "          \"href\" : \"http://127.0.0.1:8082//DSM-front/example/resources/\"\n" +
                 "        },\n" +
                 "        \"details\" : {\n" +
-                "          \"href\" : \"/DSM-front/example/resources/\"\n" +
+                "          \"href\" : \"http://127.0.0.1:8082//DSM-front/example/resources/\"\n" +
                 "        }\n" +
                 "      }\n" +
                 "    }, {\n" +
@@ -101,10 +100,10 @@ public class ExampleController {
                 "      \"metric\" : \"cpuUsage\",\n" +
                 "      \"_links\" : {\n" +
                 "        \"self\" : {\n" +
-                "          \"href\" : \"/DSM-front/example/resources/\"\n" +
+                "          \"href\" : \"http://127.0.0.1:8082//DSM-front/example/resources/\"\n" +
                 "        },\n" +
                 "        \"details\" : {\n" +
-                "          \"href\" : \"/DSM-front/example/resources/\"\n" +
+                "          \"href\" : \"http://127.0.0.1:8082/DSM-front/example/resources/\"\n" +
                 "        }\n" +
                 "      }\n" +
                 "    } ]\n" +
@@ -121,13 +120,39 @@ public class ExampleController {
                 "  \"unit\": \"%\",\n" +
                 "  \"_links\": {\n" +
                 "    \"self\": {\n" +
-                "      \"href\": \"/DSM-front/example/resources/\"\n" +
+                "      \"href\": \"http://127.0.0.1:8082/DSM-front/example/resources/\"\n" +
                 "    },\n" +
                 "    \"data\": {\n" +
-                "      \"href\": \"/DSM-front/example/graph/usage/\"\n" +
+                "      \"href\": \"http://127.0.0.1:8082/DSM-front/example/graph/usage/\"\n" +
                 "    }\n" +
                 "  }\n" +
                 "}";
     }
 
+    @RequestMapping(value = "rst_kt_rsl", method = RequestMethod.GET)
+    @ResponseBody
+    public String get_RST_KT_RSL() {
+        return "{\n" +
+                "  \"_embedded\": {\n" +
+                "    \"resources\": [\n" +
+                "      {\n" +
+                "        \"name\": \"atena_1A\",\n" +
+                "        \"_links\": {\n" +
+                "          \"measurements\": {\n" +
+                "            \"href\": \"http://127.0.0.1:8082/DSM-front/example/RST_KT_MSL/?resource=atena_1A\"\n" +
+                "          }\n" +
+                "        }\n" +
+                "      },\n" +
+                "      {\n" +
+                "        \"name\": \"zeus_2F\",\n" +
+                "        \"_links\": {\n" +
+                "          \"measurements\": {\n" +
+                "            \"href\": \"http://127.0.0.1:8082/DSM-front/example/RST_KT_MSL/?resource=zeus_2F\"\n" +
+                "          }\n" +
+                "        }\n" +
+                "      }\n" +
+                "    ]\n" +
+                "  }\n" +
+                "}";
+    }
 }

@@ -1,19 +1,33 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<jsp:include page="top.jsp" />
+<jsp:include page="top.jsp"/>
 
-<form:form method="post" action="${pageContext.request.contextPath}/rsc/" class="form-horizontal" role="form" modelAttribute="search">
-    <div class="form-group">
-        <label for="f_inputSearch" class="col-sm-2 control-label">Fraza wyszukiwania zasobu</label>
-
-        <div class="col-sm-10">
-            <form:input path="phrase" id="f_inputSearch" class="form-control"/>
-        </div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Wyszukaj pomiary o podanej nazwie zasobu i/lub nazwie metryki</h3>
     </div>
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Wyszukaj</button>
-        </div>
+    <div class="panel-body">
+        <form method="post" action="${pageContext.request.contextPath}/res/measurements/search/" class="form-horizontal">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Nazwa Metryki:</th>
+                    <th>Nazwa zasobu:</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <input name="metric" type="text" class="form-control" />
+                    </td>
+                    <td>
+                        <input name="resource" type="text" class="form-control" />
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <input type="submit" class="btn btn-default" value="Wyszukaj" />
+        </form>
     </div>
-</form:form>
+</div>
 
-<jsp:include page="bot.jsp" />
+<jsp:include page="bot.jsp"/>

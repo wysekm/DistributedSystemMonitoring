@@ -3,8 +3,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <div>
     <div class="btn-group">
-        <a href="${pageContext.request.contextPath}/monitors/" class="btn btn-default">Lista Monitorów</a>
-        <a href="${pageContext.request.contextPath}/rsc/" class="btn btn-default">Wyszukiwanie zasobów</a>
-        <a href="${pageContext.request.contextPath}/login/" class="btn btn-default">Logowanie</a>
+        <a href="${pageContext.request.contextPath}/res/" class="btn btn-default">Dostępne zasoby</a>
+        <a href="${pageContext.request.contextPath}/res/measurements/" class="btn btn-default">Wszystkie pomiary</a>
+        <a href="${pageContext.request.contextPath}/res/measurements/search/" class="btn btn-default">Wyszukiwanie pomiarów</a>
     </div>
 </div>
