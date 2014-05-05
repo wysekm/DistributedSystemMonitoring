@@ -10,9 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
  */
 
 @Controller
-@RequestMapping("/**")
+@RequestMapping("/")
 public class MainController {
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, produces = "text/html")
     public ModelAndView getIndex() {
         return new ModelAndView("index");
     }

@@ -17,6 +17,7 @@
     </bean>
 
     <mvc:resources mapping="/resources/**" location="resources/" order="0"/>
+    <!--<mvc:resources mapping="/**" location="WEB-INF/" />-->
     <import resource="rest-urls.xml"/>
     <import resource="models.xml"/>
     <import resource="mvc-mapping.xml"/>

@@ -1,6 +1,5 @@
 package pl.edu.agh.dsm.front.system;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.FormHttpMessageConverter;
@@ -11,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.nio.charset.Charset;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,18 +32,12 @@ public class RestClient {
     }
 
     private boolean asIs = false;
+    private String url = "";
+    private HttpMethod httpMethod = HttpMethod.GET;
 
     public void asIs(boolean b) {
         this.asIs = b;
     }
-
-    public interface RestCallback {
-        public void onCallback(HashMap data);
-    }
-
-
-    private String url = "";
-    private HttpMethod httpMethod = HttpMethod.GET;
 
     public HttpMethod getHttpMethod() {
         return httpMethod;
@@ -67,8 +61,14 @@ public class RestClient {
 
     public void send(HashMap mainTemplate, RestCallback callback, HashMap<String, String> parameters) {
         logger.log(Level.INFO, getUrl());
+        String nUrl = "";
+        for (Map.Entry<String, String> e : parameters.entrySet()) {
+            nUrl += "&" + e.getKey() + "={" + e.getKey() + "}";
+        }
+        nUrl = nUrl.replaceFirst("&", "?");
+        nUrl = url + nUrl;
         ResponseEntity<HashMap> response = restTemplate.exchange(
-                url,
+                nUrl,
                 httpMethod,
                 new HttpEntity<HashMap>(mainTemplate, new HttpHeaders() {{
                     set("Content-Type", MediaType.APPLICATION_JSON_VALUE);
@@ -76,12 +76,14 @@ public class RestClient {
                 HashMap.class,
                 parameters
         );
-
-
         if (response.getBody().containsKey("_embedded") && !asIs) {
             callback.onCallback((HashMap) response.getBody().get("_embedded"));
-        }else {
+        } else {
             callback.onCallback(response.getBody());
         }
+    }
+
+    public interface RestCallback {
+        public void onCallback(HashMap data);
     }
 }
