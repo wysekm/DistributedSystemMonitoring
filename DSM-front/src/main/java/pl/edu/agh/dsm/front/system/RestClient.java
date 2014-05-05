@@ -81,6 +81,7 @@ public class RestClient {
         } else {
             callback.onCallback(response.getBody());
         }
+        logger.log(Level.INFO, "complete for:" + nUrl);
     }
 
     public interface RestCallback {
