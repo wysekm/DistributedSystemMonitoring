@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.edu.agh.dsm.front.system.RMap;
 import pl.edu.agh.dsm.front.system.RestClient;
+import pl.edu.agh.dsm.front.system.RestKeys;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +30,9 @@ public class ResourcesController {
     @Autowired
     RestClient RST_KT_MSL;
 
+    @Autowired
+    RestKeys restKeys;
+
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView getResources() {
         final ModelAndView mv = new ModelAndView("resources_list");
@@ -38,7 +42,7 @@ public class ResourcesController {
             @Override
             public void onCallback(HashMap data) {
                 RMap d = new RMap(data);
-                List<HashMap> res_x = d.getAsList("resources");
+                List<HashMap> res_x = d.getAsList(restKeys.getResources());
                 for (HashMap rx : res_x) {
                     RMap k = new RMap(rx);
                     resources.getRscSet().add(new ResourcesNames(k.getString("name"), k.step("_links").step("measurements").getString("href")));
@@ -64,7 +68,7 @@ public class ResourcesController {
                 @Override
                 public void onCallback(HashMap data) {
                     RMap r = new RMap(data);
-                    List<HashMap> rx = r.getAsList("measurements");
+                    List<HashMap> rx = r.getAsList(restKeys.getMeasurements());
                     for (HashMap d : rx) {
                         RMap dta = new RMap(d);
                         RST_KT_MSL_cls item = new RST_KT_MSL_cls();
@@ -90,7 +94,7 @@ public class ResourcesController {
             @Override
             public void onCallback(HashMap data) {
                 RMap r = new RMap(data);
-                List<HashMap> rx = r.getAsList("measurements");
+                List<HashMap> rx = r.getAsList(restKeys.getMeasurements());
                 for (HashMap d : rx) {
                     RMap dta = new RMap(d);
                     RST_KT_MSL_cls item = new RST_KT_MSL_cls();
@@ -126,7 +130,7 @@ public class ResourcesController {
             @Override
             public void onCallback(HashMap data) {
                 RMap r = new RMap(data);
-                List<HashMap> rx = r.getAsList("measurements");
+                List<HashMap> rx = r.getAsList(restKeys.getMeasurements());
                 for (HashMap d : rx) {
                     RMap dta = new RMap(d);
                     RST_KT_MSL_cls item = new RST_KT_MSL_cls();

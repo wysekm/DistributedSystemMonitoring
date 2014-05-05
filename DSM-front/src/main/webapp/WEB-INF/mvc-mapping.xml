@@ -5,12 +5,12 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="MainController" class="pl.edu.agh.dsm.front.controllers.MainController"/>
-    <bean id="LoginController" class="pl.edu.agh.dsm.front.controllers.LoginController"/>
-    <bean id="SearchController" class="pl.edu.agh.dsm.front.controllers.SearchController">
-    </bean>
+    <!--<bean id="LoginController" class="pl.edu.agh.dsm.front.controllers.LoginController"/>-->
+    <!--<bean id="SearchController" class="pl.edu.agh.dsm.front.controllers.SearchController">-->
+    <!--</bean>-->
     <bean id="GraphController" class="pl.edu.agh.dsm.front.controllers.GraphController"/>
     <bean id="ExampleController" class="pl.edu.agh.dsm.front.controllers.ExampleController"/>
-    <bean id="MonitorsController" class="pl.edu.agh.dsm.front.controllers.MonitorController"/>
-    <bean id="ResourceController" class="pl.edu.agh.dsm.front.controllers.ResourcesController"/>
+    <!--<bean id="MonitorsController" class="pl.edu.agh.dsm.front.controllers.MonitorController"/>-->
+    <bean id="resourceController" class="pl.edu.agh.dsm.front.controllers.ResourcesController"/>
     <bean id="proxyController" class="pl.edu.agh.dsm.front.controllers.ProxyController"/>
 </beans>

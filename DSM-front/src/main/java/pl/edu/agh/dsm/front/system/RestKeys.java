@@ -16,6 +16,8 @@ public class RestKeys {
     private String href;
     private String details;
 
+    private String resources;
+
     public String get_embedded() {
         return _embedded;
     }
@@ -78,5 +80,13 @@ public class RestKeys {
 
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    public String getResources() {
+        return resources;
+    }
+
+    public void setResources(String resources) {
+        this.resources = resources;
     }
 }

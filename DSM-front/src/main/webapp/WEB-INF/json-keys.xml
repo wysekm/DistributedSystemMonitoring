@@ -5,13 +5,14 @@
 
     <bean id="RestKeys" class="pl.edu.agh.dsm.front.system.RestKeys">
         <property name="_embedded" value="_embedded" />
-        <property name="measurements" value="measurements" />
+        <property name="measurements" value="measurementDtoList" />
         <property name="_links" value="_links" />
         <property name="details" value="details" />
         <property name="href" value="href" />
         <property name="metric" value="metric" />
         <property name="resource" value="resource" />
         <property name="self" value="self" />
+        <property name="resources" value="systemResourceDtoList" />
     </bean>
 
 </beans>
