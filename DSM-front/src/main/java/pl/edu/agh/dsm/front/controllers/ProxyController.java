@@ -26,7 +26,7 @@ public class ProxyController {
 
     @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String getData(@RequestParam("url") String name, @RequestParam("method") String method) {
+    public HashMap getData(@RequestParam("url") String name, @RequestParam("method") String method) {
         RestClient restClient = new RestClient();
         restClient.setUrl(name);
         restClient.setHttpMethod(HttpMethod.valueOf(method));
@@ -38,14 +38,13 @@ public class ProxyController {
                 b.putAll(data);
             }
         });
+		return b;
         //System.out.println(b);
-
-        try {
+/*       try {
             return objectMapper.writeValueAsString(b);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return "{}";
+        return "{}";*/
     }
-
 }
