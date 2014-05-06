@@ -6,11 +6,9 @@ $(document).ready(function () {
             var plot_el = $(value);
             $(value).attr("id", "plt_id_num_" + plt_id);
             plt_id += 1;
-            $.get(proxy_create($(value).data("source"), "GET"), function (data) {
-                var main_data = jQuery.parseJSON(data);
+            $.get(proxy_create($(value).data("source"), "GET"), function (main_data) {
                 $(value).html("");
-                $.get(proxy_create(main_data._links.data.href, "GET"), function (data) {
-                    var plot_data = jQuery.parseJSON(data);
+                $.get(proxy_create(main_data._links.data.href, "GET"), function (plot_data) {
                     var datax = [];
                     plot_data._embedded.data.forEach(function (i) {
                         datax.push([i.timestamp, i.data]);
