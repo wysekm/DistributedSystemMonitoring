@@ -3,8 +3,8 @@ package pl.edu.agh.dsm.monitor.internalApi;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import pl.edu.agh.dsm.common.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
-import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.monitor.dto.SimpleMeasurementDataDto;
 
 @Component

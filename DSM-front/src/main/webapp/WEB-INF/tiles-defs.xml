@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<!-- Default Main Template -->
+	<definition name="mainTemplate" template="templates/tiles/layout" templateType="thymeleaf">
+		<put-attribute name="header" value="templates/tiles/header" />
+		<put-attribute name="footer" value="templates/tiles/footer" />
+	</definition>
+	
+	<definition name="*" extends="mainTemplate">  
+		<put-attribute name="content" value="templates/{1}" />
+	</definition>
+
+</tiles-definitions>

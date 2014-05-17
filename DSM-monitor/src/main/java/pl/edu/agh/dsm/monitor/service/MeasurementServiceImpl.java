@@ -6,12 +6,12 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import pl.edu.agh.dsm.common.dto.DataLimit;
+import pl.edu.agh.dsm.common.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.common.repository.MeasurementRepository;
 import pl.edu.agh.dsm.common.repository.predicate.MeasurementPredicateFactory;
-import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.monitor.repository.MeasurementDataRepository;
-import pl.edu.agh.dsm.monitor.repository.predicate.DataLimit;
 import pl.edu.agh.dsm.monitor.repository.predicate.MeasurementDataPredicateFactory;
 
 import com.google.common.base.Predicate;

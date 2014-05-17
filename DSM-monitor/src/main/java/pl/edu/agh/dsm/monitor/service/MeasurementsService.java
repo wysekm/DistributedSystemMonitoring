@@ -4,10 +4,9 @@ import java.util.List;
 import java.util.UUID;
 
 import pl.edu.agh.dsm.common.annotations.UseCase;
+import pl.edu.agh.dsm.common.dto.DataLimit;
+import pl.edu.agh.dsm.common.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
-import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
-import pl.edu.agh.dsm.monitor.dto.SimpleMeasurementDataDto;
-import pl.edu.agh.dsm.monitor.repository.predicate.DataLimit;
 
 public interface MeasurementsService {
 	
