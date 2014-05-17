@@ -5,6 +5,7 @@
 !/DSM-common/
 !/DSM-monitor/
 !/DSM-sensor/
+!/DSM-front/
 !pom.xml
 !.gitignore
 !LICENSE

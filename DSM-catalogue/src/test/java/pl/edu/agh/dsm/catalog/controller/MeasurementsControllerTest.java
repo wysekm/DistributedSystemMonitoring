@@ -16,6 +16,7 @@ import org.apache.http.entity.StringEntity;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
@@ -27,6 +28,7 @@ import pl.edu.agh.dsm.common.utils.HttpClientUtil.HttpResponseResult;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MeasurementsControllerTest {
 
+	@Ignore
 	@Test
 	public void testGetList() throws IOException {
 		checkMockServer();
@@ -36,6 +38,7 @@ public class MeasurementsControllerTest {
 		Assert.assertFalse(result.resultContent.isEmpty());
 	}
 
+	@Ignore
 	@Test
 	public void testAdd() throws IOException {
 		checkMockServer();
@@ -61,6 +64,7 @@ public class MeasurementsControllerTest {
 				.contains("{\"resource\":\"Host\",\"metric\":\"memUsage\",\"unit\":\"mb\",\"_links\":{\"details\":{\"href\":\"http://localhost:8085/measurements/a8bfb961-c123-4aac-a686-48a33de8cb11\"}}}"));
 	}
 
+	@Ignore
 	@Test
 	public void testDelete() throws IOException {
 		checkMockServer();
@@ -84,6 +88,7 @@ public class MeasurementsControllerTest {
 				.contains("a8bfb961-c123-4aac-a686-48a33de8cb11"));
 	}
 
+	@Ignore
 	@Test
 	public void testDeleteNotAuthenticated() throws IOException {
 		checkMockServer();
@@ -100,6 +105,7 @@ public class MeasurementsControllerTest {
 				result.statusLine.getStatusCode());
 	}
 
+	@Ignore
 	@Test
 	public void testDeleteNotAuthenticated2() throws IOException {
 		checkMockServer();
@@ -111,6 +117,7 @@ public class MeasurementsControllerTest {
 				result.statusLine.getStatusCode());
 	}
 
+	@Ignore
 	@Test
 	public void testDeleteNotAuthorized() throws IOException {
 		checkMockServer();
@@ -124,6 +131,7 @@ public class MeasurementsControllerTest {
 				result.statusLine.getStatusCode());
 	}
 
+	@Ignore
 	@Test
 	public void testAddNotAuthenticated() throws IOException {
 		checkMockServer();
@@ -137,6 +145,7 @@ public class MeasurementsControllerTest {
 				result.statusLine.getStatusCode());
 	}
 
+	@Ignore
 	@Test
 	public void testAddNotAuthenticated2() throws IOException {
 		checkMockServer();
@@ -150,6 +159,7 @@ public class MeasurementsControllerTest {
 				result.statusLine.getStatusCode());
 	}
 
+	@Ignore
 	@Test
 	public void testAddNotAuthorized() throws IOException {
 		checkMockServer();

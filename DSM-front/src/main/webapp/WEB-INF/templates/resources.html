@@ -1,0 +1,17 @@
+<div class="panel-heading">
+	<h3 class="panel-title">Resources</h3>
+</div>
+<div class="panel-body">
+	<table class="table table-condensed">
+		<tr>
+			<th class="text-center">Resource</th>
+			<th class="text-center">Measurements</th>
+		</tr>
+		<tr th:each="resource : ${resources}">
+			<td><span th:text="${resource.content.name}" /></td>
+			<td><a th:href="@{/measurements?resource=} + ${resource.content.name}">Show</a></td>
+		</tr>
+	</table>
+</div>
+
+

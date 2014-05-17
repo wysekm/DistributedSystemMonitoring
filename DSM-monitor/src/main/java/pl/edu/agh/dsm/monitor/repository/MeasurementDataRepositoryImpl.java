@@ -1,17 +1,21 @@
 package pl.edu.agh.dsm.monitor.repository;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
+import pl.edu.agh.dsm.common.dto.MeasurementDataDto;
 
-import java.util.*;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 @Component
 public class MeasurementDataRepositoryImpl implements MeasurementDataRepository {

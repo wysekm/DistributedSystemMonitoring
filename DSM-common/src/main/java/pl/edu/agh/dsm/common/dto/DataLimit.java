@@ -1,4 +1,4 @@
-package pl.edu.agh.dsm.monitor.repository.predicate;
+package pl.edu.agh.dsm.common.dto;
 
 public enum DataLimit {
 

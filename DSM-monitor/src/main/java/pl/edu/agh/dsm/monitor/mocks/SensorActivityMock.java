@@ -29,6 +29,7 @@ public class SensorActivityMock implements Runnable {
 			UUID.fromString("51428fa6-4a2d-47f4-940f-fa8d9cd916ca") };
 	private String[] metrics = { "mem", "mem", "cpu" };
 	private String[] resources = { "localhost", "zeus", "zeus" };
+	private String[] units = { "MB", "MB", "%" };
 	private Random random = new Random();
 	
 	@PostConstruct
@@ -58,8 +59,9 @@ public class SensorActivityMock implements Runnable {
 		dto.setId(uuids[draw]);
 		dto.setMetric(metrics[draw]);
 		dto.setResource(resources[draw]);
+		dto.setUnit(units[draw]);
 		dto.setTimestamp(new java.util.Date().getTime());
-		dto.setValue(new Random().nextLong());
+		dto.setValue(new Random().nextInt(100));
 		return dto;
 	}
 

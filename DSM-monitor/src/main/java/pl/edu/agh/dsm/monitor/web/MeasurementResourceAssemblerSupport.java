@@ -27,7 +27,7 @@ public class MeasurementResourceAssemblerSupport extends
 		Resource <MeasurementDto> resource = new Resource<>(dto);
 		Link selfLink = entityLinks.linkToSingleResource(dto.getClass(), dto.getId());
 		String href = entityLinks.linkToCollectionResource(MeasurementDto.class).getHref();
-		href += "/" + dto.getId() + "/data";
+		href += "/" + dto.getId() + "/data{?limit,value}";
 		Link dataLink = new Link(href, "data");
 		resource.add(selfLink);
 		resource.add(dataLink);

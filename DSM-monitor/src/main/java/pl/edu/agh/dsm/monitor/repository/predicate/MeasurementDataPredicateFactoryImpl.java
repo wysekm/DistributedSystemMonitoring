@@ -1,15 +1,16 @@
 package pl.edu.agh.dsm.monitor.repository.predicate;
 
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
+import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
+import pl.edu.agh.dsm.common.dto.DataLimit;
+import pl.edu.agh.dsm.common.dto.MeasurementDataDto;
 
-import java.util.concurrent.TimeUnit;
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 
 @Component
 public class MeasurementDataPredicateFactoryImpl implements

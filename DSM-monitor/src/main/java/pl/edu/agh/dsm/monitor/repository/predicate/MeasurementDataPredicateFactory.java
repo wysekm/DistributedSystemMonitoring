@@ -1,6 +1,7 @@
 package pl.edu.agh.dsm.monitor.repository.predicate;
 
-import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
+import pl.edu.agh.dsm.common.dto.DataLimit;
+import pl.edu.agh.dsm.common.dto.MeasurementDataDto;
 
 import com.google.common.base.Predicate;
 

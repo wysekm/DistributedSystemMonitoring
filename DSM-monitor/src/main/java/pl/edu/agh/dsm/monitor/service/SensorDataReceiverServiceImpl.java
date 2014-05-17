@@ -2,9 +2,9 @@ package pl.edu.agh.dsm.monitor.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import pl.edu.agh.dsm.common.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.common.repository.MeasurementRepository;
-import pl.edu.agh.dsm.monitor.dto.MeasurementDataDto;
 import pl.edu.agh.dsm.monitor.dto.SimpleMeasurementDataDto;
 import pl.edu.agh.dsm.monitor.internalApi.CatalogueProxy;
 import pl.edu.agh.dsm.monitor.internalApi.MeasurementDtoFactory;

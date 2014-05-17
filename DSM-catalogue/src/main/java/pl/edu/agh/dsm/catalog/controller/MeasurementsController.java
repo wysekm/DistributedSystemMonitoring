@@ -12,6 +12,7 @@ import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +36,7 @@ public class MeasurementsController {
 	@Autowired
 	MeasurementResourceAssemblerSupport assmeblerSupport;
 
-	@RequestMapping(method = GET, value = "")
+	@RequestMapping(method = GET, value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Resources<Resource<MeasurementDto>> getMeasurements(
 			@RequestParam(value = "metric", defaultValue = "") String metric,
 			@RequestParam(value = "resource", defaultValue = "") String resource) {
@@ -46,7 +47,7 @@ public class MeasurementsController {
 	}
 
 	@RequestMapping(method = POST, value = "", consumes = { "application/xml",
-			"application/json" })
+			"application/json" }, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	public @ResponseBody
 	MeasurementDto addMeasurement(@RequestBody MeasurementDto measurement) {

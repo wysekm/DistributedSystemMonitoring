@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +27,7 @@ public class SystemResourcesController {
 	@Autowired
 	ResourcesService resourceService;
 
-	@RequestMapping(method = GET, value = "")
+	@RequestMapping(method = GET, value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Resources<Resource<SystemResourceDto>> getResources() {
 		List<SystemResourceDto> filter = resourceService.getList();
 		return assemblerSupport.addLinks(filter);
