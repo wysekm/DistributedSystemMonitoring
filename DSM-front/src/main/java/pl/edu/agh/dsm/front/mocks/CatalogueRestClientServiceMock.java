@@ -12,8 +12,8 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Service;
 
-import pl.edu.agh.dsm.common.dto.MeasurementDto;
-import pl.edu.agh.dsm.common.dto.SystemResourceDto;
+import pl.edu.agh.dsm.front.dto.MeasurementDto;
+import pl.edu.agh.dsm.front.dto.SystemResourceDto;
 import pl.edu.agh.dsm.front.service.CatalogueRestClientService;
 
 @Service

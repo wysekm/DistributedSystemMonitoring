@@ -11,8 +11,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import pl.edu.agh.dsm.common.dto.MeasurementDto;
-import pl.edu.agh.dsm.common.dto.SystemResourceDto;
+import pl.edu.agh.dsm.front.dto.MeasurementDto;
+import pl.edu.agh.dsm.front.dto.SystemResourceDto;
 
 @Service
 public class CatalogueRestClientServiceImpl implements CatalogueRestClientService {

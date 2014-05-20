@@ -13,12 +13,12 @@
 		multicast="false" check-length="false" pool-size="${udp.client.pool-size}" lookup-host="false" />
 
 	<int:json-to-object-transformer
-		input-channel="objectMapperInput" type="pl.edu.agh.dsm.monitor.dto.SimpleMeasurementDataDto"
+		input-channel="objectMapperInput" type="pl.edu.agh.dsm.monitor.sensor.view.dto.SensorDataDto"
 		output-channel="processSensorData" />
 
 	<int:service-activator input-channel="processSensorData"
-		ref="sensorDataReceiverService" method="processSensorData" />
+		ref="sensorController" method="processSensorData" />
 
-	<bean id="sensorDataReceiverService" class="pl.edu.agh.dsm.monitor.service.SensorDataReceiverServiceImpl" />
+	<bean id="sensorController" class="pl.edu.agh.dsm.monitor.sensor.controller.SensorController" />
 
 </beans>
