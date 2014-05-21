@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import pl.edu.agh.dsm.common.dto.DataLimit;
-import pl.edu.agh.dsm.common.dto.MeasurementDataDto;
-import pl.edu.agh.dsm.common.dto.MeasurementDto;
+import pl.edu.agh.dsm.front.dto.DataLimit;
+import pl.edu.agh.dsm.front.dto.MeasurementDataDto;
+import pl.edu.agh.dsm.front.dto.MeasurementDto;
 
 @ExposesResourceFor(MeasurementDto.class)
 @RequestMapping("measurements")

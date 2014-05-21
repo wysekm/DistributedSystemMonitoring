@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import pl.edu.agh.dsm.common.dto.MeasurementDto;
 import pl.edu.agh.dsm.front.dto.GraphInput;
+import pl.edu.agh.dsm.front.dto.MeasurementDto;
 import pl.edu.agh.dsm.front.service.CatalogueRestClientService;
 
 @Controller

@@ -1,8 +1,8 @@
 package pl.edu.agh.dsm.catalog.controller;
 
-import static pl.edu.agh.dsm.common.utils.HttpClientUtil.makeDeleteRequest;
-import static pl.edu.agh.dsm.common.utils.HttpClientUtil.makeGetRequest;
-import static pl.edu.agh.dsm.common.utils.HttpClientUtil.makePostRequest;
+import static pl.edu.agh.dsm.catalog.controller.HttpClientUtil.makeDeleteRequest;
+import static pl.edu.agh.dsm.catalog.controller.HttpClientUtil.makeGetRequest;
+import static pl.edu.agh.dsm.catalog.controller.HttpClientUtil.makePostRequest;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,25 +20,24 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import pl.edu.agh.dsm.common.utils.HttpClientUtil.HttpResponseResult;
+import pl.edu.agh.dsm.catalog.controller.HttpClientUtil.HttpResponseResult;
 
 // TODO use spring mockmvc 
 
 //so that testDelete is after testAdd
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@Ignore
 public class MeasurementsControllerTest {
-
-	@Ignore
+	
 	@Test
 	public void testGetList() throws IOException {
 		checkMockServer();
 		HttpResponseResult result = makeGetRequest(
-				"http://localhost:8080/measurements", null);
+				"http://localhost:8081/measurements", null);
 		Assert.assertEquals(HttpStatus.SC_OK, result.statusLine.getStatusCode());
 		Assert.assertFalse(result.resultContent.isEmpty());
 	}
 
-	@Ignore
 	@Test
 	public void testAdd() throws IOException {
 		checkMockServer();
@@ -53,24 +52,23 @@ public class MeasurementsControllerTest {
 		Credentials userCredentials = new UsernamePasswordCredentials(
 				"monitor", "monitor");
 		HttpResponseResult result = makePostRequest(
-				"http://localhost:8080/measurements", dataEntity,
+				"http://localhost:8081/measurements", dataEntity,
 				userCredentials);
 		Assert.assertEquals(HttpStatus.SC_CREATED,
 				result.statusLine.getStatusCode());
 
-		result = makeGetRequest("http://localhost:8080/measurements", null);
-		Assume.assumeTrue(result.statusLine.getStatusCode() == HttpStatus.SC_OK);
+		result = makeGetRequest("http://localhost:8081/measurements", null);
+		Assume.assumeTrue("status: " + result.statusLine.getStatusCode(),  result.statusLine.getStatusCode() == HttpStatus.SC_OK);
 		Assert.assertTrue(result.resultContent
 				.contains("{\"resource\":\"Host\",\"metric\":\"memUsage\",\"unit\":\"mb\",\"_links\":{\"details\":{\"href\":\"http://localhost:8085/measurements/a8bfb961-c123-4aac-a686-48a33de8cb11\"}}}"));
 	}
 
-	@Ignore
 	@Test
 	public void testDelete() throws IOException {
 		checkMockServer();
 
 		HttpResponseResult result = makeGetRequest(
-				"http://localhost:8080/measurements", null);
+				"http://localhost:8081/measurements", null);
 		Assume.assumeTrue(result.statusLine.getStatusCode() == HttpStatus.SC_OK);
 		Assume.assumeTrue(result.resultContent
 				.contains("a8bfb961-c123-4aac-a686-48a33de8cb11"));
@@ -78,17 +76,16 @@ public class MeasurementsControllerTest {
 		Credentials userCredentials = new UsernamePasswordCredentials(
 				"monitor", "monitor");
 		result = makeDeleteRequest(
-				"http://localhost:8080/measurements/a8bfb961-c123-4aac-a686-48a33de8cb11",
+				"http://localhost:8081/measurements/a8bfb961-c123-4aac-a686-48a33de8cb11",
 				userCredentials);
 		Assert.assertEquals(HttpStatus.SC_OK, result.statusLine.getStatusCode());
 
-		result = makeGetRequest("http://localhost:8080/measurements", null);
+		result = makeGetRequest("http://localhost:8081/measurements", null);
 		Assume.assumeTrue(result.statusLine.getStatusCode() == HttpStatus.SC_OK);
 		Assert.assertFalse(result.resultContent
 				.contains("a8bfb961-c123-4aac-a686-48a33de8cb11"));
 	}
 
-	@Ignore
 	@Test
 	public void testDeleteNotAuthenticated() throws IOException {
 		checkMockServer();
@@ -99,25 +96,23 @@ public class MeasurementsControllerTest {
 		Credentials userCredentials = new UsernamePasswordCredentials(
 				"badUser", "badPassword");
 		HttpResponseResult result = makePostRequest(
-				"http://localhost:8080/measurements", dataEntity,
+				"http://localhost:8081/measurements", dataEntity,
 				userCredentials);
 		Assert.assertEquals(HttpStatus.SC_UNAUTHORIZED,
 				result.statusLine.getStatusCode());
 	}
 
-	@Ignore
 	@Test
 	public void testDeleteNotAuthenticated2() throws IOException {
 		checkMockServer();
 
 		HttpResponseResult result = makeDeleteRequest(
-				"http://localhost:8080/measurements/a8bfb961-c123-4aac-a686-48a33de8cb11",
+				"http://localhost:8081/measurements/a8bfb961-c123-4aac-a686-48a33de8cb11",
 				null);
 		Assert.assertEquals(HttpStatus.SC_UNAUTHORIZED,
 				result.statusLine.getStatusCode());
 	}
 
-	@Ignore
 	@Test
 	public void testDeleteNotAuthorized() throws IOException {
 		checkMockServer();
@@ -125,13 +120,12 @@ public class MeasurementsControllerTest {
 		Credentials userCredentials = new UsernamePasswordCredentials("user",
 				"user");
 		HttpResponseResult result = makeDeleteRequest(
-				"http://localhost:8080/measurements/a8bfb961-c123-4aac-a686-48a33de8cb11",
+				"http://localhost:8081/measurements/a8bfb961-c123-4aac-a686-48a33de8cb11",
 				userCredentials);
 		Assert.assertEquals(HttpStatus.SC_FORBIDDEN,
 				result.statusLine.getStatusCode());
 	}
 
-	@Ignore
 	@Test
 	public void testAddNotAuthenticated() throws IOException {
 		checkMockServer();
@@ -139,13 +133,12 @@ public class MeasurementsControllerTest {
 		Credentials userCredentials = new UsernamePasswordCredentials(
 				"badUser", "badPassword");
 		HttpResponseResult result = makeDeleteRequest(
-				"http://localhost:8080/measurements/a8bfb961-c123-4aac-a686-48a33de8cb11",
+				"http://localhost:8081/measurements/a8bfb961-c123-4aac-a686-48a33de8cb11",
 				userCredentials);
 		Assert.assertEquals(HttpStatus.SC_UNAUTHORIZED,
 				result.statusLine.getStatusCode());
 	}
 
-	@Ignore
 	@Test
 	public void testAddNotAuthenticated2() throws IOException {
 		checkMockServer();
@@ -154,12 +147,11 @@ public class MeasurementsControllerTest {
 		HttpEntity dataEntity = new StringEntity(data,
 				ContentType.APPLICATION_JSON);
 		HttpResponseResult result = makePostRequest(
-				"http://localhost:8080/measurements", dataEntity, null);
+				"http://localhost:8081/measurements", dataEntity, null);
 		Assert.assertEquals(HttpStatus.SC_UNAUTHORIZED,
 				result.statusLine.getStatusCode());
 	}
 
-	@Ignore
 	@Test
 	public void testAddNotAuthorized() throws IOException {
 		checkMockServer();
@@ -170,7 +162,7 @@ public class MeasurementsControllerTest {
 		Credentials userCredentials = new UsernamePasswordCredentials("user",
 				"user");
 		HttpResponseResult result = makePostRequest(
-				"http://localhost:8080/measurements", dataEntity,
+				"http://localhost:8081/measurements", dataEntity,
 				userCredentials);
 		Assert.assertEquals(HttpStatus.SC_FORBIDDEN,
 				result.statusLine.getStatusCode());
@@ -178,7 +170,7 @@ public class MeasurementsControllerTest {
 
 	public void checkMockServer() throws IOException {
 		try {
-			new URL("http://localhost:8080/measurements").openConnection()
+			new URL("http://localhost:8081/measurements").openConnection()
 					.connect();
 		} catch (IOException e) {
 			Assume.assumeNoException("Server is not up", e);

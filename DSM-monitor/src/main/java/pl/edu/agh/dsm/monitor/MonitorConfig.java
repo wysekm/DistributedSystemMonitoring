@@ -5,22 +5,27 @@ import java.io.IOException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.hateoas.config.EnableEntityLinks;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
+import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
 
-import pl.edu.agh.dsm.common.annotations.GuiMockComponent;
-import pl.edu.agh.dsm.common.security.MockAutorizationContext;
-import static org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
+import pl.edu.agh.dsm.monitor.core.infrastructure.annotation.MockComponent;
 
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan(excludeFilters = {
 		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class),
-		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = GuiMockComponent.class) },
+		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = MockComponent.class) },
 		value = { "pl.edu.agh.dsm.monitor", "pl.edu.agh.dsm.common" })
-@Import({ GuiMocksConfiguration.class })
+@Import({ MocksConfiguration.class })
 @EnableEntityLinks
 @EnableHypermediaSupport(type = HypermediaType.HAL)
 @PropertySource("application.properties")
@@ -31,11 +36,6 @@ public class MonitorConfig {
 	// use -Dspring.profiles.active="mockComponents" for mockImpl
 	public static void main(String[] args) throws IOException {
 		SpringApplication.run(MonitorConfig.class, args);
-	}
-
-	@Bean
-	public MockAutorizationContext getAutorizationContext() {
-		return new MockAutorizationContext();
 	}
 
 	@Bean
