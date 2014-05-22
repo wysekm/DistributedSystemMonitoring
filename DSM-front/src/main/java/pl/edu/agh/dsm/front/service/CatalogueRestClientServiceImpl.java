@@ -11,6 +11,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import pl.edu.agh.dsm.front.dto.ComplexTypeDto;
 import pl.edu.agh.dsm.front.dto.MeasurementDto;
 import pl.edu.agh.dsm.front.dto.SystemResourceDto;
 
@@ -41,4 +42,15 @@ public class CatalogueRestClientServiceImpl implements CatalogueRestClientServic
 		return restTemplate.exchange(resourcesUri, HttpMethod.GET, null, typeRef).
 				getBody().getContent();
 	}
+
+	@Override
+	public Collection<Resource<ComplexTypeDto>> getAvailableComplexTypes(String monitorAddress) {
+		ParameterizedTypeReference<Resources<Resource<ComplexTypeDto>>> typeRef =
+				new ParameterizedTypeReference<Resources<Resource<ComplexTypeDto>>>() {};
+		String complexOptionUri = monitorAddress + "/complex";
+		return restTemplate.exchange(complexOptionUri, HttpMethod.OPTIONS, null, typeRef).
+				getBody().getContent();
+	}
+
+
 }

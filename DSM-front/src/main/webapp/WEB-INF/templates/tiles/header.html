@@ -1,8 +1,31 @@
-﻿<div class="btn-group">
-	<a th:href="@{/resources}" class="btn btn-default">Available Resources</a>
-	<a th:href="@{/measurements}" class="btn btn-default">All Measurements</a>
-	<a th:href="@{/search}" class="btn btn-default">Search Measurements</a>
-</div>
+﻿<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<a class="navbar-brand" th:href="@{/main}">DSM</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse navbar-center" id="bs-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a th:href="@{/resources}">Available Resources</a></li>
+				<li><a th:href="@{/measurements}">All Measurements</a></li>
+				<li><a th:href="@{/search}">Search Measurements</a></li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><h6 class="navbar-text">Tom</h6></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" /></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Login</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>
+
 <div style="margin: 20px auto 20px auto;">
 	<a th:href="@{/main}">
 		<img th:src="@{/resources/img/logo.png}" alt="logo_aplikacji" class="logo"/>

@@ -1,0 +1,46 @@
+<!-- Modal -->
+<div class="modal fade" id="complexModal" tabindex="-1" role="dialog" aria-labelledby="complexModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="complexModalLabel">Add complex measurement</h4>
+			</div>
+			<div class="modal-body">
+				<!-- Nav tabs -->
+				<div class="bs-example bs-example-tabs">
+					<ul id="myTab" class="nav nav-tabs">
+						<li class="dropdown active">
+							<a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">Complex Measurment Type <b class="caret"></b></a>
+							<ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+								<li th:each="complexType,iter : ${complexTypes}">
+									<a th:attr="href='#dropdown'+${iter.count}" tabindex="-1" data-toggle="tab" th:text="${complexType.typeName}"></a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane fade" th:each="complexType,iter : ${complexTypes}" th:attr="id='dropdown'+${iter.count}">
+							<h4 th:text="${complexType.typeName}"></h4>
+							<table class="table table-condensed">
+								<tr>
+									<th class="text-center">Param</th>
+									<th class="text-center">Value</th>
+								</tr>
+								<tr th:each="param : ${complexType.typeList}">
+									<td th:text="${param.paramName}"></td>
+									<td><input type="number"></input></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div><!-- /example -->
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-primary">Add measurement</button>
+			</div>
+		</div>
+	</div>
+</div>

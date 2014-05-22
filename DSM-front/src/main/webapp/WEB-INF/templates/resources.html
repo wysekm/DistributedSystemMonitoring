@@ -5,13 +5,15 @@
 	<table class="table table-condensed">
 		<tr>
 			<th class="text-center">Resource</th>
-			<th class="text-center">Measurements</th>
+			<th class="text-center">Show measurements</th>
 		</tr>
 		<tr th:each="resource : ${resources}">
 			<td><span th:text="${resource.content.name}" /></td>
-			<td><a th:href="@{/measurements?resource=} + ${resource.content.name}">Show</a></td>
+			<td><a th:href="@{/measurements?resource=} + ${resource.content.name}">
+				<span class="glyphicon glyphicon-arrow-right" /></a></td>
 		</tr>
 	</table>
+	<div class="alert alert-danger" th:if="${error} != null" th:text="${error}"></div>
 </div>
 
 

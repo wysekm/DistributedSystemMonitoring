@@ -10,8 +10,16 @@
 		<put-attribute name="header" value="templates/tiles/header" />
 		<put-attribute name="footer" value="templates/tiles/footer" />
 	</definition>
-	
-	<definition name="*" extends="mainTemplate">  
+
+	<definition name="measurements" extends="mainTemplate">
+		<put-attribute name="content" value="templates/measurements" >
+			<definition template="templates/measurements">
+				<put-attribute name="modal-popup" value="templates/complexModal" />
+			</definition>
+		</put-attribute>
+	</definition>
+
+	<definition name="*" extends="mainTemplate">
 		<put-attribute name="content" value="templates/{1}" />
 	</definition>
 
