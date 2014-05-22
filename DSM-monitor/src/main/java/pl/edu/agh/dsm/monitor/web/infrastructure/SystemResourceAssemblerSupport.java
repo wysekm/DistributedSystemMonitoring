@@ -6,7 +6,6 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Component;
 
-import pl.edu.agh.dsm.monitor.core.model.measurement.Measurement;
 import pl.edu.agh.dsm.monitor.core.model.resource.SystemResource;
 import pl.edu.agh.dsm.monitor.web.view.dto.MeasurementDto;
 

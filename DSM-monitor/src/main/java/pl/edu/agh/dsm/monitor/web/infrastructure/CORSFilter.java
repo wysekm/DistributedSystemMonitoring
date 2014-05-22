@@ -1,4 +1,4 @@
-package pl.edu.agh.dsm.monitor;
+package pl.edu.agh.dsm.monitor.web.infrastructure;
 
 import java.io.IOException;
 

@@ -7,16 +7,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -71,12 +67,9 @@ public class MeasurementsController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public @ResponseBody Resource<MeasurementDto> addMeasurement(
 			@RequestBody Measurement measurement,
-			HttpServletRequest request) {
-		//String userName = request.getRemoteUser();
-		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
-		System.out.println("adding measurement for user: " + userName);
+			@AuthenticationPrincipal User user) {
 		ApplicationUser applicationUser = null;
-		if(userName != null) applicationUser = new ApplicationUser(userName);
+		if(user != null) applicationUser = new ApplicationUser(user.getUsername());
 		addMeasurementUC.addMeasurement(measurement, applicationUser);
 		MeasurementDto dto = measurementConverter.convertMeasurement(measurement);
 		return assmeblerSupport.addLinks(dto);
@@ -84,12 +77,10 @@ public class MeasurementsController {
 
 	@RequestMapping(method = DELETE, value = "/{id}")
 	public void deleteMeasurement(
-			@PathVariable("id") UUID uuid) {
-			//@AuthenticationPrincipal User user) {
-		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
-		System.out.println("adding measurement for user: " + userName);
+			@PathVariable("id") UUID uuid,
+			@AuthenticationPrincipal User user) {
 		ApplicationUser applicationUser = null;
-		if(userName != null) applicationUser = new ApplicationUser(userName);
+		if(user != null) applicationUser = new ApplicationUser(user.getUsername());
 		deleteMeasurementUC.deleteMeasurement(uuid, applicationUser);
 	}
 }

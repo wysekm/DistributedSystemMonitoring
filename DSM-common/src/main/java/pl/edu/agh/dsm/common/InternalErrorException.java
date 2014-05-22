@@ -2,7 +2,12 @@ package pl.edu.agh.dsm.common;
 
 public class InternalErrorException extends RuntimeException {
 
-    public InternalErrorException(Throwable cause) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public InternalErrorException(Throwable cause) {
         super(cause);
     }
 

@@ -167,6 +167,19 @@ public class MeasurementsControllerTest {
 		Assert.assertEquals(HttpStatus.SC_FORBIDDEN,
 				result.statusLine.getStatusCode());
 	}
+	
+	@Test
+	public void testDeleteWrongPassword() throws IOException {
+		checkMockServer();
+
+		Credentials userCredentials = new UsernamePasswordCredentials("user",
+				"wrong password");
+		HttpResponseResult result = makeDeleteRequest(
+				"http://localhost:8081/measurements/a8bfb961-c123-4aac-a686-48a33de8cb11",
+				userCredentials);
+		Assert.assertEquals(HttpStatus.SC_UNAUTHORIZED,
+				result.statusLine.getStatusCode());
+	}
 
 	public void checkMockServer() throws IOException {
 		try {
