@@ -27,7 +27,10 @@ var plotGraphs = function(interval) {
 						title: 'Resource: '+resource+' | Metric: '+metric,
 						axes: { 
 							xaxis: { label: 'Time [s]' }, 
-							yaxis: { label: metric+' ['+unit+']' }
+							yaxis: { 
+								label: metric+' ['+unit+']',
+								labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+							}
 						}
 					}).replot();
 				});

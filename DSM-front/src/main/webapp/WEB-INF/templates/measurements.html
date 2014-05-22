@@ -7,15 +7,14 @@
 			<tr>
 				<th class="text-center">Resource</th>
 				<th class="text-center">Metric</th>
-				<th class="text-center">Value</th>
 				<th class="text-center">Unit</th>
-				<th class="text-center">Make Graph</th>
+				<th class="text-center" widht="30px">Make Graph</th>
 			</tr>
 			<tr th:each="resource : ${resources}">
 				<td><span th:text="${resource.content.resource}" /></td>
 				<td><span th:text="${resource.content.metric}" /></td>
-				<td><div class="measurement_data" th:attr="details-url=${resource.getLink('details').href}">-</div></td>
-				<td><span th:text="${resource.content.unit}" /></td>
+				<td><span class="measurement_data" th:attr="details-url=${resource.getLink('details').href}">-</span>
+					<span th:text="${resource.content.unit}" /></td>
 				<td>
 					<input type="checkbox" th:field="*{detailUrls}" th:value="${resource.getLink('details').href}" />
 				</td>
