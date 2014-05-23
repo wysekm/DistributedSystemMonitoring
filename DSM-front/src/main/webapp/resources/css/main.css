@@ -1,5 +1,5 @@
 .main {
-	width: 800px;
+	max-width: 800px;
 	margin: auto;
 	text-align: center;
 }
@@ -11,4 +11,10 @@
 .logo {
 	width: 200px;
 	height: 100px;
+}
+
+.smaller-size {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
 }

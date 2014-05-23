@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.tiles2.TilesConfigurer;
 import org.thymeleaf.dialect.IDialect;
+import org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect;
 import org.thymeleaf.extras.tiles2.dialect.TilesDialect;
 import org.thymeleaf.extras.tiles2.spring4.web.configurer.ThymeleafTilesConfigurer;
 import org.thymeleaf.extras.tiles2.spring4.web.view.ThymeleafTilesView;
@@ -33,7 +34,9 @@ public class ThymeLeafConfig {
 	public SpringTemplateEngine templateEngine() {
 		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
 		templateEngine.setTemplateResolver(defaultTemplateResolver());
-		templateEngine.setAdditionalDialects(new HashSet<IDialect>(Arrays.asList(new TilesDialect())));
+		templateEngine.setAdditionalDialects(new HashSet<IDialect>(Arrays.asList(
+				new TilesDialect(),
+				new SpringSecurityDialect())));
 		return templateEngine;
 	}
 

@@ -9,6 +9,8 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.hateoas.Resource;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +21,7 @@ import org.springframework.web.client.RestClientException;
 import pl.edu.agh.dsm.front.dto.GraphInput;
 import pl.edu.agh.dsm.front.dto.MeasurementDto;
 import pl.edu.agh.dsm.front.service.CatalogueRestClientService;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 @Controller
 public class MeasurementController {
@@ -34,6 +37,7 @@ public class MeasurementController {
 	public Collection<Resource<MeasurementDto>> measurementsPage(
 			@RequestParam(value = "metric", required = false, defaultValue = "") String metric,
 			@RequestParam(value = "resource", required = false, defaultValue = "") String resource,
+			@AuthenticationPrincipal User user,
 			Model model) {
 		model.addAttribute("refreshInterval", refreshInterval);
 		model.addAttribute("graphInput", new GraphInput());

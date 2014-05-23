@@ -5,12 +5,11 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
-
 import pl.edu.agh.dsm.front.mocks.MocksConfiguration;
 
 @ComponentScan( value = {"pl.edu.agh.dsm.front.controller", "pl.edu.agh.dsm.front.service"} )
 @EnableAutoConfiguration
-@Import({ RestConfig.class, ThymeLeafConfig.class, MocksConfiguration.class })
+@Import({ RestConfig.class, ThymeLeafConfig.class, SecurityConfig.class, MocksConfiguration.class })
 @PropertySource("application.properties")
 public class FrontConfig {
 

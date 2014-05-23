@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:tiles="http://www.thymeleaf.org">
+	xmlns:tiles="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 <title>DSM web client</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,7 +13,7 @@
 <link type="text/css" rel="stylesheet" th:href="@{/resources/jqplot/jquery.jqplot.css}" />
 </head>
 <body>
-	<div class="main">
+	<div class="container main">
 		<div tiles:include="header"></div>
 		<div tiles:include="content" class="panel panel-default">Content</div>
 		<div tiles:include="footer">Footer</div>

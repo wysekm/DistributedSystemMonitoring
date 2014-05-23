@@ -14,11 +14,12 @@
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><h6 class="navbar-text">Tom</h6></li>
+				<li><h6 class="navbar-text" sec:authentication="name"></h6></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" /></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Login</a></li>
+					<ul  class="dropdown-menu">
+						<li><a th:href="@{/login}" sec:authorize="isAnonymous()">Login</a></li>
+						<li><a th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -28,6 +29,6 @@
 
 <div style="margin: 20px auto 20px auto;">
 	<a th:href="@{/main}">
-		<img th:src="@{/resources/img/logo.png}" alt="logo_aplikacji" class="logo"/>
+		<img th:src="@{/resources/img/logo.png}" alt="application logo" class="logo"/>
 	</a> 
 </div>
