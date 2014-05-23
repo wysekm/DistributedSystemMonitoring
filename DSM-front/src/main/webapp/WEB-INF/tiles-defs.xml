@@ -14,7 +14,8 @@
 	<definition name="measurements" extends="mainTemplate">
 		<put-attribute name="content" value="templates/measurements" >
 			<definition template="templates/measurements">
-				<put-attribute name="modal-popup" value="templates/complexModal" />
+				<put-attribute name="show-complex-popup" value="templates/showComplexPopup" />
+				<put-attribute name="add-complex-popup" value="templates/addComplexPopup" />
 			</definition>
 		</put-attribute>
 	</definition>

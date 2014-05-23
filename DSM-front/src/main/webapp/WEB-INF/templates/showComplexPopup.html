@@ -1,0 +1,28 @@
+<!-- Modal -->
+<div th:each="resource,iter : ${resources}">
+	<div th:if="${resource.content.complexDetails}" class="modal fade" th:attr="id='showComplex'+${iter.count}" tabindex="-1" role="dialog" aria-labelledby="complexModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="complexModalLabel">Complex measurement details</h4>
+				</div>
+				<div class="modal-body" th:with="complexDetails=${resource.content.complexDetails}">
+					<!-- Nav tabs -->
+					<h4>Details</h4>
+					<table class="table table-condensed">
+						<tr><th class="text-center" width="150px">Complex type:</th><td colspan="2" th:text="${complexDetails.typeCode}"/></tr>
+						<tr><th class="text-center">Base metric:</th><td colspan="2" th:text="${resource.content.metric}"/></tr>
+						<tr><th class="text-center">Base resource:</th><td colspan="2" th:text="${resource.content.resource}"/></tr>
+						<tr><th class="text-center">Created by:</th><td colspan="2" th:text="${complexDetails.createdBy}"/></tr>
+						<tr><th class="text-center">Pramters:</th><th class="text-center">Param</th><th class="text-center">Value</th></tr>
+						<tr th:each="param : ${complexDetails.parameters}"><td /><td th:text="${param.key}" /><td th:text="${param.value}" /></tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

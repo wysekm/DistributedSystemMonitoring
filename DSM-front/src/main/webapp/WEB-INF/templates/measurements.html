@@ -6,34 +6,41 @@
 		<table class="table table-condensed">
 			<tr>
 				<th class="text-center">Resource</th>
+				<th class="text-center">Complex</th>
 				<th class="text-center">Metric</th>
-				<th class="text-center">Unit</th>
+				<th class="text-center">Value</th>
 				<th class="text-center" widht="10px">Graph</th>
-				<th class="text-center" width="10px">Complex</th>
+				<th class="text-center" width="10px" colspan="2">Options</th>
 			</tr>
-			<tr th:each="resource : ${resources}">
+			<tr th:each="resource,iter : ${resources}">
 				<td><span th:text="${resource.content.resource}" /></td>
+				<td>
+					<span th:if="${resource.content.complexDetails}">
+						<span th:text="${resource.content.complexDetails.typeCode}"/>
+						<a href="#" style="padding-left:5px" data-toggle="modal" th:attr="data-target='#showComplex'+${iter.count}"><span class="glyphicon glyphicon-search" /></a></span>
+					<span th:unless="${resource.content.complexDetails}">-</span>
+				</td>
 				<td><span th:text="${resource.content.metric}" /></td>
 				<td><span class="measurement_data" th:attr="details-url=${resource.getLink('details').href}">-</span>
 					<span th:text="${resource.content.unit}" /></td>
 				<td>
 					<input type="checkbox" th:field="*{detailUrls}" th:value="${resource.getLink('details').href}" />
 				</td>
-				<td>
-					<a href="#" data-toggle="modal" data-target="#complexModal">
-						<span class="glyphicon glyphicon-plus" />
-					</a>
-					<a href="#" ><span class="glyphicon glyphicon-remove"></span></a>
-					<a href="#" ><span class="glyphicon glyphicon-search"></span></a>
+				<td width="5px">
+					<a th:if="${resource.hasLink('addComplex')}" href="#" data-toggle="modal" data-target="#addComplexPopup"><span class="glyphicon glyphicon-plus" /></a>
+				</td>
+				<td width="5px">
+					<a th:if="${resource.hasLink('delete')}" href="#" ><span class="glyphicon glyphicon-remove" /></a>
 				</td>
 			</tr>
 		</table>
 		<input type="submit" class="btn btn-default" th:if="${error} == null" value="Show Graphs" />
 	</form>
-	<div class="alert alert-danger" th:if="${error} != null" th:text="${error}"></div>
+	<div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
 </div>
 
-<div tiles:include="modal-popup"></div>
+<div tiles:include="add-complex-popup"></div>
+<div tiles:include="show-complex-popup"></div>
 
 <script th:src="@{/resources/js/traverson.external.min.js}" type="text/javascript"></script>
 <script th:src="@{/resources/js/measurements.js}" type="text/javascript"></script>

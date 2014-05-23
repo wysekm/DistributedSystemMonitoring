@@ -8,6 +8,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.client.RestClientException;
+import pl.edu.agh.dsm.front.dto.ComplexMeasurementDto;
 import pl.edu.agh.dsm.front.dto.GraphInput;
 import pl.edu.agh.dsm.front.dto.MeasurementDto;
 import pl.edu.agh.dsm.front.service.CatalogueRestClientService;
@@ -44,8 +46,9 @@ public class MeasurementController {
 		String error = null;
 		try {
 			Collection<Resource<MeasurementDto>> result =
-					restClient.getMeasurements(metric, resource);
+					restClient.getMeasurements(metric, resource, user);
 			setAvailableComplexTypes(result, model);
+			fillComplexDetails(result);
 			return result;
 		} catch(RestClientException e) {
 			if(e.getRootCause() instanceof ConnectException) {
@@ -58,6 +61,17 @@ public class MeasurementController {
 		}
 		model.addAttribute("error", error);
 		return new ArrayList<>();
+	}
+
+	private void fillComplexDetails(Collection<Resource<MeasurementDto>> result) {
+		for(Resource<MeasurementDto> measurement : result) {
+			Link complexDetails = measurement.getLink("complexDetails");
+			if(complexDetails != null) {
+				ComplexMeasurementDto complexMeasurement =
+						restClient.getComplexDetails(complexDetails.getHref()).getContent();
+				measurement.getContent().setComplexDetails(complexMeasurement);
+			}
+		}
 	}
 
 	private void setAvailableComplexTypes(

@@ -4,7 +4,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ import pl.edu.agh.dsm.front.dto.MeasurementDto;
 public class MeasurementControllerMock {
 	
 	@Autowired
-	CatalogueRestClientServiceMock restClient;
+	CatalogueRestClientServiceMock restClientMock;
 	
 	@RequestMapping(method = GET, value = "/{id}/data", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<MeasurementDataDto> getData(
@@ -37,15 +36,15 @@ public class MeasurementControllerMock {
 		int count = 10;
 		if(limit == DataLimit.last) count = 1;
 		for(int i=0;i<count;i++) {
-			list.add(new MeasurementDataDto(
-					new java.util.Date().getTime()-i*1000, 
-					new Random().nextInt(100)));
+			list.add(new MeasurementDataDto (
+					new java.util.Date().getTime()-i*1000,
+					restClientMock.generateNewData(uuid)));
 		}
 		return list;
 	}
 	
 	@RequestMapping(method = GET, value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Resource<MeasurementDto> getMeasurement(@PathVariable("id") UUID uuid) {
-		return restClient.getMeasurement(uuid);
+		return restClientMock.getMeasurement(uuid);
 	}
 }
