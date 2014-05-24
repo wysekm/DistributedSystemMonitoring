@@ -1,8 +1,5 @@
 package pl.edu.agh.dsm.front;
 
-import java.util.Arrays;
-import java.util.HashSet;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
@@ -16,6 +13,9 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
+
+import java.util.Arrays;
+import java.util.HashSet;
 
 @Configuration
 public class ThymeLeafConfig {

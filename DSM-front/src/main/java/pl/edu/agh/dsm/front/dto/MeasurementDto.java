@@ -1,9 +1,9 @@
 package pl.edu.agh.dsm.front.dto;
 
-import java.util.UUID;
-
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.UUID;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class MeasurementDto {
@@ -27,6 +27,10 @@ public class MeasurementDto {
 		this.metric = metric;
 		this.unit = unit;
 		this.monitor = monitor;
+	}
+
+	public MeasurementDto(UUID id) {
+		this.id = id;
 	}
 
 	public MeasurementDto() {
@@ -58,5 +62,22 @@ public class MeasurementDto {
 
 	public void setComplexDetails(ComplexMeasurementDto complexDetails) {
 		this.complexDetails = complexDetails;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		MeasurementDto that = (MeasurementDto) o;
+
+		if (id != null ? !id.equals(that.id) : that.id != null) return false;
+
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		return id != null ? id.hashCode() : 0;
 	}
 }

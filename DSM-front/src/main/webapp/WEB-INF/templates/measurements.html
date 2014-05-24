@@ -27,14 +27,14 @@
 					<input type="checkbox" th:field="*{detailUrls}" th:value="${resource.getLink('details').href}" />
 				</td>
 				<td width="5px">
-					<a th:if="${resource.hasLink('addComplex')}" href="#" data-toggle="modal" data-target="#addComplexPopup"><span class="glyphicon glyphicon-plus" /></a>
+					<a th:attr="onclick='updateDetailsUri(\''+${resource.getLink('details').href}+'\')'" th:if="${resource.hasLink('addComplex')}" href="#" data-toggle="modal" data-target="#addComplexPopup"><span class="glyphicon glyphicon-plus" /></a>
 				</td>
 				<td width="5px">
-					<a th:if="${resource.hasLink('delete')}" href="#" ><span class="glyphicon glyphicon-remove" /></a>
+					<a th:if="${resource.hasLink('delete')}" th:href="@{/measurements/delete(deleteUri=${resource.getLink('delete').href})}" ><span class="glyphicon glyphicon-remove" /></a>
 				</td>
 			</tr>
 		</table>
-		<input type="submit" class="btn btn-default" th:if="${error} == null" value="Show Graphs" />
+		<input type="submit" class="btn btn-default" th:unless="${error}" value="Show Graphs" />
 	</form>
 	<div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
 </div>

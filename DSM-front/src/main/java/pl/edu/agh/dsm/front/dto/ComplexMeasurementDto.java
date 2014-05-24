@@ -2,8 +2,8 @@ package pl.edu.agh.dsm.front.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * Created by Tom on 2014-05-23.
@@ -11,20 +11,26 @@ import java.util.UUID;
 public class ComplexMeasurementDto {
 
 	@JsonIgnore
-	private UUID baseMeasurementId;
+	private String baseMeasurementUri;
 	private String typeCode;
-	private Map<String, String> parameters;
+	private Map<String, String> parameters = new HashMap<>();
+	@JsonIgnore
 	private String createdBy;
 
-	public ComplexMeasurementDto(UUID baseMeasurementId, String typeCode, Map<String, String> parameters, String createdBy) {
-		this.baseMeasurementId = baseMeasurementId;
+	public ComplexMeasurementDto() {
+	}
+
+	public ComplexMeasurementDto(String typeCode, Map<String, String> parameters, String createdBy) {
 		this.typeCode = typeCode;
 		this.parameters = parameters;
 		this.createdBy = createdBy;
 	}
 
-	public UUID getBaseMeasurementId() {
-		return baseMeasurementId;
+	public ComplexMeasurementDto(String baseMeasurementUri, String typeCode, Map<String, String> parameters, String createdBy) {
+		this.baseMeasurementUri = baseMeasurementUri;
+		this.typeCode = typeCode;
+		this.parameters = parameters;
+		this.createdBy = createdBy;
 	}
 
 	public String getTypeCode() {
@@ -37,5 +43,35 @@ public class ComplexMeasurementDto {
 
 	public String getCreatedBy() {
 		return createdBy;
+	}
+
+	public String getBaseMeasurementUri() {
+		return baseMeasurementUri;
+	}
+
+	public void setBaseMeasurementUri(String baseMeasurementUri) {
+		this.baseMeasurementUri = baseMeasurementUri;
+	}
+
+	public void setTypeCode(String typeCode) {
+		this.typeCode = typeCode;
+	}
+
+	public void setParameters(Map<String, String> parameters) {
+		this.parameters = parameters;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	@Override
+	public String toString() {
+		return "ComplexMeasurementDto{" +
+				"baseMeasurementUri='" + baseMeasurementUri + '\'' +
+				", typeCode='" + typeCode + '\'' +
+				", parameters=" + parameters +
+				", createdBy='" + createdBy + '\'' +
+				'}';
 	}
 }

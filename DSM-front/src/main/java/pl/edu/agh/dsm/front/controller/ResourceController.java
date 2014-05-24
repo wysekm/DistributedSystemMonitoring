@@ -1,19 +1,18 @@
 package pl.edu.agh.dsm.front.controller;
 
-import java.net.ConnectException;
-import java.util.ArrayList;
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.client.RestClientException;
 import pl.edu.agh.dsm.front.dto.SystemResourceDto;
 import pl.edu.agh.dsm.front.service.CatalogueRestClientService;
+
+import java.net.ConnectException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Controller
 public class ResourceController {

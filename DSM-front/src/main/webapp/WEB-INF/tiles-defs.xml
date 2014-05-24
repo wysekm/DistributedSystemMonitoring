@@ -20,6 +20,9 @@
 		</put-attribute>
 	</definition>
 
+	<definition name="measurements/delete" extends="measurements" />
+	<definition name="measurements/add" extends="measurements" />
+
 	<definition name="*" extends="mainTemplate">
 		<put-attribute name="content" value="templates/{1}" />
 	</definition>

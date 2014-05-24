@@ -1,7 +1,5 @@
 package pl.edu.agh.dsm.front.service;
 
-import java.util.Collection;
-
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,11 +12,12 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
 import pl.edu.agh.dsm.front.dto.ComplexMeasurementDto;
 import pl.edu.agh.dsm.front.dto.ComplexTypeDto;
 import pl.edu.agh.dsm.front.dto.MeasurementDto;
 import pl.edu.agh.dsm.front.dto.SystemResourceDto;
+
+import java.util.Collection;
 
 @Service
 public class CatalogueRestClientServiceImpl implements CatalogueRestClientService {
@@ -65,6 +64,16 @@ public class CatalogueRestClientServiceImpl implements CatalogueRestClientServic
 				new ParameterizedTypeReference<Resource<ComplexMeasurementDto>>() {};
 		return restTemplate.exchange(detailsUri, HttpMethod.GET, null, typeRef).
 				getBody();
+	}
+
+	@Override
+	public void addMeasurement(ComplexMeasurementDto measurement, User user) {
+
+	}
+
+	@Override
+	public void deleteMeasurement(String deleteUri, User user) {
+
 	}
 
 	private static HttpHeaders prepareHeaderWithAuth(User user) {

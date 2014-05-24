@@ -16,3 +16,9 @@ var retrieveMeasurements = function(interval) {
 		setInterval(retrieveFunction, interval)
 	})
 }
+
+var updateDetailsUri = function(detailsUri) {
+	$(".detailsUriInput").each(function (index, value) {
+		value.setAttribute("value",detailsUri);
+	});
+}

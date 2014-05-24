@@ -21,25 +21,27 @@
 					</ul>
 					<div id="myTabContent" class="tab-content">
 						<div class="tab-pane fade" th:each="complexType,iter : ${complexTypes}" th:attr="id='dropdown'+${iter.count}">
+							<form action="#" th:action="@{/measurements/add}" method="post" th:object="${measurementInput}">
 							<h4 th:text="${complexType.typeName}"></h4>
+							<input type="hidden" name="typeCode" th:value="${complexType.typeCode}"/>
+							<input type="hidden" name="baseMeasurementUri" class="detailsUriInput" />
 							<table class="table table-condensed">
 								<tr>
 									<th class="text-center">Param</th>
 									<th class="text-center">Value</th>
 								</tr>
-								<tr th:each="param : ${complexType.typeList}">
-									<td th:text="${param.paramName}"></td>
-									<td><input type="number"></input></td>
+								<tr th:each="parameter : ${complexType.typeList}">
+									<td th:text="${parameter.paramName}"></td>
+									<td><input type="text" th:attr="required=${parameter.required}" th:field="*{parameters[__${parameter.paramCode}__]}" /></td>
 								</tr>
 							</table>
+							<div>
+								<input type="submit" class="btn btn-primary" value="Add measurement"></input>
+							</div>
+							</form>
 						</div>
 					</div>
-				</div><!-- /example -->
-
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-primary">Add measurement</button>
+				</div>
 			</div>
 		</div>
 	</div>

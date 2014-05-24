@@ -1,11 +1,5 @@
 package pl.edu.agh.dsm.front.controller;
 
-import java.net.ConnectException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.hateoas.Link;
@@ -17,15 +11,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.client.RestClientException;
 import pl.edu.agh.dsm.front.dto.ComplexMeasurementDto;
 import pl.edu.agh.dsm.front.dto.GraphInput;
 import pl.edu.agh.dsm.front.dto.MeasurementDto;
 import pl.edu.agh.dsm.front.service.CatalogueRestClientService;
-import org.springframework.security.core.context.SecurityContextHolder;
+
+import java.net.ConnectException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
+@RequestMapping("measurements")
 public class MeasurementController {
 
 	@Value("${measurement.refresh.interval}")
@@ -35,7 +37,7 @@ public class MeasurementController {
 	CatalogueRestClientService restClient;
 	
 	@ModelAttribute("resources")
-	@RequestMapping("/measurements")
+	@RequestMapping(method = GET, value = "")
 	public Collection<Resource<MeasurementDto>> measurementsPage(
 			@RequestParam(value = "metric", required = false, defaultValue = "") String metric,
 			@RequestParam(value = "resource", required = false, defaultValue = "") String resource,
@@ -43,6 +45,7 @@ public class MeasurementController {
 			Model model) {
 		model.addAttribute("refreshInterval", refreshInterval);
 		model.addAttribute("graphInput", new GraphInput());
+		model.addAttribute("measurementInput", new ComplexMeasurementDto());
 		String error = null;
 		try {
 			Collection<Resource<MeasurementDto>> result =
@@ -61,6 +64,26 @@ public class MeasurementController {
 		}
 		model.addAttribute("error", error);
 		return new ArrayList<>();
+	}
+
+	@RequestMapping(method = POST, value = "/add")
+	@ModelAttribute("resources")
+	public Collection<Resource<MeasurementDto>> addMeasurement(
+			@ModelAttribute(value="measurementInput") ComplexMeasurementDto measurementInput,
+			@AuthenticationPrincipal User user,
+			Model model) {
+		restClient.addMeasurement(measurementInput, user);
+		return measurementsPage("", "", user, model);
+	}
+
+	@RequestMapping(method = GET, value = "/delete")
+	@ModelAttribute("resources")
+	public Collection<Resource<MeasurementDto>> deleteMeasurement(
+			@RequestParam(value = "deleteUri", required = true) String deleteUri,
+			@AuthenticationPrincipal User user,
+			Model model) {
+		restClient.deleteMeasurement(deleteUri, user);
+		return measurementsPage("", "", user, model);
 	}
 
 	private void fillComplexDetails(Collection<Resource<MeasurementDto>> result) {
