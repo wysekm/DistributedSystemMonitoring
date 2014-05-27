@@ -6,6 +6,7 @@
 !/DSM-monitor/
 !/DSM-sensor/
 !/DSM-front/
+!/DSM-desktop-gui/
 !pom.xml
 !.gitignore
 !LICENSE
