@@ -1,4 +1,4 @@
-package pl.edu.agh.dsm.front.dto;
+package pl.edu.agh.dsm.front.core.model.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;

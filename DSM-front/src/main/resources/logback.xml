@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>[%-5level %d{dd.MM.YYYY HH:mm:ss.SSS} [%thread] %logger] %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="DAILYFILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>logFile.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>log-all.%d{yyyy-MM-dd}.log</FileNamePattern>
+		</rollingPolicy>
+
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>[%-5level %d{dd.MM.YYYY HH:mm:ss.SSS} [%thread] %logger] %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<logger name="org.hibernate" level="INFO" />
+	<logger name="org.eclipse.jetty" level="INFO" />
+	<logger name="org.apache.catalina" level="INFO" />
+	<logger name="org.springframework" level="INFO" />
+	<logger name="org.thymeleaf" level="INFO" />
+	<root level="TRACE">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="DAILYFILE" />
+	</root>
+</configuration>

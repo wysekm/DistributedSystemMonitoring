@@ -1,4 +1,4 @@
-package pl.edu.agh.dsm.front.dto;
+package pl.edu.agh.dsm.front.web.view.dto;
 
 import java.util.ArrayList;
 import java.util.List;

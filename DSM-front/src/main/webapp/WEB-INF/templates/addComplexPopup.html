@@ -23,20 +23,21 @@
 						<div class="tab-pane fade" th:each="complexType,iter : ${complexTypes}" th:attr="id='dropdown'+${iter.count}">
 							<form action="#" th:action="@{/measurements/add}" method="post" th:object="${measurementInput}">
 							<h4 th:text="${complexType.typeName}"></h4>
-							<input type="hidden" name="typeCode" th:value="${complexType.typeCode}"/>
-							<input type="hidden" name="baseMeasurementUri" class="detailsUriInput" />
+							<input type="hidden" name="complexDetails.type" th:value="${complexType.typeCode}"/>
+							<input type="hidden" name="complexDetails.measurement" class="detailsUriInput" />
+							<input type="hidden" name="addUri" class="addUriInput" />
 							<table class="table table-condensed">
 								<tr>
 									<th class="text-center">Param</th>
 									<th class="text-center">Value</th>
 								</tr>
-								<tr th:each="parameter : ${complexType.typeList}">
+								<tr th:each="parameter : ${complexType.params}">
 									<td th:text="${parameter.paramName}"></td>
-									<td><input type="text" th:attr="required=${parameter.required}" th:field="*{parameters[__${parameter.paramCode}__]}" /></td>
+									<td><input type="text" th:attr="required=${parameter.required}" th:field="*{complexDetails.params[__${parameter.paramCode}__]}" /></td>
 								</tr>
 							</table>
 							<div>
-								<input type="submit" class="btn btn-primary" value="Add measurement"></input>
+								<input type="submit" class="btn btn-primary" value="Add measurement" />
 							</div>
 							</form>
 						</div>

@@ -1,4 +1,4 @@
-package pl.edu.agh.dsm.front.dto;
+package pl.edu.agh.dsm.front.core.model.rest.dto;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,11 +22,11 @@ public class ComplexTypeDto {
 
 	public String typeName;
 	public String typeCode;
-	public List<Parameter> typeList;
+	public List<Parameter> params;
 
 	public ComplexTypeDto(String typeName, String typeCode, Parameter... parameters) {
 		this.typeName = typeName;
 		this.typeCode = typeCode;
-		this.typeList = Arrays.asList(parameters);
+		this.params = Arrays.asList(parameters);
 	}
 }

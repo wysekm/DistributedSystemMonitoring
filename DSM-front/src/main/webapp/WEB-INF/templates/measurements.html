@@ -16,18 +16,19 @@
 				<td><span th:text="${resource.content.resource}" /></td>
 				<td>
 					<span th:if="${resource.content.complexDetails}">
-						<span th:text="${resource.content.complexDetails.typeCode}"/>
+						<span th:text="${resource.content.complexDetails.type}"/>
 						<a href="#" style="padding-left:5px" data-toggle="modal" th:attr="data-target='#showComplex'+${iter.count}"><span class="glyphicon glyphicon-search" /></a></span>
 					<span th:unless="${resource.content.complexDetails}">-</span>
 				</td>
 				<td><span th:text="${resource.content.metric}" /></td>
-				<td><span class="measurement_data" th:attr="details-url=${resource.getLink('details').href}">-</span>
+				<td><span class="measurement_data" th:attr="data-url=${resource.getLink('data').href}">-</span>
 					<span th:text="${resource.content.unit}" /></td>
 				<td>
-					<input type="checkbox" th:field="*{detailUrls}" th:value="${resource.getLink('details').href}" />
+					<input type="checkbox" th:field="*{detailUrls}" th:value="${resource.getLink('self').href}" />
 				</td>
 				<td width="5px">
-					<a th:attr="onclick='updateDetailsUri(\''+${resource.getLink('details').href}+'\')'" th:if="${resource.hasLink('addComplex')}" href="#" data-toggle="modal" data-target="#addComplexPopup"><span class="glyphicon glyphicon-plus" /></a>
+					<a th:attr="onclick='updateDetailsUri(\''+${resource.getLink('self').href}+','+${resource.getLink('addComplex').href}+'\')'" th:if="${resource.hasLink('addComplex')}" href="#" data-toggle="modal" data-target="#addComplexPopup">
+						<span class="glyphicon glyphicon-plus" /></a>
 				</td>
 				<td width="5px">
 					<a th:if="${resource.hasLink('delete')}" th:href="@{/measurements/delete(deleteUri=${resource.getLink('delete').href})}" ><span class="glyphicon glyphicon-remove" /></a>

@@ -1,4 +1,4 @@
-package pl.edu.agh.dsm.front.dto;
+package pl.edu.agh.dsm.front.mocks.dto;
 
 public enum DataLimit {
 

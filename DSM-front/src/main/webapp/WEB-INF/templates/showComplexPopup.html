@@ -11,12 +11,12 @@
 					<!-- Nav tabs -->
 					<h4>Details</h4>
 					<table class="table table-condensed">
-						<tr><th class="text-center" width="150px">Complex type:</th><td colspan="2" th:text="${complexDetails.typeCode}"/></tr>
+						<tr><th class="text-center" width="150px">Complex type:</th><td colspan="2" th:text="${complexDetails.type}"/></tr>
 						<tr><th class="text-center">Base metric:</th><td colspan="2" th:text="${resource.content.metric}"/></tr>
 						<tr><th class="text-center">Base resource:</th><td colspan="2" th:text="${resource.content.resource}"/></tr>
 						<tr><th class="text-center">Created by:</th><td colspan="2" th:text="${complexDetails.createdBy}"/></tr>
 						<tr><th class="text-center">Pramters:</th><th class="text-center">Param</th><th class="text-center">Value</th></tr>
-						<tr th:each="param : ${complexDetails.parameters}"><td /><td th:text="${param.key}" /><td th:text="${param.value}" /></tr>
+						<tr th:each="param : ${complexDetails.params}"><td /><td th:text="${param.key}" /><td th:text="${param.value}" /></tr>
 					</table>
 				</div>
 			</div>

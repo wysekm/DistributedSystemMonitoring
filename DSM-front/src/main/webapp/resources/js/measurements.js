@@ -1,12 +1,12 @@
 var retrieveMeasurements = function(interval) {	
 	$(".measurement_data").each(function (index, value) {
 		var dataTd = $(value)
-		var detailsUri = $(this).attr("details-url");
+		var dataUri = $(this).attr("data-url");
 		var retrieveFunction = function() {
 			var traverson = require('traverson')
-			var api = traverson.jsonHal.from(detailsUri)
+			var api = traverson.jsonHal.from(dataUri)
 			api.newRequest()
-					.follow('data')
+					.follow()
 					.withTemplateParameters({ limit: 'last' })
 					.getResource(function(error, dataFrame) {
 				dataTd.html(dataFrame[0].data)
@@ -17,8 +17,11 @@ var retrieveMeasurements = function(interval) {
 	})
 }
 
-var updateDetailsUri = function(detailsUri) {
+var updateDetailsUri = function(detailsUri, addUri) {
 	$(".detailsUriInput").each(function (index, value) {
 		value.setAttribute("value",detailsUri);
+	});
+	$(".addUriInput").each(function (index, value) {
+		value.setAttribute("value",addUri);
 	});
 }

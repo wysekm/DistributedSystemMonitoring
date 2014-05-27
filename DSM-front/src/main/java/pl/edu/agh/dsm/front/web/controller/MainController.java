@@ -1,4 +1,4 @@
-package pl.edu.agh.dsm.front.controller;
+package pl.edu.agh.dsm.front.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
