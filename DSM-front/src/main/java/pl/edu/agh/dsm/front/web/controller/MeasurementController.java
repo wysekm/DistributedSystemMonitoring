@@ -19,6 +19,7 @@ import pl.edu.agh.dsm.front.core.usecase.AddMeasurement;
 import pl.edu.agh.dsm.front.core.usecase.DeleteMeasurement;
 import pl.edu.agh.dsm.front.core.usecase.GetAvailableComplexTypes;
 import pl.edu.agh.dsm.front.core.usecase.GetMeasurements;
+import pl.edu.agh.dsm.front.web.Infrastructure.ComplexConverter;
 import pl.edu.agh.dsm.front.web.Infrastructure.UserConverter;
 import pl.edu.agh.dsm.front.web.view.dto.GraphInput;
 import pl.edu.agh.dsm.front.web.view.dto.MeasurementInput;
@@ -82,7 +83,7 @@ public class MeasurementController {
 			Model model) {
 		try {
 			String addUri = measurementInput.getAddUri();
-			ComplexMeasurementDto complexDetails = measurementInput.getComplexDetails();
+			ComplexMeasurementDto complexDetails = ComplexConverter.convert(measurementInput.getComplexDetails());
 			UserCredentials userCreds = UserConverter.convert(user);
 			addMeasurementUC.addMeasurement(addUri, complexDetails, userCreds);
 			return measurementsPage("", "", user, model);

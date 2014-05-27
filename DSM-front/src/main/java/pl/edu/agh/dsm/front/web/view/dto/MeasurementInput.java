@@ -8,7 +8,7 @@ import pl.edu.agh.dsm.front.core.model.rest.dto.ComplexMeasurementDto;
 public class MeasurementInput {
 
 	public String addUri;
-	public ComplexMeasurementDto complexDetails = new ComplexMeasurementDto();
+	public ComplexMeasurementInput complexDetails = new ComplexMeasurementInput();
 
 	public String getAddUri() {
 		return addUri;
@@ -18,11 +18,11 @@ public class MeasurementInput {
 		this.addUri = addUri;
 	}
 
-	public ComplexMeasurementDto getComplexDetails() {
+	public ComplexMeasurementInput getComplexDetails() {
 		return complexDetails;
 	}
 
-	public void setComplexDetails(ComplexMeasurementDto complexDetails) {
+	public void setComplexDetails(ComplexMeasurementInput complexDetails) {
 		this.complexDetails = complexDetails;
 	}
 }

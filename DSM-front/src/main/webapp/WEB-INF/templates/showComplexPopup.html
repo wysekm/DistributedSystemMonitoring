@@ -16,7 +16,7 @@
 						<tr><th class="text-center">Base resource:</th><td colspan="2" th:text="${resource.content.resource}"/></tr>
 						<tr><th class="text-center">Created by:</th><td colspan="2" th:text="${complexDetails.createdBy}"/></tr>
 						<tr><th class="text-center">Pramters:</th><th class="text-center">Param</th><th class="text-center">Value</th></tr>
-						<tr th:each="param : ${complexDetails.params}"><td /><td th:text="${param.key}" /><td th:text="${param.value}" /></tr>
+						<tr th:each="param : ${complexDetails.params}"><td /><td th:text="${param.paramName}" /><td th:text="${param.value}" /></tr>
 					</table>
 				</div>
 			</div>

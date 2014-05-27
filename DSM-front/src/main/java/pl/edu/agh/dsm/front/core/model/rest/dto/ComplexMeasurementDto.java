@@ -12,9 +12,38 @@ import java.util.Map;
  */
 public class ComplexMeasurementDto {
 
+	public static class Parameter {
+		String paramName;
+		String value;
+
+		public Parameter() {
+		}
+
+		public Parameter(String paramName, String value) {
+			this.paramName = paramName;
+			this.value = value;
+		}
+
+		public String getParamName() {
+			return paramName;
+		}
+
+		public void setParamName(String paramName) {
+			this.paramName = paramName;
+		}
+
+		public String getValue() {
+			return value;
+		}
+
+		public void setValue(String value) {
+			this.value = value;
+		}
+	}
+
 	private String measurement;
 	private String type;
-	Map<String, String> params = new HashMap<>();
+	private List<Parameter> params = new ArrayList<>();
 
 	@JsonIgnore
 	private String createdBy;
@@ -25,7 +54,9 @@ public class ComplexMeasurementDto {
 	public ComplexMeasurementDto(String typeCode, Map<String, String> parameters, String createdBy) {
 		this.type = typeCode;
 		this.createdBy = createdBy;
-		this.params = parameters;
+		for(Map.Entry<String, String> entry : parameters.entrySet()) {
+			params.add(new Parameter(entry.getKey(), entry.getValue()));
+		}
 	}
 
 	public ComplexMeasurementDto(String baseMeasurementUri, String typeCode, Map<String, String> parameters, String createdBy) {
@@ -53,11 +84,11 @@ public class ComplexMeasurementDto {
 		this.type = type;
 	}
 
-	public Map<String, String> getParams() {
+	public List<Parameter> getParams() {
 		return params;
 	}
 
-	public void setParams(Map<String, String> params) {
+	public void setParams(List<Parameter> params) {
 		this.params = params;
 	}
 
