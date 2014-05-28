@@ -30,7 +30,16 @@ public class MeasurementService {
 	
 	@Autowired
 	CatalogueProxy catalogueProxy;
-	
+
+	/**
+	 * Retrieves measurements from the repository, filtered by metric name and resource name.
+	 *
+	 * @param metric metric name to filter the results by. Can be null or empty - then
+	 *               measurements with any metric name will be returned.
+	 * @param resource resource name to filter the results by. Can be null or empty - then
+	 *               measurements with any resource name will be returned.
+	 * @return list of measurements that meet the given criteria
+	 */
 	public List<Measurement> getList(String metric, String resource) {
 		Predicate<Measurement> preconditions = precondictionFactory
 				.createForMeasurement(metric, resource);
@@ -41,6 +50,17 @@ public class MeasurementService {
 		return measurementRepository.find(uuid);
 	}
 
+	/**
+	 * Retrieves measurement data from the repository
+	 *
+	 * @param uuid id of the measurement to get the data for
+	 * @param limit a measure how to filter the results by.
+	 *             All - returns all available data for the given measurement
+	 *             Last - return last n data values
+	 *             Since - returns all available data since last n minutes
+	 * @param value the value for the data limit filter. See 'n' in the above list.
+	 * @return list of measurement data items that meet the given criteria
+	 */
 	public List<MeasurementData> getData(UUID uuid, DataLimit limit, int value) {
 		Predicate<MeasurementData> preconditions = dataPrecondictionFactory
 				.createForData(limit, value);

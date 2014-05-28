@@ -17,6 +17,7 @@ import org.springframework.hateoas.config.EnableEntityLinks;
 import org.springframework.hateoas.config.EnableHypermediaSupport;
 import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType;
 
+import org.springframework.scheduling.annotation.EnableScheduling;
 import pl.edu.agh.dsm.monitor.core.infrastructure.annotation.MockComponent;
 
 @Configuration
@@ -30,6 +31,7 @@ import pl.edu.agh.dsm.monitor.core.infrastructure.annotation.MockComponent;
 @EnableHypermediaSupport(type = HypermediaType.HAL)
 @PropertySource("application.properties")
 @ImportResource("udp-client-context.xml")
+@EnableScheduling
 @EnableConfigurationProperties()
 public class MonitorConfig {
 
