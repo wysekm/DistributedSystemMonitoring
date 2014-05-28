@@ -1,4 +1,4 @@
-package pl.edu.agh.dsm.monitor.core.model.measurement.sensor;
+package pl.edu.agh.dsm.monitor.core.model.sensor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
