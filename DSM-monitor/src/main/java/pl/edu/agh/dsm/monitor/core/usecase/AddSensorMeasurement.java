@@ -14,6 +14,9 @@ public class AddSensorMeasurement {
 	MeasurementService measurementService;
 
 	public void addSensorMeasurement(Measurement measurement, MeasurementData data) {
-		measurementService.addMeasurementData(measurement, data);
+		if(measurementService.getDetails(measurement.getId()) == null) {
+			measurementService.addMeasurement(measurement);
+		}
+		measurementService.addMeasurementData(measurement.getId(), data);
 	}
 }

@@ -25,7 +25,7 @@ public class DeleteComplexMeasurement {
 		if(user == null) {
 			return ActionPossibility.forFalse("Only logged users can delete measurements");
 		}
-		boolean possible = complexMeasurementService.canDelete(uuid, user);
+		boolean possible = complexMeasurementService.getDetails(uuid).getCreatedBy().equals(user);
 		String reason = String.format("User [%s]  didn't create measurement [%s]", user, uuid);
 		return ActionPossibility.makeDecision(possible, reason);
 	}

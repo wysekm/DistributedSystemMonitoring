@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import pl.edu.agh.dsm.monitor.core.model.measurement.complex.task.TaskExecutor;
 import pl.edu.agh.dsm.monitor.core.model.measurement.data.DataLimit;
 import pl.edu.agh.dsm.monitor.core.model.measurement.data.MeasurementData;
 import pl.edu.agh.dsm.monitor.core.model.measurement.data.MeasurementDataPredicateFactory;
@@ -30,6 +31,9 @@ public class MeasurementService {
 	
 	@Autowired
 	CatalogueProxy catalogueProxy;
+
+	@Autowired
+	TaskExecutor taskExecutor;
 
 	/**
 	 * Retrieves measurements from the repository, filtered by metric name and resource name.
@@ -66,13 +70,17 @@ public class MeasurementService {
 				.createForData(limit, value);
 		return measurementDataRepository.find(uuid, preconditions);
 	}
-	
-	public void addMeasurementData(Measurement measurement, MeasurementData data) {
+
+	public void addMeasurement(Measurement measurement) {
 		if(measurementRepository.find(measurement.getId()) == null) {
 			measurementRepository.save(measurement);
 			catalogueProxy.addMeasurement(measurement);
 		}
-		measurementDataRepository.add(measurement.getId(),data);
+	}
+	
+	public void addMeasurementData(UUID id, MeasurementData data) {
+		measurementDataRepository.add(id, data);
+		taskExecutor.updateDataBasedTasks(id);
 	}
 	
 	public void deleteMeasurement(UUID uuid) {

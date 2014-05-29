@@ -3,51 +3,35 @@ package pl.edu.agh.dsm.monitor.core.model.user;
 import java.util.UUID;
 
 public class ApplicationUser {
-	
-	UUID id;
+
 	String name;
-	
-	public UUID getId() {
-		return id;
+
+	public ApplicationUser(String name) {
+		this.name = name;
 	}
-	public void setId(UUID id) {
-		this.id = id;
-	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ApplicationUser other = (ApplicationUser) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		ApplicationUser that = (ApplicationUser) o;
+
+		if (name != null ? !name.equals(that.name) : that.name != null) return false;
+
 		return true;
 	}
-	
-	
+
+	@Override
+	public int hashCode() {
+		return name != null ? name.hashCode() : 0;
+	}
 }
