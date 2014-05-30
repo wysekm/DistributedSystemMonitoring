@@ -1,4 +1,4 @@
-package pl.edu.agh.dsm.monitor.web.infrastructure;
+package pl.edu.agh.dsm.monitor.web.infrastructure.assembler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityLinks;

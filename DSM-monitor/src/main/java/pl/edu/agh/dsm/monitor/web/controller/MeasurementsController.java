@@ -31,7 +31,7 @@ import pl.edu.agh.dsm.monitor.core.usecase.GetMeasurementData;
 import pl.edu.agh.dsm.monitor.core.usecase.GetMeasurementDetails;
 import pl.edu.agh.dsm.monitor.core.usecase.GetMeasurements;
 import pl.edu.agh.dsm.monitor.web.infrastructure.MeasurementDtoConverter;
-import pl.edu.agh.dsm.monitor.web.infrastructure.MeasurementResourceAssemblerSupport;
+import pl.edu.agh.dsm.monitor.web.infrastructure.assembler.MeasurementResourceAssemblerSupport;
 import pl.edu.agh.dsm.monitor.web.view.dto.MeasurementDto;
 
 @RestController

@@ -1,4 +1,4 @@
-package pl.edu.agh.dsm.monitor.web.infrastructure;
+package pl.edu.agh.dsm.monitor.web.infrastructure.assembler;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;

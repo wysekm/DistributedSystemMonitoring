@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pl.edu.agh.dsm.monitor.core.model.resource.SystemResource;
 import pl.edu.agh.dsm.monitor.core.usecase.GetResources;
-import pl.edu.agh.dsm.monitor.web.infrastructure.SystemResourceAssemblerSupport;
+import pl.edu.agh.dsm.monitor.web.infrastructure.assembler.SystemResourceAssemblerSupport;
 
 @RestController
 @ExposesResourceFor(SystemResource.class)
