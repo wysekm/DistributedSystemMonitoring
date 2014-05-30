@@ -1,4 +1,4 @@
-package pl.edu.agh.dsm.catalog;
+package pl.edu.agh.dsm.monitor;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -12,19 +12,14 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebMvcSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-	@Value("${monitor.username}")
-	String monitorUsername;
-	
-	@Value("${monitor.password}")
-	String monitorPassword;
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth)
 			throws Exception {
 		auth.inMemoryAuthentication()
-			.withUser("user").password("user").roles("USER").and()	// it is for tests only
-			.withUser(monitorUsername).password(monitorPassword).roles("USER", "MONITOR");
+			.withUser("John").password("1234").roles("USER").and()
+			.withUser("Jane").password("1234").roles("USER").and()
+			.withUser("user").password("user").roles("USER");
 	}
 
 	@Override

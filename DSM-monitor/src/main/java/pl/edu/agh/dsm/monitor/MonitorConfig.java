@@ -28,7 +28,7 @@ import pl.edu.agh.dsm.monitor.core.infrastructure.annotation.MockComponent;
 		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class),
 		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = MockComponent.class) },
 		value = { "pl.edu.agh.dsm.monitor", "pl.edu.agh.dsm.common" })
-@Import({ MocksConfiguration.class })
+@Import({ MocksConfiguration.class, SecurityConfig.class })
 @EnableEntityLinks
 @EnableHypermediaSupport(type = HypermediaType.HAL)
 @PropertySource("application.properties")

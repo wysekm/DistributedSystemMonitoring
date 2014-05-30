@@ -14,7 +14,7 @@ public class UserAuthorization {
 	
 	public ActionPossibility isAuthorized(ApplicationUser user) {
 		if(user == null) {
-			return ActionPossibility.forFalse("Unatuhenticated", HttpStatus.UNAUTHORIZED);
+			return ActionPossibility.forFalse("Unauthenticated", HttpStatus.UNAUTHORIZED);
 		}
 		boolean possible = user.getName().equals(monitorUsername);
 		return new ActionPossibility(possible, "Unauthorized", HttpStatus.FORBIDDEN); 

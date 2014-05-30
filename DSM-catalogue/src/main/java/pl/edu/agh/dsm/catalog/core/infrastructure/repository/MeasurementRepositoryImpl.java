@@ -48,8 +48,10 @@ public class MeasurementRepositoryImpl implements MeasurementRepository {
 	@Override
 	public void remove(UUID uuid) {
 		logger.debug("remove measurement with id {}", uuid);
-
-		repo.remove(find(uuid));
+		Measurement measurement = find(uuid);
+		if(measurement != null) {
+			repo.remove(find(uuid));
+		}
 	}
 
 	@Override

@@ -13,6 +13,8 @@ import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -86,16 +88,24 @@ public class MeasurementsController {
 	// Powinien zwrócić measurement Details
 	@RequestMapping(method = POST, value = "")
 	@ResponseStatus(HttpStatus.CREATED)
-	public void createMeasurement(@RequestBody ComplexMeasurement complex) {
-		ApplicationUser user = null; //get User;
-		createComplexMeasurementUC.create(complex, user);
+	public void createMeasurement(
+			@RequestBody ComplexMeasurement complex,
+			@AuthenticationPrincipal User user) {
+		ApplicationUser applicationUser = null;
+		if(user != null) {
+			applicationUser = new ApplicationUser(user.getUsername());
+		}
+		createComplexMeasurementUC.create(complex, applicationUser);
 	}
 
 	@RequestMapping(method = DELETE, value = "/{id}")
-	public void deleteMeasurement(@PathVariable("id") UUID uuid) {
-		ApplicationUser user = null; //get User;
-		deleteComplexMeasurementUC.delete(uuid, user);
+	public void deleteMeasurement(
+			@PathVariable("id") UUID uuid,
+			@AuthenticationPrincipal User user) {
+		ApplicationUser applicationUser = null;
+		if(user != null) {
+			applicationUser = new ApplicationUser(user.getUsername());
+		}
+		deleteComplexMeasurementUC.delete(uuid, applicationUser);
 	}
-	
-	//TODO getComplexDetails
 }

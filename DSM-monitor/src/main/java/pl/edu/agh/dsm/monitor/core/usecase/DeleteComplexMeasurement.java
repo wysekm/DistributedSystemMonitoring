@@ -18,6 +18,7 @@ public class DeleteComplexMeasurement {
 	ComplexMeasurementsService complexMeasurementService;
 	
 	public void delete(UUID uuid, ApplicationUser user) {
+		InternalErrorException.check(measurementExists(uuid));
 		InternalErrorException.check(canDelete(uuid, user));
 		complexMeasurementService.delete(uuid);
 	}
@@ -29,5 +30,11 @@ public class DeleteComplexMeasurement {
 		boolean possible = complexMeasurementService.getDetails(uuid).getCreatedBy().equals(user);
 		String reason = String.format("User [%s]  didn't create measurement [%s]", user, uuid);
 		return new ActionPossibility(possible, reason, HttpStatus.FORBIDDEN);
+	}
+
+	public ActionPossibility measurementExists(UUID uuid) {
+		boolean possible = complexMeasurementService.getDetails(uuid) != null;
+		String reason = "Complex measurement does not exist: " +uuid;
+		return new ActionPossibility(possible, reason, HttpStatus.NOT_FOUND);
 	}
 }
