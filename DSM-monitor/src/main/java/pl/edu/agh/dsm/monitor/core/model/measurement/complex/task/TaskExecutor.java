@@ -9,9 +9,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import pl.edu.agh.dsm.monitor.core.model.measurement.complex.ComplexMeasurement;
+import pl.edu.agh.dsm.monitor.core.model.measurement.complex.ComplexMeasurementParam;
 import pl.edu.agh.dsm.monitor.core.model.measurement.complex.ComplexType;
 import pl.edu.agh.dsm.monitor.core.model.measurement.complex.task.annotation.Task;
 import pl.edu.agh.dsm.monitor.core.model.measurement.complex.task.annotation.TaskAnnotationParser;
+import pl.edu.agh.dsm.monitor.core.model.user.ApplicationUser;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
@@ -19,7 +21,7 @@ import java.util.*;
 /**
  * Created by Tom on 2014-05-29.
  */
-@Component
+@Component("ComplexTasksExecutor")		// because taskExecutor collides with other spring bean name
 public class TaskExecutor {
 
 	static final Logger log = LoggerFactory.getLogger(TaskExecutor.class);
