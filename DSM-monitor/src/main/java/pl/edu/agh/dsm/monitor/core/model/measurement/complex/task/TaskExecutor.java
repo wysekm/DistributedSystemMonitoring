@@ -86,7 +86,7 @@ public class TaskExecutor {
 
 	@PostConstruct
 	public void initAvailableTaskTypes() {
-		String[] beanNames = appCtx.getBeanNamesForType(ComplexMeasurementTask.class, true, true);
+		String[] beanNames = appCtx.getBeanNamesForType(ComplexMeasurementTask.class, true, false);
 		for (String beanName : beanNames) {
 			Task task = appCtx.findAnnotationOnBean(beanName, Task.class);
 			ComplexType complexType = TaskAnnotationParser.getComplexType(task);

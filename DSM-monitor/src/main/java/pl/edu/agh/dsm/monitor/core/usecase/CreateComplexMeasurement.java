@@ -1,6 +1,5 @@
 package pl.edu.agh.dsm.monitor.core.usecase;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import pl.edu.agh.dsm.monitor.core.infrastructure.ActionPossibility;
