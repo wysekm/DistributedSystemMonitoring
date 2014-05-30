@@ -13,9 +13,11 @@ import org.apache.http.impl.client.HttpClients;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import pl.edu.agh.dsm.monitor.core.model.measurement.CatalogueProxy;
@@ -53,13 +55,21 @@ public class CatalogueProxyImpl implements CatalogueProxy{
 	@Override
 	public void addMeasurement(Measurement dto) {
 		logger.debug("send info about new measurement with id {}", dto);
-		restTemplate.postForObject(catalogueMeasurementsUri, dto, Object.class);
+		try {
+			restTemplate.postForObject(catalogueMeasurementsUri, dto, Object.class);
+		} catch (RestClientException e) {
+			throw new InternalErrorException("Cannot connect to the Catalog service", HttpStatus.SERVICE_UNAVAILABLE);
+		}
 	}
 
 	@Override
 	public void removeMeasurement(UUID uuid) {
 		logger.debug("send info about removed measurement with id {}", uuid);
 		String uri = catalogueMeasurementsUri + "/" + uuid;
-		restTemplate.delete(uri);
+		try {
+			restTemplate.delete(uri);
+		} catch (RestClientException e) {
+			throw new InternalErrorException("Cannot connect to the Catalog service", HttpStatus.SERVICE_UNAVAILABLE);
+		}
 	}
 }

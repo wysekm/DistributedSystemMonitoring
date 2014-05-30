@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.HttpStatus;
 import pl.edu.agh.dsm.monitor.core.infrastructure.ActionPossibility;
 import pl.edu.agh.dsm.monitor.core.infrastructure.InternalErrorException;
 import pl.edu.agh.dsm.monitor.core.infrastructure.annotation.UseCase;
@@ -23,10 +24,10 @@ public class DeleteComplexMeasurement {
 	
 	public ActionPossibility canDelete(UUID uuid, ApplicationUser user) {
 		if(user == null) {
-			return ActionPossibility.forFalse("Only logged users can delete measurements");
+			return ActionPossibility.forFalse("Only logged users can delete measurements", HttpStatus.UNAUTHORIZED);
 		}
 		boolean possible = complexMeasurementService.getDetails(uuid).getCreatedBy().equals(user);
 		String reason = String.format("User [%s]  didn't create measurement [%s]", user, uuid);
-		return ActionPossibility.makeDecision(possible, reason);
+		return new ActionPossibility(possible, reason, HttpStatus.FORBIDDEN);
 	}
 }

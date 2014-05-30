@@ -1,6 +1,4 @@
-package pl.edu.agh.dsm.catalog.web.controller;
-
-import javax.servlet.http.HttpServletRequest;
+package pl.edu.agh.dsm.monitor.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -12,9 +10,9 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import pl.edu.agh.dsm.monitor.core.infrastructure.InternalErrorException;
 
-import pl.edu.agh.dsm.catalog.core.infrastructure.InternalErrorException;
-
+import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
 

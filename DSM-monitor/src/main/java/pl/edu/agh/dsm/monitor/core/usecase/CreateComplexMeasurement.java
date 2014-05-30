@@ -2,6 +2,7 @@ package pl.edu.agh.dsm.monitor.core.usecase;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.HttpStatus;
 import pl.edu.agh.dsm.monitor.core.infrastructure.ActionPossibility;
 import pl.edu.agh.dsm.monitor.core.infrastructure.InternalErrorException;
 import pl.edu.agh.dsm.monitor.core.infrastructure.annotation.UseCase;
@@ -25,7 +26,7 @@ public class CreateComplexMeasurement {
 	}
 
 	public ActionPossibility canCreate(ApplicationUser user) {
-		return ActionPossibility.makeDecision(user != null, "Anonymous user cannot create complex measurement");
+		return new ActionPossibility(user != null, "Anonymous user cannot create complex measurement", HttpStatus.UNAUTHORIZED);
 	}
 	
 }
