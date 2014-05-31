@@ -10,7 +10,7 @@ import java.util.UUID;
  */
 public interface ComplexMeasurementsRepository {
 
-	List<ComplexMeasurement> findAll(Predicate<ComplexMeasurement> preconditions);
+	List<ComplexMeasurement> findAll();
 
 	ComplexMeasurement find(UUID uuid);
 

@@ -29,9 +29,9 @@ public class ComplexMeasurementRepositoryImpl implements ComplexMeasurementsRepo
 	static List<ComplexMeasurement> repo = Lists.newArrayList();
 
 	@Override
-	public List<ComplexMeasurement> findAll(Predicate<ComplexMeasurement> preconditions) {
-		logger.debug("find all complex measurements with conditions {}", preconditions);
-		return Lists.newArrayList(Iterables.filter(repo, preconditions));
+	public List<ComplexMeasurement> findAll() {
+		logger.debug("find all complex measurements with conditions");
+		return Lists.newArrayList(repo);
 	}
 
 	@Override
