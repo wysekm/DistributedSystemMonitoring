@@ -17,7 +17,6 @@ import pl.edu.agh.dsm.monitor.core.model.measurement.data.MeasurementDataReposit
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import static pl.edu.agh.dsm.monitor.core.infrastructure.repository.MeasurementRepositoryImpl.logger;
 
 @Component
 public class MeasurementDataRepositoryImpl implements MeasurementDataRepository {
@@ -74,10 +73,11 @@ public class MeasurementDataRepositoryImpl implements MeasurementDataRepository 
 		}
 	}
         
-        public void removeAll(UUID uuid) {
+	@Override
+	public void removeAll(UUID uuid) {
 		logger.debug(
 				"remove all measurementData with measurement uuid {} from repo",
 				uuid);
-                repo.remove(uuid);
+		repo.remove(uuid);
 	}
 }

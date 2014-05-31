@@ -34,16 +34,16 @@ public class SensorWatchdog {
 	@Scheduled(fixedDelay = TIMEOUT)
 	public void execute() {
 		// TODO implement this
-                List<Measurement> list = measurementService.getList(null, null);
-                for (int i = 0; i < list.size(); i++) {
-                if(!complexMeasurementsService.isComplex(list.get(i).getId())){
-                    List<MeasurementData> data = measurementService.getData(list.get(i).getId(), DataLimit.last, 1);
-                    if(!data.isEmpty()){
-                        if(System.currentTimeMillis() - data.get(0).getTimestamp() > TIMEOUT) {
-                            measurementService.deleteMeasurement(list.get(i).getId());
-                            }
-                        } 
-                    }
-                }
-        }
+		List<Measurement> list = measurementService.getList(null, null);
+		for (int i = 0; i < list.size(); i++) {
+		if(!complexMeasurementsService.isComplex(list.get(i).getId())){
+		List<MeasurementData> data = measurementService.getData(list.get(i).getId(), DataLimit.last, 1);
+			if(!data.isEmpty()){
+				if(System.currentTimeMillis() - data.get(0).getTimestamp() > TIMEOUT) {
+					measurementService.deleteMeasurement(list.get(i).getId());
+					}
+				} 
+			}
+		}
+	}
 }

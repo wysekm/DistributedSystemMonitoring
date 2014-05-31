@@ -13,5 +13,5 @@ public interface MeasurementDataRepository {
 
 	void remove(UUID uuid, MeasurementData measurementDataDto);
         
-        void removeAll(UUID uuid);
+	void removeAll(UUID uuid);
 }

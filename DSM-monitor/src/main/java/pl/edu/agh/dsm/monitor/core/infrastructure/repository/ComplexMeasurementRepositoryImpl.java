@@ -24,9 +24,9 @@ import com.google.common.collect.Lists;
 @Component
 public class ComplexMeasurementRepositoryImpl implements ComplexMeasurementsRepository {
     
-       static final Logger logger = LoggerFactory
-                    .getLogger(MeasurementRepositoryImpl.class);
-       static List<ComplexMeasurement> repo = Lists.newArrayList();
+	static final Logger logger = LoggerFactory
+			.getLogger(MeasurementRepositoryImpl.class);
+	static List<ComplexMeasurement> repo = Lists.newArrayList();
 
 	@Override
 	public List<ComplexMeasurement> findAll(Predicate<ComplexMeasurement> preconditions) {
@@ -52,14 +52,14 @@ public class ComplexMeasurementRepositoryImpl implements ComplexMeasurementsRepo
 
 	@Override
 	public void remove(UUID uuid) {
-                logger.debug("remove complex measurement with id {}", uuid);
+		logger.debug("remove complex measurement with id {}", uuid);
 		repo.remove(find(uuid));
 	}
 
 	@Override
 	public void save(ComplexMeasurement measurement) {		
-                logger.debug("save complex measurement {}", measurement);
-                repo.add(measurement);
+		logger.debug("save complex measurement {}", measurement);
+		repo.add(measurement);
 
 	}
 }

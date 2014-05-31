@@ -86,8 +86,8 @@ public class MeasurementService {
 	public void deleteMeasurement(UUID uuid) {
 		// TODO this function should delete measurement and its data from repositories,
 		// and inform catalogue of this change
-                measurementRepository.remove(uuid);
-                measurementDataRepository.removeAll(uuid);
-                catalogueProxy.removeMeasurement(uuid);
+		measurementRepository.remove(uuid);
+		measurementDataRepository.removeAll(uuid);
+		catalogueProxy.removeMeasurement(uuid);
 	}
 }
