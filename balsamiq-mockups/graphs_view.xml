@@ -1,6 +1,6 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="898" measuredH="1166" mockupW="846" mockupH="1087">
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="903" measuredH="1166" mockupW="851" mockupH="1087">
   <controls>
-    <control controlID="37" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="52" y="79" w="846" h="1087" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="52" y="79" w="851" h="1087" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <text>A%20Web%20Page%0Ahttp%3A//</text>
       </controlProperties>
@@ -16,9 +16,9 @@
         <text>Obecnie%20nie%20jest%20zalogowany%20zaden%20uzytkownik</text>
       </controlProperties>
     </control>
-    <control controlID="59" controlTypeID="com.balsamiq.mockups::Label" x="69" y="382" w="812" h="-1" measuredW="804" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Label" x="61" y="389" w="830" h="-1" measuredW="815" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Ponizej%20przedstawione%20sa%20wykresy%20pomiarow%20dla%20wybranych%20zasobow%20%28aktualizowane%20co%205%20sekund%29%20oraz%20pomiarow%20zlozonych%20%28statyczne%29</text>
+        <text>Poni%u017Cej%20przedstawione%20s%u0105%20wykresy%20pomiar%F3w%20dla%20wybranych%20zasob%F3w%20%28aktualizowane%20co%205%20sekund%29%20oraz%20pomiar%F3w%20z%u0142o%u017Conych%20%28statyczne%29</text>
       </controlProperties>
     </control>
     <control controlID="65" controlTypeID="com.balsamiq.mockups::LineChart" x="383" y="436" w="-1" h="-1" measuredW="187" measuredH="175" zOrder="4" locked="false" isInGroup="-1"/>
@@ -35,12 +35,12 @@
     </control>
     <control controlID="71" controlTypeID="com.balsamiq.mockups::Button" x="130" y="174" w="-1" h="-1" measuredW="126" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Dostepne%20zasoby</text>
+        <text>Dost%u0119pne%20zasoby</text>
       </controlProperties>
     </control>
-    <control controlID="72" controlTypeID="com.balsamiq.mockups::Button" x="278" y="174" w="-1" h="-1" measuredW="162" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+    <control controlID="72" controlTypeID="com.balsamiq.mockups::Button" x="278" y="174" w="-1" h="-1" measuredW="168" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Wyszukiwanie%20zasobow</text>
+        <text>Wyszukiwanie%20pomiar%F3w</text>
       </controlProperties>
     </control>
     <control controlID="73" controlTypeID="com.balsamiq.mockups::Button" x="627" y="174" w="-1" h="-1" measuredW="84" measuredH="27" zOrder="10" locked="false" isInGroup="-1">

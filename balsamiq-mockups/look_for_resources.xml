@@ -10,9 +10,9 @@
         <text>logo_aplikacji</text>
       </controlProperties>
     </control>
-    <control controlID="87" controlTypeID="com.balsamiq.mockups::Label" x="250" y="388" w="397" h="-1" measuredW="396" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
+    <control controlID="87" controlTypeID="com.balsamiq.mockups::Label" x="250" y="381" w="397" h="-1" measuredW="389" measuredH="21" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Wyszukaj%20zasob%20uzywajac%20frazy%20w%20postaci%20wyrazenia%20regularnego%3A</text>
+        <text>Wyszukaj%20pomiar%20przy%20u%u017Cyciu%20nazwy%20zasobu%20i/lub%20nazwy%20metryki%3A</text>
       </controlProperties>
     </control>
     <control controlID="91" controlTypeID="com.balsamiq.mockups::Label" x="637" y="203" w="-1" h="-1" measuredW="193" measuredH="17" zOrder="3" locked="false" isInGroup="-1">
@@ -21,9 +21,9 @@
         <text>Obecnie%20nie%20jest%20zalogowany%20zaden%20uzytkownik</text>
       </controlProperties>
     </control>
-    <control controlID="92" controlTypeID="com.balsamiq.mockups::TextInput" x="360" y="417" w="176" h="-1" measuredW="86" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="92" controlTypeID="com.balsamiq.mockups::TextInput" x="461" y="411" w="176" h="-1" measuredW="139" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Wpisz%20fraze</text>
+        <text>Podaj%20nazw%u0119%20metryki</text>
       </controlProperties>
     </control>
     <control controlID="94" controlTypeID="com.balsamiq.mockups::Button" x="416" y="453" w="-1" h="-1" measuredW="64" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
@@ -33,12 +33,12 @@
     </control>
     <control controlID="97" controlTypeID="com.balsamiq.mockups::Button" x="129" y="161" w="-1" h="-1" measuredW="126" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Dostepne%20zasoby</text>
+        <text>Dost%u0119pne%20zasoby</text>
       </controlProperties>
     </control>
-    <control controlID="98" controlTypeID="com.balsamiq.mockups::Button" x="277" y="161" w="-1" h="-1" measuredW="162" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="98" controlTypeID="com.balsamiq.mockups::Button" x="277" y="161" w="-1" h="-1" measuredW="168" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Wyszukiwanie%20zasobow</text>
+        <text>Wyszukiwanie%20pomiar%F3w</text>
       </controlProperties>
     </control>
     <control controlID="99" controlTypeID="com.balsamiq.mockups::Button" x="626" y="161" w="-1" h="-1" measuredW="84" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
@@ -49,6 +49,11 @@
     <control controlID="100" controlTypeID="com.balsamiq.mockups::Button" x="467" y="161" w="-1" h="-1" measuredW="136" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Wszystkie%20pomiary</text>
+      </controlProperties>
+    </control>
+    <control controlID="101" controlTypeID="com.balsamiq.mockups::TextInput" x="262" y="411" w="176" h="-1" measuredW="138" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Podaj%20nazw%u0119%20zasobu</text>
       </controlProperties>
     </control>
   </controls>

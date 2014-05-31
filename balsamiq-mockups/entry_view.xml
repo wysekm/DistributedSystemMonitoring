@@ -15,19 +15,19 @@
         <text>Witaj%20w%20kliencie%20aplikacji%20Rozproszony%20Monitoring%20Systemowy</text>
       </controlProperties>
     </control>
-    <control controlID="40" controlTypeID="com.balsamiq.mockups::Label" x="210" y="405" w="-1" h="-1" measuredW="421" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::Label" x="210" y="405" w="-1" h="-1" measuredW="424" measuredH="21" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Aby%20zaczac%20korzystac%20z%20aplikacji%20wybierz%20akcje%20z%20panelu%20u%20gory%20strony</text>
+        <text>Aby%20zacz%u0105%u0107%20korzysta%u0107%20z%20aplikacji%20wybierz%20akcje%20z%20panelu%20u%20g%F3ry%20strony</text>
       </controlProperties>
     </control>
     <control controlID="41" controlTypeID="com.balsamiq.mockups::Button" x="119" y="137" w="-1" h="-1" measuredW="126" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Dostepne%20zasoby</text>
+        <text>Dost%u0119pne%20zasoby</text>
       </controlProperties>
     </control>
-    <control controlID="42" controlTypeID="com.balsamiq.mockups::Button" x="267" y="137" w="-1" h="-1" measuredW="162" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::Button" x="267" y="137" w="-1" h="-1" measuredW="168" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Wyszukiwanie%20zasobow</text>
+        <text>Wyszukiwanie%20pomiar%F3w</text>
       </controlProperties>
     </control>
     <control controlID="43" controlTypeID="com.balsamiq.mockups::Button" x="616" y="137" w="-1" h="-1" measuredW="84" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
