@@ -31,7 +31,7 @@ public class ComplexMeasurementsService {
 	 * 		when complex measurement type is not recognized,
 	 * 		or when parameters specification is not met
 	 */
-	public void create(ComplexMeasurement measurement) throws IllegalArgumentException {
+	public Measurement create(ComplexMeasurement measurement) throws IllegalArgumentException {
 		Measurement baseMeasurement = measurementService.getDetails(measurement.baseMeasurementId);
 		Assert.notNull(baseMeasurement, "Base measurement not found");
 		Measurement newMeasurement = createNewMeasurement(baseMeasurement);
@@ -39,6 +39,7 @@ public class ComplexMeasurementsService {
 		measurement.setId(newMeasurement.getId());
 		complexRepository.save(measurement);
 		taskExecutor.createTask(measurement);
+		return newMeasurement;
 	}
 
 	public void delete(UUID uuid) {

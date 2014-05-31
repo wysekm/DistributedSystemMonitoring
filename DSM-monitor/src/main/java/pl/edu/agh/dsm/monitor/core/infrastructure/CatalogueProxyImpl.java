@@ -1,27 +1,46 @@
 package pl.edu.agh.dsm.monitor.core.infrastructure;
 
-import java.util.UUID;
-
-import javax.annotation.PostConstruct;
-
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.BasicCredentialsProvider;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.client.HttpClients;
+import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.client.ClientHttpRequestFactory;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.client.ClientHttpRequestExecution;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-
 import pl.edu.agh.dsm.monitor.core.model.measurement.CatalogueProxy;
 import pl.edu.agh.dsm.monitor.core.model.measurement.Measurement;
+
+import javax.annotation.PostConstruct;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+class BasicAuthInterceptor implements ClientHttpRequestInterceptor {
+
+	private final String username;
+	private final String password;
+
+	public BasicAuthInterceptor( String username, String password ) {
+		this.username = username;
+		this.password = password;
+	}
+
+	@Override
+	public ClientHttpResponse intercept( HttpRequest request, byte[] body, ClientHttpRequestExecution execution ) throws IOException {
+		final String auth = username + ":" + password;
+		final byte[] encodedAuth = Base64.encodeBase64( auth.getBytes( Charset.forName("US-ASCII") ) );
+		final String authHeader = "Basic " + new String( encodedAuth );
+		request.getHeaders().add( "Authorization", authHeader );
+		return execution.execute( request, body );
+	}
+}
 
 @Component
 public class CatalogueProxyImpl implements CatalogueProxy {
@@ -42,14 +61,10 @@ public class CatalogueProxyImpl implements CatalogueProxy {
 	
 	@PostConstruct
 	public void init() {
-		HttpClientBuilder clientBuilder = HttpClients.custom();
-		BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-		credentialsProvider.setCredentials(AuthScope.ANY, 
-				new UsernamePasswordCredentials(monitorUsername, monitorPassoword));
-		clientBuilder.setDefaultCredentialsProvider(credentialsProvider);
-		HttpClient httpClient = clientBuilder.build();
-		ClientHttpRequestFactory rf = new HttpComponentsClientHttpRequestFactory(httpClient);
-		restTemplate = new RestTemplate(rf);
+		restTemplate = new RestTemplate();
+		final List<ClientHttpRequestInterceptor> interceptors = new ArrayList<ClientHttpRequestInterceptor>();
+		interceptors.add( new BasicAuthInterceptor( monitorUsername, monitorPassoword ) );
+		restTemplate.setInterceptors( interceptors );
 	}
 
 	@Override

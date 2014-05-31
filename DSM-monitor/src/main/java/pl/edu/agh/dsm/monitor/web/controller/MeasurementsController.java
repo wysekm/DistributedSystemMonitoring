@@ -1,12 +1,6 @@
 package pl.edu.agh.dsm.monitor.web.controller;
 
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
-
-import java.util.List;
-import java.util.UUID;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.Resource;
@@ -15,26 +9,24 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import pl.edu.agh.dsm.monitor.core.model.measurement.Measurement;
 import pl.edu.agh.dsm.monitor.core.model.measurement.complex.ComplexMeasurement;
 import pl.edu.agh.dsm.monitor.core.model.measurement.data.DataLimit;
 import pl.edu.agh.dsm.monitor.core.model.measurement.data.MeasurementData;
 import pl.edu.agh.dsm.monitor.core.model.user.ApplicationUser;
-import pl.edu.agh.dsm.monitor.core.usecase.CreateComplexMeasurement;
-import pl.edu.agh.dsm.monitor.core.usecase.DeleteComplexMeasurement;
-import pl.edu.agh.dsm.monitor.core.usecase.GetMeasurementData;
-import pl.edu.agh.dsm.monitor.core.usecase.GetMeasurementDetails;
-import pl.edu.agh.dsm.monitor.core.usecase.GetMeasurements;
+import pl.edu.agh.dsm.monitor.core.usecase.*;
 import pl.edu.agh.dsm.monitor.web.infrastructure.MeasurementDtoConverter;
+import pl.edu.agh.dsm.monitor.web.infrastructure.UserConverter;
 import pl.edu.agh.dsm.monitor.web.infrastructure.assembler.MeasurementResourceAssemblerSupport;
+import pl.edu.agh.dsm.monitor.web.view.dto.ComplexMeasurementInDto;
 import pl.edu.agh.dsm.monitor.web.view.dto.MeasurementDto;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.UUID;
+
+import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @RestController
 @ExposesResourceFor(MeasurementDto.class)
@@ -63,17 +55,22 @@ public class MeasurementsController {
 	@RequestMapping(method = GET, value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Resources<Resource<MeasurementDto>> getMeasurements(
 			@RequestParam(value = "metric", defaultValue = "") String metric,
-			@RequestParam(value = "resource", defaultValue = "") String resource) {
+			@RequestParam(value = "resource", defaultValue = "") String resource,
+			@AuthenticationPrincipal User user) {
+		ApplicationUser applicationUser = UserConverter.convert(user);
 		List<Measurement> list = getMeasurementsUC.getList(metric, resource);
 		List<MeasurementDto> dtoList = measurementConverter.convertMeasurements(list);
-		return assemblerSupport.addLinks(dtoList);
+		return assemblerSupport.addLinks(dtoList, applicationUser);
 	}
 
 	@RequestMapping(method = GET, value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Resource<MeasurementDto> getMeasurement(@PathVariable("id") UUID uuid) {
+	public Resource<MeasurementDto> getMeasurement(
+			@PathVariable("id") UUID uuid,
+			@AuthenticationPrincipal User user) {
+		ApplicationUser applicationUser = UserConverter.convert(user);
 		Measurement details = getMeasurementDetailsUC.getDetails(uuid);
 		MeasurementDto dto = measurementConverter.convertMeasurement(details);
-		return assemblerSupport.addLinks(dto);
+		return assemblerSupport.addLinks(dto, applicationUser);
 	}
 
 	@RequestMapping(method = GET, value = "/{id}/data", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -83,29 +80,24 @@ public class MeasurementsController {
 			@RequestParam(value = "value", defaultValue = "1") int value) {
 		return getMeasurementDataUC.getData(uuid, limit, value);
 	}
-	
-	// TODO po stworzeniu nowego elementu controller powinien zwracać ten element
-	// Powinien zwrócić measurement Details
-	@RequestMapping(method = POST, value = "")
+
+	@RequestMapping(method = POST, value = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
-	public void createMeasurement(
-			@RequestBody ComplexMeasurement complex,
+	public Resource<MeasurementDto> createMeasurement(
+			@RequestBody ComplexMeasurementInDto inDto,
 			@AuthenticationPrincipal User user) {
-		ApplicationUser applicationUser = null;
-		if(user != null) {
-			applicationUser = new ApplicationUser(user.getUsername());
-		}
-		createComplexMeasurementUC.create(complex, applicationUser);
+		ApplicationUser applicationUser = UserConverter.convert(user);
+		ComplexMeasurement complex = measurementConverter.convertComplexMeasurement(inDto);
+		Measurement measurement = createComplexMeasurementUC.create(complex, applicationUser);
+		MeasurementDto outDto = measurementConverter.convertMeasurement(measurement);
+		return assemblerSupport.addLinks(outDto, applicationUser);
 	}
 
 	@RequestMapping(method = DELETE, value = "/{id}")
 	public void deleteMeasurement(
 			@PathVariable("id") UUID uuid,
 			@AuthenticationPrincipal User user) {
-		ApplicationUser applicationUser = null;
-		if(user != null) {
-			applicationUser = new ApplicationUser(user.getUsername());
-		}
+		ApplicationUser applicationUser = UserConverter.convert(user);
 		deleteComplexMeasurementUC.delete(uuid, applicationUser);
 	}
 }

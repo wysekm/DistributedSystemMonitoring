@@ -1,6 +1,7 @@
 package pl.edu.agh.dsm.monitor.core.model.measurement.complex;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import pl.edu.agh.dsm.monitor.core.model.user.ApplicationUser;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class ComplexMeasurement {
 	// http://127.0.0.1:8081/measurements/359a2051-ab94-40f6-b89a-f4ffec4da2a7",
 
 
+	@JsonIgnore
 	UUID id;
 	UUID baseMeasurementId;
 	String type;
@@ -49,6 +51,10 @@ public class ComplexMeasurement {
 
 	public void setId(UUID id) {
 		this.id = id;
+	}
+
+	public void setCreatedBy(ApplicationUser createdBy) {
+		this.createdBy = createdBy;
 	}
 
 	@Override

@@ -24,11 +24,6 @@ public class ActionPossibility {
 		return new ActionPossibility(false, reason, status);
 	}
 
-	public static ActionPossibility makeDecision(boolean possible,
-												 String optionalReason) {
-		return possible ? forTrue() : forFalse(optionalReason);
-	}
-
 	public ActionPossibility(boolean possible, String reason) {
 		this(possible, reason, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
@@ -49,5 +44,14 @@ public class ActionPossibility {
 
 	public HttpStatus getFailureStatus() {
 		return failureStatus;
+	}
+
+	@Override
+	public String toString() {
+		return "ActionPossibility{" +
+				"possible=" + possible +
+				", reason='" + reason + '\'' +
+				", failureStatus=" + failureStatus +
+				'}';
 	}
 }

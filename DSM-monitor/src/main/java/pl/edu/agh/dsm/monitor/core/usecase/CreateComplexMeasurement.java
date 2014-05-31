@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import pl.edu.agh.dsm.monitor.core.infrastructure.ActionPossibility;
 import pl.edu.agh.dsm.monitor.core.infrastructure.InternalErrorException;
 import pl.edu.agh.dsm.monitor.core.infrastructure.annotation.UseCase;
+import pl.edu.agh.dsm.monitor.core.model.measurement.Measurement;
 import pl.edu.agh.dsm.monitor.core.model.measurement.MeasurementService;
 import pl.edu.agh.dsm.monitor.core.model.measurement.complex.ComplexMeasurement;
 import pl.edu.agh.dsm.monitor.core.model.measurement.complex.ComplexMeasurementsService;
@@ -22,11 +23,12 @@ public class CreateComplexMeasurement {
 	@Autowired
 	MeasurementService measurementService;
 	
-	public void create(ComplexMeasurement measurement, ApplicationUser user) {
+	public Measurement create(ComplexMeasurement measurement, ApplicationUser user) {
 		InternalErrorException.check(canCreate(user));
 		InternalErrorException.check(baseMeasurementExists(measurement));
+		measurement.setCreatedBy(user);
 		try {
-			complexMeasurementService.create(measurement);
+			return complexMeasurementService.create(measurement);
 		} catch (IllegalArgumentException e) {
 			throw new InternalErrorException("Cannot create measurement: " + e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
