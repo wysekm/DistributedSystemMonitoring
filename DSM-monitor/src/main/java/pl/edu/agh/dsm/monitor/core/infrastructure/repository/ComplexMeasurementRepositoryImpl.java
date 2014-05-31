@@ -30,13 +30,13 @@ public class ComplexMeasurementRepositoryImpl implements ComplexMeasurementsRepo
 
 	@Override
 	public List<ComplexMeasurement> findAll() {
-		logger.debug("find all complex measurements with conditions");
+		logger.trace("find all complex measurements with conditions");
 		return Lists.newArrayList(repo);
 	}
 
 	@Override
 	public ComplexMeasurement find(final UUID uuid) {
-		logger.debug("find complex measurement with id {}", uuid);
+		logger.trace("find complex measurement with id {}", uuid);
 		
 		try {
 			return Iterables.find(repo, new Predicate<ComplexMeasurement>() {

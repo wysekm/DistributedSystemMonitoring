@@ -24,7 +24,7 @@ import pl.edu.agh.dsm.monitor.core.model.measurement.CatalogueProxy;
 import pl.edu.agh.dsm.monitor.core.model.measurement.Measurement;
 
 @Component
-public class CatalogueProxyImpl implements CatalogueProxy{
+public class CatalogueProxyImpl implements CatalogueProxy {
 
 	static final Logger logger = LoggerFactory
 			.getLogger(CatalogueProxyImpl.class);

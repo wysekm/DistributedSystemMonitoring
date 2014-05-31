@@ -15,7 +15,7 @@ public class MeasurementPredicateFactory {
 
 	public Predicate<Measurement> createForMeasurement(final String metric,
 			final String resource) {
-		logger.debug("create new measurement predicate with metric " + metric
+		logger.trace("create new measurement predicate with metric " + metric
 				+ " and resource " + resource);
 
 		if (metric != null && resource != null && !metric.isEmpty() && !resource.isEmpty()) {

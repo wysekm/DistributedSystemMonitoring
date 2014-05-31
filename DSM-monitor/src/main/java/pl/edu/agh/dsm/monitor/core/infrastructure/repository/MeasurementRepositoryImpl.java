@@ -24,14 +24,14 @@ public class MeasurementRepositoryImpl implements MeasurementRepository {
 
 	@Override
 	public List<Measurement> findAll(Predicate<Measurement> preconditions) {
-		logger.debug("find all measurements with conditions {}", preconditions);
+		logger.trace("find all measurements with conditions {}", preconditions);
 
 		return Lists.newArrayList(Iterables.filter(repo, preconditions));
 	}
 
 	@Override
 	public Measurement find(final UUID uuid) {
-		logger.debug("find measurement with id {}", uuid);
+		logger.trace("find measurement with id {}", uuid);
 		
 		try {
 			return Iterables.find(repo, new Predicate<Measurement>() {

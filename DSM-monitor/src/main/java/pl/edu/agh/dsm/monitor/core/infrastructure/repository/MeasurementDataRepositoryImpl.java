@@ -31,7 +31,7 @@ public class MeasurementDataRepositoryImpl implements MeasurementDataRepository 
 	@Override
 	public List<MeasurementData> find(UUID uuid,
 			Predicate<MeasurementData> preconditions) {
-		logger.debug(
+		logger.trace(
 				"find list of MeasurementDataDto with measurement uuid {} and data predicate {}",
 				uuid, preconditions);
 
@@ -72,7 +72,7 @@ public class MeasurementDataRepositoryImpl implements MeasurementDataRepository 
 			measurementDataList.remove(measurementDataDto);
 		}
 	}
-        
+
 	@Override
 	public void removeAll(UUID uuid) {
 		logger.debug(

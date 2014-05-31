@@ -17,7 +17,7 @@ public class MeasurementDataPredicateFactory {
 
 	public Predicate<MeasurementData> createForData(final DataLimit limit,
 			final int value) {
-		logger.debug("create predicate with limit {}, value {}", limit, value);
+		logger.trace("create predicate with limit {}, value {}", limit, value);
 
 		if (limit.equals(DataLimit.since)) {
 			return new Predicate<MeasurementData>() {

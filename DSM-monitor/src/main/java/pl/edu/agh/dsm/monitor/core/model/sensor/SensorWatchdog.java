@@ -33,7 +33,6 @@ public class SensorWatchdog {
 
 	@Scheduled(fixedDelay = TIMEOUT)
 	public void execute() {
-		// TODO implement this
 		List<Measurement> list = measurementService.getList(null, null);
 		for (int i = 0; i < list.size(); i++) {
 		if(!complexMeasurementsService.isComplex(list.get(i).getId())){

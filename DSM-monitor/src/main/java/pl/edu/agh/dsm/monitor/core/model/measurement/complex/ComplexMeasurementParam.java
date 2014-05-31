@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class ComplexMeasurementParam {
 	String paramCode;
-	int value;
+	double value;
 
 	// @java.beans.ConstructorProperties({"paramCode", "value"})
-	public ComplexMeasurementParam(String paramCode, int value) {
+	public ComplexMeasurementParam(String paramCode, double value) {
 		this.paramCode = paramCode;
 		this.value = value;
 	}
@@ -20,7 +20,7 @@ public class ComplexMeasurementParam {
 		return this.paramCode;
 	}
 
-	public int getValue() {
+	public double getValue() {
 		return this.value;
 	}
 }
