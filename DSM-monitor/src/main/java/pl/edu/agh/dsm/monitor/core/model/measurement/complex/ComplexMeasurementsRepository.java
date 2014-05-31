@@ -1,7 +1,5 @@
 package pl.edu.agh.dsm.monitor.core.model.measurement.complex;
 
-import com.google.common.base.Predicate;
-
 import java.util.List;
 import java.util.UUID;
 
