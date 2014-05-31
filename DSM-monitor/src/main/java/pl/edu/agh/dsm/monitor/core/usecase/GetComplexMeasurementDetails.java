@@ -18,16 +18,11 @@ public class GetComplexMeasurementDetails {
 	ComplexMeasurementsService complexMeasurementService;
 	
 	public ComplexMeasurement getDetails(UUID uuid) {
-		InternalErrorException.check(measurementExists(uuid));
+		InternalErrorException.check(isMeasurementComplex(uuid));
 		return complexMeasurementService.getDetails(uuid);
 	}
 	
-	public boolean isMeasurementComplex(UUID uuid) {
-		InternalErrorException.check(measurementExists(uuid));
-		return complexMeasurementService.isComplex(uuid);
-	}
-
-	public ActionPossibility measurementExists(UUID uuid) {
+	public ActionPossibility isMeasurementComplex(UUID uuid) {
 		boolean possible = complexMeasurementService.getDetails(uuid) != null;
 		String reason = "Complex measurement does not exist: " +uuid;
 		return new ActionPossibility(possible, reason, HttpStatus.NOT_FOUND);

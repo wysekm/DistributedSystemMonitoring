@@ -6,6 +6,7 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Component;
 import pl.edu.agh.dsm.monitor.core.model.measurement.complex.ComplexMeasurement;
+import pl.edu.agh.dsm.monitor.core.model.user.ApplicationUser;
 import pl.edu.agh.dsm.monitor.web.view.dto.MeasurementDto;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class ComplexMeasurementAssemblerSupport extends
 	}
 
 	@Override
-	public Resource<ComplexMeasurement> addLinks(ComplexMeasurement dto) {
+	public Resource<ComplexMeasurement> addLinks(ComplexMeasurement dto, ApplicationUser user) {
 		String mhref = entityLinks.linkToCollectionResource(MeasurementDto.class).getHref();
 		List<Link> links = new ArrayList<>();
 		links.add(new Link(mhref + "/" + dto.getBaseMeasurementId(), "baseMeasurement"));

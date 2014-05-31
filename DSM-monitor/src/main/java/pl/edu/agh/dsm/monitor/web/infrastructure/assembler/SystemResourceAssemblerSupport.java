@@ -7,6 +7,7 @@ import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Component;
 
 import pl.edu.agh.dsm.monitor.core.model.resource.SystemResource;
+import pl.edu.agh.dsm.monitor.core.model.user.ApplicationUser;
 import pl.edu.agh.dsm.monitor.web.view.dto.MeasurementDto;
 
 @Component
@@ -21,7 +22,7 @@ public class SystemResourceAssemblerSupport extends
 	}
 
 	@Override
-	public Resource<SystemResource> addLinks(SystemResource dto) {
+	public Resource<SystemResource> addLinks(SystemResource dto, ApplicationUser user) {
 		Resource <SystemResource> resource = new Resource<>(dto);
 		String href = entityLinks
 				.linkToCollectionResource(MeasurementDto.class).getHref();
