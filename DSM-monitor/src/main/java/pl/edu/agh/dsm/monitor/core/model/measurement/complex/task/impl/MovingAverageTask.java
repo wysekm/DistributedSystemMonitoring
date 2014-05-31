@@ -39,7 +39,12 @@ public class MovingAverageTask extends ComplexMeasurementTask {
 	}
 
 	public double calcAverage(List<MeasurementData> data) {
-		return 0;
+                double srednia=0;
+                for(int i=0; i< data.size();i++){
+                    srednia += data.get(i).getData();
+                    }
+                srednia = srednia/data.size();
+		return srednia;
 	}
 
 	public boolean hasIntervalTimePassed() {

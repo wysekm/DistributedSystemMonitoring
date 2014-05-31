@@ -58,4 +58,11 @@ public class MeasurementRepositoryImpl implements MeasurementRepository {
 
 		repo.add(measurementDto);
 	}
+        
+        public void removeAll(UUID uuid) {
+		logger.debug(
+				"remove all measurementData with measurement uuid {} from repo",
+				uuid);
+                repo.remove(uuid);
+	}
 }
