@@ -94,7 +94,7 @@ class MainDialog(wx.Frame):
                 return
 
         self.stop_listing_data()
-        dlg = wx.TextEntryDialog(self, u"Enter monitor address: (format adr_ip:port)",
+        dlg = wx.TextEntryDialog(self, u"Enter catalog address: (format adr_ip:port)",
                                  u"Connection configuration:",
                                  style=wx.OK | wx.CANCEL)
         while not quit_flag:
@@ -117,7 +117,7 @@ class MainDialog(wx.Frame):
         if self.set_moni_label or not self.receiving_data:
             return
 
-        succesful_conn_msg = u"Connected to monitor: {}"
+        succesful_conn_msg = u"Connected to catalog: {}"
         self.m_moniAddrLabel.SetLabel(succesful_conn_msg.format(self.current_moni_addr))
         self.set_moni_label = True
 
