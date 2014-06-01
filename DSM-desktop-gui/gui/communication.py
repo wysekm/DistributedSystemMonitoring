@@ -128,14 +128,14 @@ class JsonResourcesExtractor(JsonExtractor):
         return self.__merge_data(measurements)
 
     def __link_extractor(self, measurement):
-        measurement[LINK_LABEL] = measurement[LINK_LABEL].split("{")[0] + "?limit=last"  # some ugly shortcut
+        measurement[LINK_LABEL] += "/data?limit=last"  # some ugly shortcut
         return measurement
 
     def __measurement_extractor(self, measurement):
         return {RESOURCE_LABEL: measurement[RESOURCE_LABEL],
                 METRIC_LABEL:   measurement[METRIC_LABEL],
                 UNIT_LABEL:     measurement[UNIT_LABEL],
-                LINK_LABEL:     measurement["_links"]["data"]["href"]
+                LINK_LABEL:     measurement["_links"]["details"]["href"]
                 }
 
     def __merge_data(self, measurements):
