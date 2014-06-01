@@ -18,6 +18,7 @@ import pl.edu.agh.dsm.monitor.web.infrastructure.assembler.ComplexTypesAssembler
 import java.util.UUID;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.OPTIONS;
 
 /**
  * Created by Tom on 2014-05-30.
@@ -45,8 +46,7 @@ public class ComplexMeasurementsController {
 		return assemblerSupport.addLinks(details);
 	}
 
-	// TODO should be option
-	@RequestMapping(method = GET, value = "", produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = GET, value = "/types", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Resources<Resource<ComplexType>> getAvailableComplexTypes() {
 		return typeAssemblerSupport.addLinks(getAvailableComplexTypesUC.getAvailableComplexTypes());
 	}

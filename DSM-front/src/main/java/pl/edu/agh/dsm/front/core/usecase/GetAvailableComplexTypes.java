@@ -1,6 +1,7 @@
 package pl.edu.agh.dsm.front.core.usecase;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.hateoas.Resource;
 import pl.edu.agh.dsm.front.core.infrastructure.UseCase;
 import pl.edu.agh.dsm.front.core.model.rest.RestClientService;
@@ -14,11 +15,14 @@ import java.util.Collection;
 //@UseCase
 public class GetAvailableComplexTypes {
 
+	@Value("${complex.types.uri.template}")
+	String complexTypesTemplate;
+
 	@Autowired
 	RestClientService restClientService;
 
 	public Collection<Resource<ComplexTypeDto>> getAvailableComplexTypes(String monitorAddress) {
-		String complexOptionUri = monitorAddress + "/complex";
+		String complexOptionUri = String.format(complexTypesTemplate, monitorAddress);
 		return restClientService.getAvailableComplexTypes(complexOptionUri);
 	}
 }
