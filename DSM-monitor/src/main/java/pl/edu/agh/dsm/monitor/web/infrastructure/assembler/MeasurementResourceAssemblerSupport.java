@@ -51,9 +51,9 @@ public class MeasurementResourceAssemblerSupport extends
 			if(deleteComplexMeasurementUC.canDelete(uuid, user).isPossible()) {
 				links.add(new Link(selfLink.getHref(), "delete"));
 			}
-			if(createComplexMeasurementUC.canCreate(user).isPossible()) {
-				links.add(new Link(mhref, "addComplex"));
-			}
+		}
+		if(createComplexMeasurementUC.canCreate(user).isPossible()) {
+			links.add(new Link(mhref, "addComplex"));
 		}
 		return new Resource<>(dto, links);
 	}
