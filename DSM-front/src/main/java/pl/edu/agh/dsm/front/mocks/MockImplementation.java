@@ -7,10 +7,7 @@ import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.stereotype.Component;
 import pl.edu.agh.dsm.front.core.model.rest.UserCredentials;
-import pl.edu.agh.dsm.front.core.model.rest.dto.ComplexMeasurementDto;
-import pl.edu.agh.dsm.front.core.model.rest.dto.ComplexTypeDto;
-import pl.edu.agh.dsm.front.core.model.rest.dto.MeasurementDto;
-import pl.edu.agh.dsm.front.core.model.rest.dto.SystemResourceDto;
+import pl.edu.agh.dsm.front.core.model.rest.dto.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,14 +26,15 @@ public class MockImplementation {
 	@Autowired
 	private EntityLinks entityLinks;
 
-	public void addMeasurement(String addUri, ComplexMeasurementDto complexDetails, UserCredentials user) {
-		UUID uuid = extractUuid(complexDetails.getMeasurement());
+	public void addMeasurement(String addUri, ComplexMeasurementOutDto complexDetails, UserCredentials user) {
+		UUID uuid = extractUuid(complexDetails.getBaseMeasurementUri());
 		MeasurementDto baseMeasurement = mockRepository.getMeasurementById(uuid);
 		MeasurementDto measurement = new MeasurementDto(
 				UUID.randomUUID(), baseMeasurement.getResource(), baseMeasurement.getMetric(),
 				baseMeasurement.getUnit(), baseMeasurement.getMonitor());
-		complexDetails.setCreatedBy(user.getUsername());
-		measurement.setComplexDetails(complexDetails);
+		ComplexMeasurementDto complexIn = new ComplexMeasurementDto(
+				complexDetails.getType(), complexDetails.getParams(), user.getUsername());
+		measurement.setComplexDetails(complexIn);
 		mockRepository.addMeasurement(measurement);
 	}
 
@@ -46,7 +44,11 @@ public class MockImplementation {
 	}
 
 	public Collection<Resource<ComplexTypeDto>> getAvailableComplexTypes(String monitorAddress) {
-		return new Resources(mockRepository.getAvailableComplexTypes()).getContent();
+		List<Resource> resources = new ArrayList<>();
+		for(ComplexTypeDto type : mockRepository.getAvailableComplexTypes()) {
+			resources.add(new Resource(type));
+		}
+		return new Resources(resources).getContent();
 	}
 
 	public Collection<Resource<MeasurementDto>> getMeasurements(

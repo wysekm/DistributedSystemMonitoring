@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.hateoas.Resource;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -14,20 +16,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.edu.agh.dsm.front.core.model.rest.UserCredentials;
 import pl.edu.agh.dsm.front.core.model.rest.dto.ComplexMeasurementDto;
+import pl.edu.agh.dsm.front.core.model.rest.dto.ComplexMeasurementOutDto;
 import pl.edu.agh.dsm.front.core.model.rest.dto.MeasurementDto;
 import pl.edu.agh.dsm.front.core.usecase.AddMeasurement;
 import pl.edu.agh.dsm.front.core.usecase.DeleteMeasurement;
 import pl.edu.agh.dsm.front.core.usecase.GetAvailableComplexTypes;
 import pl.edu.agh.dsm.front.core.usecase.GetMeasurements;
 import pl.edu.agh.dsm.front.web.Infrastructure.ComplexConverter;
+import pl.edu.agh.dsm.front.web.Infrastructure.UriHelper;
 import pl.edu.agh.dsm.front.web.Infrastructure.UserConverter;
 import pl.edu.agh.dsm.front.web.view.dto.GraphInput;
 import pl.edu.agh.dsm.front.web.view.dto.MeasurementInput;
 
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.regex.Pattern;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -70,6 +76,7 @@ public class MeasurementController {
 			setAvailableComplexTypes(result, model);
 			return result;
 		} catch (Exception e) {
+			log.error("error", e);
 			model.addAttribute("error", e.getMessage());
 			return new ArrayList<>();
 		}
@@ -83,11 +90,12 @@ public class MeasurementController {
 			Model model) {
 		try {
 			String addUri = measurementInput.getAddUri();
-			ComplexMeasurementDto complexDetails = ComplexConverter.convert(measurementInput.getComplexDetails());
+			ComplexMeasurementOutDto complexDetails = ComplexConverter.convert(measurementInput.getComplexDetails());
 			UserCredentials userCreds = UserConverter.convert(user);
 			addMeasurementUC.addMeasurement(addUri, complexDetails, userCreds);
 			return measurementsPage("", "", user, model);
 		} catch (Exception e) {
+			log.error("error", e);
 			model.addAttribute("error", e.getMessage());
 			return new ArrayList<>();
 		}
@@ -114,14 +122,8 @@ public class MeasurementController {
 			Model model) throws MalformedURLException {
 		if(measurements.isEmpty()) return;
 		String details = measurements.iterator().next().getLink("self").getHref();
-		String monitorAddress = new URL(details).getHost();
+		String monitorAddress = UriHelper.extractHostAddress(details);
 		model.addAttribute("complexTypes",
 				getAvailableComplexTypesUC.getAvailableComplexTypes(monitorAddress));
-	}
-
-	private String extractDetailsUri(ComplexMeasurementDto complexDetails) throws MalformedURLException {
-		String details = complexDetails.getMeasurement();
-		String monitorAddress = new URL(details).getHost();
-		return monitorAddress + "/measurements";
 	}
 }

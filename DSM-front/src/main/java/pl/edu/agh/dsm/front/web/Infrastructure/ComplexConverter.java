@@ -1,6 +1,7 @@
 package pl.edu.agh.dsm.front.web.Infrastructure;
 
 import pl.edu.agh.dsm.front.core.model.rest.dto.ComplexMeasurementDto;
+import pl.edu.agh.dsm.front.core.model.rest.dto.ComplexMeasurementOutDto;
 import pl.edu.agh.dsm.front.web.view.dto.ComplexMeasurementInput;
 
 /**
@@ -8,8 +9,8 @@ import pl.edu.agh.dsm.front.web.view.dto.ComplexMeasurementInput;
  */
 public class ComplexConverter {
 
-	public static ComplexMeasurementDto convert(ComplexMeasurementInput complex) {
-		return new ComplexMeasurementDto(complex.getBaseMeasurementUri(),
-				complex.getTypeCode(), complex.getParameters(), null);
+	public static ComplexMeasurementOutDto convert(ComplexMeasurementInput complex) {
+		return new ComplexMeasurementOutDto(complex.getBaseMeasurementUri(),
+				complex.getTypeCode(), complex.getParameters());
 	}
 }

@@ -27,7 +27,7 @@
 					<input type="checkbox" th:field="*{detailUrls}" th:value="${resource.getLink('self').href}" />
 				</td>
 				<td width="5px">
-					<a th:attr="onclick='updateDetailsUri(\''+${resource.getLink('self').href}+','+${resource.getLink('addComplex').href}+'\')'" th:if="${resource.hasLink('addComplex')}" href="#" data-toggle="modal" data-target="#addComplexPopup">
+					<a th:attr="onclick='updateDetailsUri(\''+${resource.getLink('self').href}+'\',\''+${resource.getLink('addComplex').href}+'\')'" th:if="${resource.hasLink('addComplex')}" href="#" data-toggle="modal" data-target="#addComplexPopup">
 						<span class="glyphicon glyphicon-plus" /></a>
 				</td>
 				<td width="5px">

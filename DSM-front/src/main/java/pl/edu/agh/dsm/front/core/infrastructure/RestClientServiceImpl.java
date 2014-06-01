@@ -13,10 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import pl.edu.agh.dsm.front.core.model.rest.RestClientService;
 import pl.edu.agh.dsm.front.core.model.rest.RestClientServiceException;
 import pl.edu.agh.dsm.front.core.model.rest.UserCredentials;
-import pl.edu.agh.dsm.front.core.model.rest.dto.ComplexMeasurementDto;
-import pl.edu.agh.dsm.front.core.model.rest.dto.ComplexTypeDto;
-import pl.edu.agh.dsm.front.core.model.rest.dto.MeasurementDto;
-import pl.edu.agh.dsm.front.core.model.rest.dto.SystemResourceDto;
+import pl.edu.agh.dsm.front.core.model.rest.dto.*;
 
 import java.util.Collection;
 
@@ -75,7 +72,7 @@ public class RestClientServiceImpl implements RestClientService {
 		ParameterizedTypeReference<Resources<Resource<ComplexTypeDto>>> typeRef =
 				new ParameterizedTypeReference<Resources<Resource<ComplexTypeDto>>>() {};
 		RestTemplate restTemplate = restTemplateFactory.create();
-		return restTemplate.exchange(uri, HttpMethod.OPTIONS, null, typeRef).
+		return restTemplate.exchange(uri, HttpMethod.GET, null, typeRef).
 				getBody().getContent();
 	}
 
@@ -89,7 +86,7 @@ public class RestClientServiceImpl implements RestClientService {
 	}
 
 	@Override
-	public void addMeasurement(String uri, ComplexMeasurementDto measurement, UserCredentials user) {
+	public void addMeasurement(String uri, ComplexMeasurementOutDto measurement, UserCredentials user) {
 		RestTemplate restTemplate = restTemplateFactory.create(user);
 		restTemplate.postForObject(uri, measurement, Object.class);
 	}

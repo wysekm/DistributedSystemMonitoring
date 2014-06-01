@@ -13,6 +13,8 @@ public class ComplexTypeDto {
 		public String paramCode;
 		public boolean required;
 
+		public Parameter() {}
+
 		public Parameter(String paramName, String paramCode, boolean required) {
 			this.required = required;
 			this.paramCode = paramCode;
@@ -24,9 +26,11 @@ public class ComplexTypeDto {
 	public String typeCode;
 	public List<Parameter> params;
 
-	public ComplexTypeDto(String typeName, String typeCode, Parameter... parameters) {
+	public ComplexTypeDto() {}
+
+	public ComplexTypeDto(String typeName, String typeCode, Parameter... params) {
 		this.typeName = typeName;
 		this.typeCode = typeCode;
-		this.params = Arrays.asList(parameters);
+		this.params = Arrays.asList(params);
 	}
 }

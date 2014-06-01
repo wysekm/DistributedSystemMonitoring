@@ -12,6 +12,7 @@ import org.springframework.hateoas.config.EnableHypermediaSupport.HypermediaType
 import pl.edu.agh.dsm.front.core.infrastructure.UseCase;
 import pl.edu.agh.dsm.front.core.model.rest.UserCredentials;
 import pl.edu.agh.dsm.front.core.model.rest.dto.ComplexMeasurementDto;
+import pl.edu.agh.dsm.front.core.model.rest.dto.ComplexMeasurementOutDto;
 import pl.edu.agh.dsm.front.core.usecase.*;
 
 import java.lang.reflect.InvocationTargetException;
@@ -44,7 +45,7 @@ public class MocksConfiguration {
 	@Bean
 	public AddMeasurement addMeasurement() throws Exception {
 		return (AddMeasurement) mockUsecase(AddMeasurement.class, "addMeasurement",
-				String.class, ComplexMeasurementDto.class, UserCredentials.class);
+				String.class, ComplexMeasurementOutDto.class, UserCredentials.class);
 	}
 
 	@Primary

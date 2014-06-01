@@ -2,10 +2,7 @@ package pl.edu.agh.dsm.front.core.model.rest;
 
 import org.springframework.hateoas.Resource;
 import org.springframework.security.core.userdetails.User;
-import pl.edu.agh.dsm.front.core.model.rest.dto.ComplexMeasurementDto;
-import pl.edu.agh.dsm.front.core.model.rest.dto.ComplexTypeDto;
-import pl.edu.agh.dsm.front.core.model.rest.dto.MeasurementDto;
-import pl.edu.agh.dsm.front.core.model.rest.dto.SystemResourceDto;
+import pl.edu.agh.dsm.front.core.model.rest.dto.*;
 
 import java.util.Collection;
 
@@ -19,6 +16,6 @@ public interface RestClientService {
 	Collection<Resource<SystemResourceDto>> getSystemResources(String uri);
 	Collection<Resource<ComplexTypeDto>> getAvailableComplexTypes(String uri);
 	Resource<ComplexMeasurementDto> getComplexDetails(String uri);
-	void addMeasurement(String uri, ComplexMeasurementDto measurement, UserCredentials user);
+	void addMeasurement(String uri, ComplexMeasurementOutDto measurement, UserCredentials user);
 	void deleteMeasurement(String uri, UserCredentials user);
 }

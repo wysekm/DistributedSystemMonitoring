@@ -14,7 +14,7 @@
 							<a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">Complex Measurment Type <b class="caret"></b></a>
 							<ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
 								<li th:each="complexType,iter : ${complexTypes}">
-									<a th:attr="href='#dropdown'+${iter.count}" tabindex="-1" data-toggle="tab" th:text="${complexType.typeName}"></a>
+									<a th:attr="href='#dropdown'+${iter.count}" tabindex="-1" data-toggle="tab" th:text="${complexType.content.typeName}"></a>
 								</li>
 							</ul>
 						</li>
@@ -22,8 +22,8 @@
 					<div id="myTabContent" class="tab-content">
 						<div class="tab-pane fade" th:each="complexType,iter : ${complexTypes}" th:attr="id='dropdown'+${iter.count}">
 							<form action="#" th:action="@{/measurements/add}" method="post" th:object="${measurementInput}">
-							<h4 th:text="${complexType.typeName}"></h4>
-							<input type="hidden" name="complexDetails.typeCode" th:value="${complexType.typeCode}"/>
+							<h4 th:text="${complexType.content.typeName}"></h4>
+							<input type="hidden" name="complexDetails.typeCode" th:value="${complexType.content.typeCode}"/>
 							<input type="hidden" name="complexDetails.baseMeasurementUri" class="detailsUriInput" />
 							<input type="hidden" name="addUri" class="addUriInput" />
 							<table class="table table-condensed">
@@ -31,8 +31,8 @@
 									<th class="text-center">Param</th>
 									<th class="text-center">Value</th>
 								</tr>
-								<tr th:each="parameter : ${complexType.params}">
-									<td th:text="${parameter.paramName}"></td>
+								<tr th:each="parameter : ${complexType.content.params}">
+									<td th:text="${parameter.paramCode}"></td>
 									<td><input type="text" th:attr="required=${parameter.required}" th:field="*{complexDetails.parameters[__${parameter.paramCode}__]}" /></td>
 								</tr>
 							</table>

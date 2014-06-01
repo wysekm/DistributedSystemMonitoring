@@ -1,9 +1,9 @@
 package pl.edu.agh.dsm.front.core.model.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,56 +12,41 @@ import java.util.Map;
  */
 public class ComplexMeasurementDto {
 
-	public static class Parameter {
-		String paramName;
-		String value;
+	public static class User {
 
-		public Parameter() {
+		String name;
+
+		public User() {
 		}
 
-		public Parameter(String paramName, String value) {
-			this.paramName = paramName;
-			this.value = value;
+		public User(String name) {
+			this.name = name;
 		}
 
-		public String getParamName() {
-			return paramName;
-		}
-
-		public void setParamName(String paramName) {
-			this.paramName = paramName;
-		}
-
-		public String getValue() {
-			return value;
-		}
-
-		public void setValue(String value) {
-			this.value = value;
+		public String getName() {
+			return name;
 		}
 	}
 
-	private String measurement;
 	private String type;
-	private List<Parameter> params = new ArrayList<>();
-
-	@JsonIgnore
-	private String createdBy;
+	private User createdBy;
+	private List<ComplexMeasurementParameter> params = new ArrayList<>();
 
 	public ComplexMeasurementDto() {
 	}
 
-	public ComplexMeasurementDto(String typeCode, Map<String, String> parameters, String createdBy) {
-		this.type = typeCode;
-		this.createdBy = createdBy;
+	public ComplexMeasurementDto(String type, Map<String, String> parameters, String createdBy) {
+		this.type = type;
+		this.createdBy = new User(createdBy);
 		for(Map.Entry<String, String> entry : parameters.entrySet()) {
-			params.add(new Parameter(entry.getKey(), entry.getValue()));
+			params.add(new ComplexMeasurementParameter(entry.getKey(), entry.getValue()));
 		}
 	}
 
-	public ComplexMeasurementDto(String baseMeasurementUri, String typeCode, Map<String, String> parameters, String createdBy) {
-		this(typeCode, parameters, createdBy);
-		this.measurement = baseMeasurementUri;
+	public ComplexMeasurementDto(String type, List<ComplexMeasurementParameter> params, String createdBy) {
+		this.type = type;
+		this.params = params;
+		this.createdBy = new User(createdBy);
 	}
 
 	public String getType() {
@@ -69,37 +54,20 @@ public class ComplexMeasurementDto {
 	}
 
 	public String getCreatedBy() {
-		return createdBy;
-	}
-
-	public String getMeasurement() {
-		return measurement;
-	}
-
-	public void setMeasurement(String measurement) {
-		this.measurement = measurement;
+		return createdBy.name;
 	}
 
 	public void setType(String type) {
 		this.type = type;
 	}
 
-	public List<Parameter> getParams() {
+	public List<ComplexMeasurementParameter> getParams() {
 		return params;
-	}
-
-	public void setParams(List<Parameter> params) {
-		this.params = params;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
 	}
 
 	@Override
 	public String toString() {
 		return "ComplexMeasurementDto{" +
-				"measurement='" + measurement + '\'' +
 				", type='" + type + '\'' +
 				", params=" + params +
 				", createdBy='" + createdBy + '\'' +
