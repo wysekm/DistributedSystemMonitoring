@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
+import pl.edu.agh.dsm.monitor.core.model.measurement.data.MeasurementData;
 
 
 /**
@@ -29,9 +29,13 @@ public class ComplexMeasurementRepositoryImpl implements ComplexMeasurementsRepo
 	static List<ComplexMeasurement> repo = Lists.newArrayList();
 
 	@Override
-	public List<ComplexMeasurement> findAll() {
-		logger.trace("find all complex measurements with conditions");
-		return Lists.newArrayList(repo);
+	public List<ComplexMeasurement> find(Predicate<ComplexMeasurement> preconditions) {
+		logger.trace(
+				"find list of ComplexMeasurement with predicate {}",
+				preconditions);
+
+		return Lists.newArrayList(Iterables.filter(repo,
+				preconditions));
 	}
 
 	@Override

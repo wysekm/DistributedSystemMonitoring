@@ -1,5 +1,7 @@
 package pl.edu.agh.dsm.monitor.core.model.measurement.complex;
 
+import com.google.common.base.Predicate;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -8,7 +10,7 @@ import java.util.UUID;
  */
 public interface ComplexMeasurementsRepository {
 
-	List<ComplexMeasurement> findAll();
+	List<ComplexMeasurement> find(Predicate<ComplexMeasurement> preconditions);
 
 	ComplexMeasurement find(UUID uuid);
 

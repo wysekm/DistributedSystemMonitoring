@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import pl.edu.agh.dsm.monitor.core.model.measurement.complex.ComplexMeasurementsService;
 import pl.edu.agh.dsm.monitor.core.model.measurement.complex.task.TaskExecutor;
 import pl.edu.agh.dsm.monitor.core.model.measurement.data.DataLimit;
 import pl.edu.agh.dsm.monitor.core.model.measurement.data.MeasurementData;
@@ -34,6 +35,9 @@ public class MeasurementService {
 
 	@Autowired
 	TaskExecutor taskExecutor;
+
+	@Autowired
+	ComplexMeasurementsService complexMeasurementsService;
 
 	/**
 	 * Retrieves measurements from the repository, filtered by metric name and resource name.
@@ -87,5 +91,6 @@ public class MeasurementService {
 		measurementRepository.remove(uuid);
 		measurementDataRepository.removeAll(uuid);
 		catalogueProxy.removeMeasurement(uuid);
+		complexMeasurementsService.deleteDependentMeasurments(uuid);
 	}
 }

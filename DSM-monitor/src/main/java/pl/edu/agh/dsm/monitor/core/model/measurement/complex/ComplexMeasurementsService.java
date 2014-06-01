@@ -3,6 +3,7 @@ package pl.edu.agh.dsm.monitor.core.model.measurement.complex;
 import java.util.List;
 import java.util.UUID;
 
+import com.google.common.base.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,9 @@ public class ComplexMeasurementsService {
 
 	@Autowired
 	TaskExecutor taskExecutor;
+
+	@Autowired
+	ComplexMeasurementPredicateFactory predicateFactory;
 
 	/**
 	 * Create a new complex measurement
@@ -43,9 +47,9 @@ public class ComplexMeasurementsService {
 	}
 
 	public void delete(UUID uuid) {
+		measurementService.deleteMeasurement(uuid);	// the order is important!
 		complexRepository.remove(uuid);
 		taskExecutor.deleteTask(uuid);
-		measurementService.deleteMeasurement(uuid);
 	}
 
 	public ComplexMeasurement getDetails(UUID uuid) {
@@ -63,6 +67,17 @@ public class ComplexMeasurementsService {
 	private Measurement createNewMeasurement(Measurement baseMeasurement) {
 		return new Measurement(UUID.randomUUID(),baseMeasurement.getResource(),
 				baseMeasurement.getMetric(), baseMeasurement.getUnit(), baseMeasurement.getMonitor());
+	}
+
+	public List<ComplexMeasurement> getDependentMeasurements(UUID uuid) {
+		Predicate<ComplexMeasurement> predicate = predicateFactory.createForMeasurement(uuid);
+		return complexRepository.find(predicate);
+	}
+
+	public void deleteDependentMeasurments(UUID uuid) {
+		for(ComplexMeasurement measurement : getDependentMeasurements(uuid)) {
+			delete(measurement.getId());
+		}
 	}
 
 }
