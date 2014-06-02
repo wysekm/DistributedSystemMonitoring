@@ -9,7 +9,8 @@ var retrieveMeasurements = function(interval) {
 					.follow()
 					.withTemplateParameters({ limit: 'last' })
 					.getResource(function(error, dataFrame) {
-				dataTd.html(dataFrame[0].data)
+				data = dataFrame[0].data;
+				dataTd.html(parseFloat(data).toPrecision(4));
 			})
 		};
 		retrieveFunction()

@@ -58,7 +58,7 @@ public class MeasurementControllerMock {
 		} else if(measurement.getUnit().contains("B")) {
 			return new Random().nextInt(10000000);
 		} else {
-			return new Random().nextInt(100);
+			return new Random().nextDouble() * 100.0;
 		}
 	}
 }
