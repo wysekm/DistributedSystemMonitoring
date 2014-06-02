@@ -45,8 +45,8 @@ public class SensorActivityMock {
 
 	private List<ComplexMeasurement> complexMeasurements = Arrays.asList(
 			new ComplexMeasurement(null, measurements.get(0).getId(), "move_avg", Arrays.asList(
-					new ComplexMeasurementParam("interval", 15000),
-					new ComplexMeasurementParam("time_window", 10000)), new ApplicationUser("John")),
+					new ComplexMeasurementParam("interval", 15),
+					new ComplexMeasurementParam("time_window", 20)), new ApplicationUser("John")),
 			new ComplexMeasurement(null, measurements.get(2).getId(), "thresh", Arrays.asList(
 					new ComplexMeasurementParam("thresh_value", 50)), new ApplicationUser("John")));
 

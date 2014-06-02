@@ -29,8 +29,7 @@ public class MovingAverageTask extends ComplexMeasurementTask {
 	@Override
 	public void update() {
 		if(hasIntervalTimePassed()) {
-			int sinceMinutes = (int) SECONDS.convert(getTimeWindow(), MINUTES);
-			List<MeasurementData> data = getBaseMeasurementData(DataLimit.since, sinceMinutes);
+			List<MeasurementData> data = getBaseMeasurementData(DataLimit.since, (int) getTimeWindow());
 			double value = calcAverage(data);
 			long timestamp = new Date().getTime();
 			addMeasurementData(new MeasurementData(timestamp, value));
@@ -49,7 +48,7 @@ public class MovingAverageTask extends ComplexMeasurementTask {
 
 	public boolean hasIntervalTimePassed() {
 		long now = new Date().getTime();
-		long intervalSeconds = SECONDS.convert(getInterval(), MILLISECONDS);
+		long intervalSeconds = MILLISECONDS.convert(getInterval(), SECONDS);
 		return now - lastAddTimestamp > intervalSeconds;
 	}
 
@@ -62,7 +61,7 @@ public class MovingAverageTask extends ComplexMeasurementTask {
 		return (long) getParamValue("interval");
 	}
 
-	public long getTimeWindow() {
-		return (long) getParamValue("time_window");
+	public double getTimeWindow() {
+		return getParamValue("time_window");
 	}
 }

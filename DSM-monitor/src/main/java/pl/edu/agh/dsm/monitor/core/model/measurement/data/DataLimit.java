@@ -13,7 +13,7 @@ public enum DataLimit {
 	last,
 
 	/**
-	 * all available data since n minutes
+	 * all available data since n seconds
 	 */
 	since
 }

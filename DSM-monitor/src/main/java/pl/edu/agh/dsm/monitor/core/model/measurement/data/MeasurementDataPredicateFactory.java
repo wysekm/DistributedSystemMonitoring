@@ -26,7 +26,7 @@ public class MeasurementDataPredicateFactory {
 				public boolean apply(MeasurementData measurementDataDto) {
 					return (System.currentTimeMillis() - measurementDataDto
 							.getTimestamp()) <= TimeUnit.MILLISECONDS.convert(
-							value, TimeUnit.MINUTES);
+							value, TimeUnit.SECONDS);
 				}
 			};
 		} else if (limit.equals(DataLimit.last)) {
