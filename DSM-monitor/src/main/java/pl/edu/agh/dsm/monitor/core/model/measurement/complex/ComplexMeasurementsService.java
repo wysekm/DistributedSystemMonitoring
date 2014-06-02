@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 import pl.edu.agh.dsm.monitor.core.model.measurement.Measurement;
 import pl.edu.agh.dsm.monitor.core.model.measurement.MeasurementService;
 import pl.edu.agh.dsm.monitor.core.model.measurement.complex.task.TaskExecutor;
+import pl.edu.agh.dsm.monitor.core.model.measurement.complex.task.annotation.Task;
 
 @Service
 public class ComplexMeasurementsService {
@@ -39,6 +40,7 @@ public class ComplexMeasurementsService {
 		Measurement baseMeasurement = measurementService.getDetails(measurement.baseMeasurementId);
 		Assert.notNull(baseMeasurement, "Base measurement not found");
 		Measurement newMeasurement = createNewMeasurement(baseMeasurement);
+		setMeasurementUnit(newMeasurement, measurement.getType());
 		measurementService.addMeasurement(newMeasurement);
 		measurement.setId(newMeasurement.getId());
 		complexRepository.save(measurement);
@@ -64,11 +66,6 @@ public class ComplexMeasurementsService {
 		return taskExecutor.getAvailableComplexTypes();
 	}
 
-	private Measurement createNewMeasurement(Measurement baseMeasurement) {
-		return new Measurement(UUID.randomUUID(),baseMeasurement.getResource(),
-				baseMeasurement.getMetric(), baseMeasurement.getUnit(), baseMeasurement.getMonitor());
-	}
-
 	public List<ComplexMeasurement> getDependentMeasurements(UUID uuid) {
 		Predicate<ComplexMeasurement> predicate = predicateFactory.createForMeasurement(uuid);
 		return complexRepository.find(predicate);
@@ -77,6 +74,18 @@ public class ComplexMeasurementsService {
 	public void deleteDependentMeasurments(UUID uuid) {
 		for(ComplexMeasurement measurement : getDependentMeasurements(uuid)) {
 			delete(measurement.getId());
+		}
+	}
+
+	private Measurement createNewMeasurement(Measurement baseMeasurement) {
+		return new Measurement(UUID.randomUUID(),baseMeasurement.getResource(),
+				baseMeasurement.getMetric(), baseMeasurement.getUnit(), baseMeasurement.getMonitor());
+	}
+
+	private void setMeasurementUnit(Measurement measurement, String typeCode) {
+		String unit = taskExecutor.getComplexType(typeCode).getUnit();
+		if(!unit.equals(Task.UNIT_INHERITED)) {
+			measurement.setUnit(unit);
 		}
 	}
 

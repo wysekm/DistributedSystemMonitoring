@@ -45,6 +45,10 @@ public class Measurement {
 		return monitor;
 	}
 
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
 	public boolean equals(Object o) {
 		if (o == this)
 			return true;

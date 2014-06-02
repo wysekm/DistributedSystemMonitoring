@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Tom on 2014-05-29.
  */
-@Task(name="Threshold", code="thresh", parameters = {
+@Task(name="Threshold", code="thresh", unit="", parameters = {
 	@Parameter(name="Threshold", code="thresh_value")})
 public class ThresholdTask extends ComplexMeasurementTask {
 

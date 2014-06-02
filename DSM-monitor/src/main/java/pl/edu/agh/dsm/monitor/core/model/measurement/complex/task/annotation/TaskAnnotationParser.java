@@ -15,6 +15,6 @@ public class TaskAnnotationParser {
 			Parameter param = task.parameters()[i];
 			parameters[i] = new ComplexType.Parameter(param.name(), param.code(), param.required());
 		}
-		return new ComplexType(task.name(), task.code(), parameters);
+		return new ComplexType(task.name(), task.code(), task.unit(), parameters);
 	}
 }

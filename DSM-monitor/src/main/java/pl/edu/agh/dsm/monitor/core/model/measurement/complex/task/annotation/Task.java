@@ -19,5 +19,8 @@ import java.lang.annotation.*;
 public @interface Task {
 	String name() default "";
 	String code() default "";
+	String unit() default UNIT_INHERITED;
 	Parameter[] parameters() default {};
+
+	public static final String UNIT_INHERITED = "inherited";
 }

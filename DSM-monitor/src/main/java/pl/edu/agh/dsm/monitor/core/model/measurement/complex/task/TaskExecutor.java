@@ -86,6 +86,15 @@ public class TaskExecutor {
 		return availableComplexTypes;
 	}
 
+	public ComplexType getComplexType(String typeCode) {
+		for(ComplexType complexType : availableComplexTypes) {
+			if(complexType.getTypeCode().equals(typeCode)) {
+				return complexType;
+			}
+		}
+		return null;
+	}
+
 	@PostConstruct
 	public void initAvailableTaskTypes() {
 		String[] beanNames = appCtx.getBeanNamesForType(ComplexMeasurementTask.class, true, false);
