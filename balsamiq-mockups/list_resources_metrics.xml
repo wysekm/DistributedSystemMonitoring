@@ -1,11 +1,11 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1302" measuredH="774" mockupW="1250" mockupH="696">
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1507" measuredH="774" mockupW="1455" mockupH="696">
   <controls>
     <control controlID="153" controlTypeID="com.balsamiq.mockups::DataGrid" x="259" y="418" w="378" h="259" measuredW="347" measuredH="351" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Zasob%20%5Ev%2C%20Pomiar%2C%20Aktualna%20wartosc%2C%20Wybierz%0APC1%2C%20CPU%2C%2023%25%2C%20%5Bx%5D%0APC1%2C%20ZlozonyCPU1%2C%2023%25%2C%20%5Bx%5D%0APC1%2C%20ZlozonyCPU2%2C%2023%25%2C%20%5Bx%5D%0APC1%2C%20RAM%2C%2035%25%2C%20%5Bx%5D%0APC2%2C%20CPU%2C%2099%25%2C%20%5Bx%5D%0APC2%2C%20ZlozonyCPU%2C%2099%25%2C%20%5Bx%5D%0APC3%2C%20SWAP%2C%201%25%2C%20%5Bx%5D%0AZEUSPC1%2C%20CPU%2C%2023%25%0AZEUSPC1%2C%20RAM%2C%2035%25%0AZEUSPC2%2C%20CPU%2C%2099%25%0AZEUSPC3%2C%20SWAP%2C%201%25</text>
+        <text>Zasob%20%5Ev%2C%20Pomiar%2C%20Aktualna%20wartosc%2C%20Wybierz%0APC1%2C%20CPU%2C%2023%25%2C%20%5Bx%5D%0APC1%2C%20ZlozonyCPU1%2C%2023%25%2C%20%5Bx%5D%0APC1%2C%20ZlozonyCPU2%2C%2023%25%2C%20%5Bx%5D%0APC1%2C%20RAM%2C%2035%25%2C%20%5Bx%5D%0APC2%2C%20CPU%2C%2099%25%2C%20%5Bx%5D%0APC2%2C%20ZlozonyCPU1%2C%2099%25%2C%20%5Bx%5D%0APC3%2C%20SWAP%2C%201%25%2C%20%5Bx%5D%0AZEUSPC1%2C%20CPU%2C%2023%25%0AZEUSPC1%2C%20RAM%2C%2035%25%0AZEUSPC2%2C%20CPU%2C%2099%25%0AZEUSPC3%2C%20SWAP%2C%201%25</text>
       </controlProperties>
     </control>
-    <control controlID="156" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="52" y="78" w="793" h="696" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="156" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="52" y="78" w="982" h="696" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <text>A%20Web%20Page%0Ahttp%3A//</text>
       </controlProperties>
@@ -26,9 +26,9 @@
         <text>Lista%20zasob%F3w%20i%20metryk%3A</text>
       </controlProperties>
     </control>
-    <control controlID="167" controlTypeID="com.balsamiq.mockups::Button" x="389" y="692" w="-1" h="-1" measuredW="118" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="167" controlTypeID="com.balsamiq.mockups::Button" x="389" y="692" w="-1" h="-1" measuredW="120" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Stworz%20wykresy</text>
+        <text>Stw%F3rz%20wykresy</text>
       </controlProperties>
     </control>
     <control controlID="168" controlTypeID="com.balsamiq.mockups::Button" x="653" y="434" w="-1" h="-1" measuredW="153" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
@@ -36,17 +36,17 @@
         <text>Dodaj%20pomiar%20z%u0142o%u017Cony</text>
       </controlProperties>
     </control>
-    <control controlID="169" controlTypeID="com.balsamiq.mockups::Button" x="653" y="556" w="-1" h="-1" measuredW="149" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="169" controlTypeID="com.balsamiq.mockups::Button" x="653" y="556" w="153" h="27" measuredW="149" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Dodaj%20pomiar%20zlozony</text>
       </controlProperties>
     </control>
-    <control controlID="170" controlTypeID="com.balsamiq.mockups::Button" x="653" y="496" w="-1" h="-1" measuredW="149" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="170" controlTypeID="com.balsamiq.mockups::Button" x="821" y="496" w="-1" h="-1" measuredW="149" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Usu%u0144%20pomiar%20z%u0142o%u017Cony</text>
       </controlProperties>
     </control>
-    <control controlID="171" controlTypeID="com.balsamiq.mockups::Button" x="653" y="465" w="-1" h="-1" measuredW="149" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+    <control controlID="171" controlTypeID="com.balsamiq.mockups::Button" x="821" y="465" w="-1" h="-1" measuredW="149" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Usu%u0144%20pomiar%20z%u0142o%u017Cony</text>
       </controlProperties>
@@ -76,12 +76,12 @@
         <text>Dodaj%20pomiar%20z%u0142o%u017Cony</text>
       </controlProperties>
     </control>
-    <control controlID="179" controlTypeID="com.balsamiq.mockups::Button" x="653" y="586" w="-1" h="-1" measuredW="149" measuredH="27" zOrder="15" locked="false" isInGroup="-1">
+    <control controlID="179" controlTypeID="com.balsamiq.mockups::Button" x="821" y="586" w="-1" h="-1" measuredW="149" measuredH="27" zOrder="15" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Usu%u0144%20pomiar%20z%u0142o%u017Cony</text>
       </controlProperties>
     </control>
-    <control controlID="180" controlTypeID="com.balsamiq.mockups::Button" x="653" y="648" w="-1" h="-1" measuredW="149" measuredH="27" zOrder="16" locked="false" isInGroup="-1">
+    <control controlID="180" controlTypeID="com.balsamiq.mockups::Button" x="653" y="648" w="153" h="27" measuredW="149" measuredH="27" zOrder="16" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Dodaj%20pomiar%20zlozony</text>
       </controlProperties>
@@ -91,65 +91,80 @@
         <text>Dodaj%20pomiar%20z%u0142o%u017Cony</text>
       </controlProperties>
     </control>
-    <control controlID="184" controlTypeID="com.balsamiq.mockups::Canvas" x="934" y="276" w="363" h="205" measuredW="100" measuredH="70" zOrder="18" locked="false" isInGroup="-1"/>
-    <control controlID="185" controlTypeID="com.balsamiq.mockups::Label" x="934" y="235" w="-1" h="-1" measuredW="368" measuredH="21" zOrder="19" locked="false" isInGroup="-1">
+    <control controlID="184" controlTypeID="com.balsamiq.mockups::Canvas" x="1139" y="309" w="363" h="205" measuredW="100" measuredH="70" zOrder="18" locked="false" isInGroup="-1"/>
+    <control controlID="185" controlTypeID="com.balsamiq.mockups::Label" x="1139" y="268" w="-1" h="-1" measuredW="368" measuredH="21" zOrder="19" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Po%20wybraniu%20dadania%20pomiaru%20z%u0142o%u017Conego%20wy%u015Bwietla%20si%u0119%20popup%3A</text>
       </controlProperties>
     </control>
-    <control controlID="186" controlTypeID="com.balsamiq.mockups::Label" x="1027" y="284" w="-1" h="-1" measuredW="179" measuredH="21" zOrder="20" locked="false" isInGroup="-1">
+    <control controlID="186" controlTypeID="com.balsamiq.mockups::Label" x="1232" y="317" w="-1" h="-1" measuredW="179" measuredH="21" zOrder="20" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Tworzenie%20pomiaru%20z%u0142o%u017Conego</text>
       </controlProperties>
     </control>
-    <control controlID="187" controlTypeID="com.balsamiq.mockups::Label" x="965" y="340" w="-1" h="-1" measuredW="96" measuredH="21" zOrder="21" locked="false" isInGroup="-1">
+    <control controlID="187" controlTypeID="com.balsamiq.mockups::Label" x="1170" y="373" w="-1" h="-1" measuredW="96" measuredH="21" zOrder="21" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Rodzaj%20pomiaru%3A</text>
       </controlProperties>
     </control>
-    <control controlID="188" controlTypeID="com.balsamiq.mockups::ComboBox" x="1146" y="339" w="124" h="-1" measuredW="52" measuredH="24" zOrder="22" locked="false" isInGroup="-1">
+    <control controlID="188" controlTypeID="com.balsamiq.mockups::ComboBox" x="1351" y="372" w="124" h="-1" measuredW="52" measuredH="24" zOrder="22" locked="false" isInGroup="-1">
       <controlProperties>
         <text>cpu</text>
       </controlProperties>
     </control>
-    <control controlID="189" controlTypeID="com.balsamiq.mockups::Label" x="965" y="369" w="-1" h="-1" measuredW="119" measuredH="21" zOrder="23" locked="false" isInGroup="-1">
+    <control controlID="189" controlTypeID="com.balsamiq.mockups::Label" x="1170" y="402" w="-1" h="-1" measuredW="119" measuredH="21" zOrder="23" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Czas%20pomiaru%20%5C%5Bmin%5C%5D%3A</text>
       </controlProperties>
     </control>
-    <control controlID="191" controlTypeID="com.balsamiq.mockups::NumericStepper" x="1146" y="367" w="-1" h="-1" measuredW="41" measuredH="24" zOrder="24" locked="false" isInGroup="-1">
+    <control controlID="191" controlTypeID="com.balsamiq.mockups::NumericStepper" x="1351" y="400" w="-1" h="-1" measuredW="41" measuredH="24" zOrder="24" locked="false" isInGroup="-1">
       <controlProperties>
         <text>5</text>
       </controlProperties>
     </control>
-    <control controlID="192" controlTypeID="com.balsamiq.mockups::Label" x="965" y="398" w="-1" h="-1" measuredW="164" measuredH="21" zOrder="25" locked="false" isInGroup="-1">
+    <control controlID="192" controlTypeID="com.balsamiq.mockups::Label" x="1170" y="431" w="-1" h="-1" measuredW="164" measuredH="21" zOrder="25" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Warto%u015B%u0107%20obliczana%20co%20%5C%5Bmin%5C%5D%3A</text>
       </controlProperties>
     </control>
-    <control controlID="193" controlTypeID="com.balsamiq.mockups::NumericStepper" x="1146" y="398" w="-1" h="-1" measuredW="39" measuredH="24" zOrder="26" locked="false" isInGroup="-1">
+    <control controlID="193" controlTypeID="com.balsamiq.mockups::NumericStepper" x="1351" y="431" w="-1" h="-1" measuredW="39" measuredH="24" zOrder="26" locked="false" isInGroup="-1">
       <controlProperties>
         <text>1</text>
       </controlProperties>
     </control>
-    <control controlID="194" controlTypeID="com.balsamiq.mockups::Button" x="1042" y="434" w="-1" h="-1" measuredW="57" measuredH="27" zOrder="27" locked="false" isInGroup="-1">
+    <control controlID="194" controlTypeID="com.balsamiq.mockups::Button" x="1247" y="467" w="-1" h="-1" measuredW="57" measuredH="27" zOrder="27" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Dodaj</text>
       </controlProperties>
     </control>
-    <control controlID="195" controlTypeID="com.balsamiq.mockups::Label" x="965" y="313" w="-1" h="-1" measuredW="94" measuredH="21" zOrder="28" locked="false" isInGroup="-1">
+    <control controlID="195" controlTypeID="com.balsamiq.mockups::Label" x="1170" y="346" w="-1" h="-1" measuredW="94" measuredH="21" zOrder="28" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Nazwa%20pomiaru%3A</text>
       </controlProperties>
     </control>
-    <control controlID="196" controlTypeID="com.balsamiq.mockups::TextInput" x="1146" y="310" w="124" h="-1" measuredW="79" measuredH="26" zOrder="29" locked="false" isInGroup="-1">
+    <control controlID="196" controlTypeID="com.balsamiq.mockups::TextInput" x="1351" y="343" w="124" h="-1" measuredW="79" measuredH="26" zOrder="29" locked="false" isInGroup="-1">
       <controlProperties>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="197" controlTypeID="com.balsamiq.mockups::Button" x="1121" y="434" w="-1" h="-1" measuredW="58" measuredH="27" zOrder="30" locked="false" isInGroup="-1">
+    <control controlID="197" controlTypeID="com.balsamiq.mockups::Button" x="1326" y="467" w="-1" h="-1" measuredW="58" measuredH="27" zOrder="30" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Anuluj</text>
+      </controlProperties>
+    </control>
+    <control controlID="198" controlTypeID="com.balsamiq.mockups::Button" x="653" y="465" w="-1" h="-1" measuredW="153" measuredH="27" zOrder="31" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dodaj%20pomiar%20z%u0142o%u017Cony</text>
+      </controlProperties>
+    </control>
+    <control controlID="199" controlTypeID="com.balsamiq.mockups::Button" x="653" y="496" w="-1" h="-1" measuredW="153" measuredH="27" zOrder="32" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dodaj%20pomiar%20z%u0142o%u017Cony</text>
+      </controlProperties>
+    </control>
+    <control controlID="200" controlTypeID="com.balsamiq.mockups::Button" x="653" y="586" w="-1" h="-1" measuredW="153" measuredH="27" zOrder="33" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dodaj%20pomiar%20z%u0142o%u017Cony</text>
       </controlProperties>
     </control>
   </controls>

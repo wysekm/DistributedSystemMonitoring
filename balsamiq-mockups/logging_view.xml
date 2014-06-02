@@ -1,4 +1,4 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="845" measuredH="633" mockupW="793" mockupH="554">
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="845" measuredH="633" mockupW="793" mockupH="613">
   <controls>
     <control controlID="37" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="52" y="79" w="793" h="554" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
@@ -21,14 +21,14 @@
         <text>Obecnie%20nie%20jest%20zalogowany%20zaden%20uzytkownik</text>
       </controlProperties>
     </control>
-    <control controlID="45" controlTypeID="com.balsamiq.mockups::TextInput" x="396" y="418" w="-1" h="-1" measuredW="118" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::TextInput" x="303" y="445" w="117" h="-1" measuredW="79" measuredH="26" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Wpisz%20sw%F3j%20Login</text>
+        <text/>
       </controlProperties>
     </control>
-    <control controlID="46" controlTypeID="com.balsamiq.mockups::TextInput" x="385" y="452" w="138" h="-1" measuredW="129" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::TextInput" x="473" y="445" w="117" h="-1" measuredW="79" measuredH="26" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Wpisz%20swoje%20Has%u0142o</text>
+        <text/>
       </controlProperties>
     </control>
     <control controlID="47" controlTypeID="com.balsamiq.mockups::Button" x="420" y="486" w="-1" h="-1" measuredW="68" measuredH="27" zOrder="6" locked="false" isInGroup="-1">
@@ -54,6 +54,17 @@
     <control controlID="53" controlTypeID="com.balsamiq.mockups::Button" x="463" y="170" w="-1" h="-1" measuredW="136" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Wszystkie%20pomiary</text>
+      </controlProperties>
+    </control>
+    <control controlID="54" controlTypeID="com.balsamiq.mockups::Label" x="60" y="20" w="-1" h="-1" measuredW="61" measuredH="21" zOrder="11" locked="false" isInGroup="-1"/>
+    <control controlID="55" controlTypeID="com.balsamiq.mockups::Label" x="344" y="416" w="-1" h="-1" measuredW="34" measuredH="21" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Login%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="56" controlTypeID="com.balsamiq.mockups::Label" x="512" y="416" w="-1" h="-1" measuredW="39" measuredH="21" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Has%u0142o%3A</text>
       </controlProperties>
     </control>
   </controls>

@@ -21,12 +21,12 @@
         <text>Obecnie%20nie%20jest%20zalogowany%20zaden%20uzytkownik</text>
       </controlProperties>
     </control>
-    <control controlID="92" controlTypeID="com.balsamiq.mockups::TextInput" x="461" y="411" w="176" h="-1" measuredW="139" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="92" controlTypeID="com.balsamiq.mockups::TextInput" x="454" y="447" w="176" h="-1" measuredW="79" measuredH="26" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Podaj%20nazw%u0119%20metryki</text>
+        <text/>
       </controlProperties>
     </control>
-    <control controlID="94" controlTypeID="com.balsamiq.mockups::Button" x="416" y="453" w="-1" h="-1" measuredW="64" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="94" controlTypeID="com.balsamiq.mockups::Button" x="416" y="489" w="-1" h="-1" measuredW="64" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Szukaj</text>
       </controlProperties>
@@ -51,9 +51,19 @@
         <text>Wszystkie%20pomiary</text>
       </controlProperties>
     </control>
-    <control controlID="101" controlTypeID="com.balsamiq.mockups::TextInput" x="262" y="411" w="176" h="-1" measuredW="138" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="101" controlTypeID="com.balsamiq.mockups::TextInput" x="244" y="447" w="176" h="-1" measuredW="79" measuredH="26" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Podaj%20nazw%u0119%20zasobu</text>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="102" controlTypeID="com.balsamiq.mockups::Label" x="270" y="414" w="-1" h="-1" measuredW="127" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Podaj%20nazw%u0119%20zasobu%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="103" controlTypeID="com.balsamiq.mockups::Label" x="480" y="414" w="-1" h="-1" measuredW="128" measuredH="21" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Podaj%20nazw%u0119%20metryki%3A</text>
       </controlProperties>
     </control>
   </controls>
