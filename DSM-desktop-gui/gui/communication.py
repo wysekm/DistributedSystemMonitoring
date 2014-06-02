@@ -6,7 +6,7 @@ from twisted.internet.protocol import Protocol
 from twisted.internet import reactor, task
 from twisted.web.client import Agent
 
-from utils import print_msg_with_class_name, show_error_window
+from utils import print_msg_with_class_name, show_error_window, gen_
 
 
 
@@ -17,6 +17,8 @@ UNIT_LABEL = "unit"
 LINK_LABEL = "rest_link"
 TIMESTAMP_LABEL = "timestamp"
 VALUE_LABEL = "data"
+COMPLEX_DETAILS_LABEL = "complexDetails"
+COMPLEX_LABEL = "complex"
 
 
 ############################# Requesters #############################
@@ -95,6 +97,7 @@ class MeasurementLister(ObjectWithRequestAgent):
     ############################# JSON utilities #############################
 
 class JsonExtractor(Protocol):
+
     """Parent class for json extractors"""
     def __init__(self, container, finished):
         self.container = container
@@ -105,6 +108,7 @@ class JsonResourcesExtractor(JsonExtractor):
     """Class for extracting list of resources from json"""
     def __init__(self, container, finished):
         JsonExtractor.__init__(self, container, finished)
+        self.__gen = self.__reset_gen()
 
     def dataReceived(self, data):
         # print_msg_with_class_name(self, "Received JSON data for extraction")
@@ -132,11 +136,24 @@ class JsonResourcesExtractor(JsonExtractor):
         return measurement
 
     def __measurement_extractor(self, measurement):
-        return {RESOURCE_LABEL: measurement[RESOURCE_LABEL],
-                METRIC_LABEL:   measurement[METRIC_LABEL],
-                UNIT_LABEL:     measurement[UNIT_LABEL],
-                LINK_LABEL:     measurement["_links"]["details"]["href"]
-                }
+        ans_dict = {RESOURCE_LABEL: measurement[RESOURCE_LABEL],
+                    METRIC_LABEL:   measurement[METRIC_LABEL],
+                    UNIT_LABEL:     measurement[UNIT_LABEL],
+                    LINK_LABEL:     measurement["_links"]["details"]["href"],
+                    COMPLEX_LABEL:  True if COMPLEX_DETAILS_LABEL in measurement["_links"] else False
+                    }
+
+        if ans_dict[COMPLEX_LABEL]:
+            ans_dict[METRIC_LABEL] += " Complex{}".format(self.__get_next_ind())
+
+        return ans_dict
+
+    @staticmethod
+    def __reset_gen():
+        return gen_()
+
+    def __get_next_ind(self):
+        return self.__gen.next()
 
     def __merge_data(self, measurements):
         # print_msg_with_class_name(self, "Merging extracted data")
@@ -159,11 +176,10 @@ class JsonMeasurementExtractor(JsonExtractor):
         JsonExtractor.__init__(self, container, finished)
 
     def dataReceived(self, data):
-        # print_msg_with_class_name(self, "Received JSON data for extraction")
         self.finished.callback(self.__convert_json_to_dict(data))
 
-    def __convert_json_to_dict(self, data):
-        # print_msg_with_class_name(self, "Converting from JSON to dict")
+    @staticmethod
+    def __convert_json_to_dict(data):
         return json.loads(data)[0]
 
 

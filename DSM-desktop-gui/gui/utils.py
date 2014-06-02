@@ -17,3 +17,10 @@ def check_uint(value):
     if ivalue < 0:
         raise argparse.ArgumentTypeError("{} is an invalid positive int value".format(value))
     return ivalue
+
+
+def gen_():
+    index = 0
+    while True:
+        index += 1
+        yield index
