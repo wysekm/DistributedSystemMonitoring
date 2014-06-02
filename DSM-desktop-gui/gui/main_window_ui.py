@@ -168,11 +168,13 @@ class MainDialog(wx.Frame):
             for metric_name, metric_data in resource_data.iteritems():
                 if metric_name not in gui_dict:
                     gui_dict[metric_name] = []
-                try:
+                # try:
+                if VALUE_LABEL in metric_data:
                     gui_dict[metric_name].append(
                         (resource_name, self.round_value(metric_data[VALUE_LABEL]), metric_data[UNIT_LABEL]))
-                except KeyError:
-                    gui_dict = None
+                else:
+                    gui_dict[metric_name].append((resource_name, "NO DATA ", ""))
+                #     gui_dict = None
 
         return gui_dict
 

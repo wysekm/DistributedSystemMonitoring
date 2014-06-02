@@ -19,6 +19,7 @@ TIMESTAMP_LABEL = "timestamp"
 VALUE_LABEL = "data"
 COMPLEX_DETAILS_LABEL = "complexDetails"
 COMPLEX_LABEL = "complex"
+MESSAGE_LABEL = "message"
 
 
 ############################# Requesters #############################
@@ -108,7 +109,7 @@ class JsonResourcesExtractor(JsonExtractor):
     """Class for extracting list of resources from json"""
     def __init__(self, container, finished):
         JsonExtractor.__init__(self, container, finished)
-        self.__gen = self.__reset_gen()
+        # self.__gen = self.__reset_gen()
 
     def dataReceived(self, data):
         # print_msg_with_class_name(self, "Received JSON data for extraction")
@@ -136,24 +137,25 @@ class JsonResourcesExtractor(JsonExtractor):
         return measurement
 
     def __measurement_extractor(self, measurement):
-        ans_dict = {RESOURCE_LABEL: measurement[RESOURCE_LABEL],
-                    METRIC_LABEL:   measurement[METRIC_LABEL],
-                    UNIT_LABEL:     measurement[UNIT_LABEL],
-                    LINK_LABEL:     measurement["_links"]["details"]["href"],
-                    COMPLEX_LABEL:  True if COMPLEX_DETAILS_LABEL in measurement["_links"] else False
-                    }
+        # ans_dict = {RESOURCE_LABEL: measurement[RESOURCE_LABEL],
+        return {RESOURCE_LABEL: measurement[RESOURCE_LABEL],
+                METRIC_LABEL: measurement[METRIC_LABEL],
+                UNIT_LABEL: measurement[UNIT_LABEL],
+                LINK_LABEL: measurement["_links"]["details"]["href"],
+                # COMPLEX_LABEL:  True if COMPLEX_DETAILS_LABEL in measurement["_links"] else False
+                }
 
-        if ans_dict[COMPLEX_LABEL]:
-            ans_dict[METRIC_LABEL] += " Complex{}".format(self.__get_next_ind())
+        # if ans_dict[COMPLEX_LABEL]:
+        # ans_dict[METRIC_LABEL] += " Complex{}".format(self.__get_next_ind())
 
-        return ans_dict
+        # return ans_dict
 
-    @staticmethod
-    def __reset_gen():
-        return gen_()
-
-    def __get_next_ind(self):
-        return self.__gen.next()
+    # @staticmethod
+    # def __reset_gen():
+    #     return gen_()
+    #
+    # def __get_next_ind(self):
+    #     return self.__gen.next()
 
     def __merge_data(self, measurements):
         # print_msg_with_class_name(self, "Merging extracted data")
@@ -163,11 +165,33 @@ class JsonResourcesExtractor(JsonExtractor):
             current_resource = measurement[RESOURCE_LABEL]
             if current_resource not in final_data:
                 final_data[current_resource] = {}
+            elif measurement[METRIC_LABEL] in final_data[current_resource]:
+                # measurement[METRIC_LABEL] += str(self.__get_next_ind())
+                # measurement[METRIC_LABEL] = self.__create_indexed_name(measurement, current_resource, final_data)
+                current_resource = self.__create_indexed_name(current_resource, measurement[METRIC_LABEL], final_data)
+                final_data[current_resource] = {}
             final_data[current_resource].update({measurement[METRIC_LABEL]:
                                                      {UNIT_LABEL: measurement[UNIT_LABEL],
                                                       LINK_LABEL: measurement[LINK_LABEL]}})
 
         return final_data
+
+    # @staticmethod
+    # def __check_if_data_in_final_dict(measurement, final_dict):
+    #     if
+
+    @staticmethod
+    def __create_indexed_name(cur_resource, cur_metric, final_data):
+        index = 1
+        temp_name = ""
+        while True:
+            temp_name = cur_resource + "({})".format(index)
+            if temp_name not in final_data or (temp_name in final_data and cur_metric not in final_data[temp_name]):
+                break
+            else:
+                index += 1
+
+        return temp_name
 
 
 class JsonMeasurementExtractor(JsonExtractor):
