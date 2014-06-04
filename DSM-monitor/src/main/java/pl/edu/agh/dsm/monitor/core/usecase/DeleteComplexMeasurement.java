@@ -18,12 +18,12 @@ public class DeleteComplexMeasurement {
 	ComplexMeasurementsService complexMeasurementService;
 	
 	public void delete(UUID uuid, ApplicationUser user) {
-		InternalErrorException.check(measurementExists(uuid));
 		InternalErrorException.check(canDelete(uuid, user));
 		complexMeasurementService.delete(uuid);
 	}
 	
 	public ActionPossibility canDelete(UUID uuid, ApplicationUser user) {
+		InternalErrorException.check(measurementExists(uuid));
 		if(user == null) {
 			return ActionPossibility.forFalse("Only logged users can delete measurements", HttpStatus.UNAUTHORIZED);
 		}
