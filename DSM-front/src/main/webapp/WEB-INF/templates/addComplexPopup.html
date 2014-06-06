@@ -32,7 +32,7 @@
 									<th class="text-center">Value</th>
 								</tr>
 								<tr th:each="parameter : ${complexType.content.params}">
-									<td th:text="${parameter.paramCode}"></td>
+									<td th:text="${parameter.paramName}"></td>
 									<td><input type="text" th:attr="required=${parameter.required}" th:field="*{complexDetails.parameters[__${parameter.paramCode}__]}" /></td>
 								</tr>
 							</table>
